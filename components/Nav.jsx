@@ -11,7 +11,7 @@ export default function Nav() {
           Evidentia Nutrition
         </Link>
         <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
-          {[['Evidence library', '/library'], ['Methodology', '/methodology'], ['About', '/about']].map(([label, href]) => (
+          {[['Evidence library', '/library'], ['Articles', '/articles'], ['Methodology', '/methodology'], ['About', '/about']].map(([label, href]) => (
             <Link key={href} href={href} style={{ fontSize: 14, color: '#4A4A6A', textDecoration: 'none', fontWeight: 500 }}>
               {label}
             </Link>
