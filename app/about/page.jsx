@@ -115,24 +115,6 @@ export default function About() {
           </p>
         </div>
 
-        {/* COI */}
-        <div id="conflicts" style={S.section}>
-          <h2 style={S.h2}>Conflicts of interest</h2>
-          <p style={S.body}>
-            The founding director holds a clinical leadership role at Personally (Supplement Technology Limited), a direct-to-consumer personalised supplement company. This relationship is declared here and managed through a formal recusal framework.
-          </p>
-          <div style={{ background: '#FFF8E8', borderLeft: '3px solid #E8A020', borderRadius: '0 8px 8px 0', padding: '14px 18px', margin: '16px 0', fontSize: 14, color: '#6B4800', lineHeight: 1.7 }}>
-            <strong style={{ display: 'block', marginBottom: 4 }}>Declared relationship: Personally (Supplement Technology Limited)</strong>
-            Evidentia Nutrition is legally and operationally independent of Personally. There is no commercial relationship between the two organisations and Evidentia content does not promote or reference Personally's products. Topics that directly overlap with Personally's commercial ingredient range are reviewed by an advisory board member before publication. This arrangement is reviewed annually.
-          </div>
-          <p style={S.body}>
-            All advisory board members make annual conflict of interest declarations. Relevant declared interests are noted on the entries they relate to. A summary of all declared interests is reviewed annually and updated here.
-          </p>
-          <p style={{ ...S.body, marginBottom: 0 }}>
-            The intent is to be more transparent than is strictly required, on the basis that trust in this space is hard to build and easy to lose.
-          </p>
-        </div>
-
         {/* Funding */}
         <div style={S.section}>
           <h2 style={S.h2}>Funding</h2>
@@ -141,6 +123,20 @@ export default function About() {
           </p>
           <p style={{ ...S.body, marginBottom: 0 }}>
             Any external funding accepted in the future will be disclosed here in full, along with the terms under which it was accepted and an assessment of any conflict of interest implications.
+          </p>
+        </div>
+
+        {/* COI */}
+        <div id="conflicts" style={S.section}>
+          <h2 style={S.h2}>Conflicts of interest</h2>
+          <p style={S.body}>
+            All individuals contributing to Evidentia Nutrition content make annual written declarations of relevant interests. Declared interests that are relevant to a specific entry are noted on that entry. A summary of declared interests is reviewed annually.
+          </p>
+          <p style={S.body}>
+            The founding director holds a clinical leadership role at Personally (Supplement Technology Limited), a direct-to-consumer personalised supplement company. Evidentia Nutrition is legally and operationally independent of Personally. There is no commercial relationship between the two organisations and Evidentia content does not promote or reference Personally's products. Topics that directly overlap with Personally's commercial ingredient range are reviewed by an advisory board member before publication. This arrangement is reviewed annually.
+          </p>
+          <p style={{ ...S.body, marginBottom: 0 }}>
+            Evidentia Nutrition does not accept commercial sponsorship, affiliate arrangements, or any funding relationship that could create a conflict of interest with its evidence appraisal role.
           </p>
         </div>
 
