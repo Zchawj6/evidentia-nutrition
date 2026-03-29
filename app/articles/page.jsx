@@ -2,7 +2,7 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
 import { getAllArticles } from '../../lib/articles'
-
+export const dynamic = 'force-dynamic'
 export const metadata = {
   title: 'Articles',
   description: 'Expert commentary, clinical perspectives, and applied discussion from Evidentia Nutrition and guest contributors.',
