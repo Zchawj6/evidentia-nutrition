@@ -23,22 +23,8 @@ const RATINGS = ['All ratings', 'Strong', 'Moderate', 'Emerging', 'Insufficient'
 const PLACEHOLDER_ENTRIES = [
   { slug: 'vitamin-d', title: 'Vitamin D', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Strong evidence for deficiency correction. Benefits for immunity and cognition are overclaimed in the replete population.' },
   { slug: 'magnesium', title: 'Magnesium', category: 'micronutrient', primaryRating: 'Moderate', cardDescription: 'Widespread deficiency in Western diets. Evidence is form-specific across bisglycinate, citrate, malate, and taurate.' },
-  { slug: 'omega-3', title: 'Omega-3 fatty acids', category: 'macronutrient', primaryRating: 'Mixed', cardDescription: 'Complex evidence picture across cardiovascular, cognitive, and inflammatory outcomes. Individual baseline status matters.' },
-  { slug: 'iron', title: 'Iron', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Supplementation without confirmed deficiency carries real risk. Blood testing is essential before use.' },
   { slug: 'vitamin-b12', title: 'Vitamin B12', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Critical for vegans, older adults, and those on metformin. Evidence for enhancement in replete individuals is absent.' },
   { slug: 'folate', title: 'Folate and methylation', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'MTHFR polymorphisms affect folate metabolism. Form choice between folic acid and methylfolate has clinical implications.' },
-  { slug: 'protein', title: 'Protein and muscle protein synthesis', category: 'macronutrient', primaryRating: 'Strong', cardDescription: 'Strong evidence base routinely overclaimed. Individual variation by age, training status, and protein source is well-evidenced.' },
-  { slug: 'creatine', title: 'Creatine', category: 'performance', primaryRating: 'Strong', cardDescription: 'One of the most robustly evidenced supplements in existence, still surrounded by myth. Monohydrate is the evidence standard.' },
-  { slug: 'ashwagandha', title: 'Ashwagandha', category: 'adaptogen', primaryRating: 'Moderate', cardDescription: 'Growing but still moderate evidence base for stress and cortisol outcomes. KSM-66 is the most studied extract form.' },
-  { slug: 'probiotics', title: 'Gut microbiome and probiotics', category: 'gut-health', primaryRating: 'Emerging', cardDescription: 'Strain-specificity is central. Evidence for specific strains differs substantially from evidence for generic blends.' },
-  { slug: 'zinc', title: 'Zinc', category: 'micronutrient', primaryRating: 'Moderate', cardDescription: 'Moderate evidence in specific contexts. Interactions with copper at higher doses need clear safety communication.' },
-  { slug: 'curcumin', title: 'Curcumin and bioavailability', category: 'botanical', primaryRating: 'Moderate', cardDescription: 'Generic curcumin has weak human evidence. Phytosome preparations meaningfully change the evidence picture.' },
-  { slug: 'coq10', title: 'CoQ10', category: 'longevity', primaryRating: 'Moderate', cardDescription: 'Reasonable evidence in specific populations, particularly those on statins. Ubiquinone is the standard studied form.' },
-  { slug: 'iodine', title: 'Iodine', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'An underappreciated public health concern in the UK, particularly for those avoiding dairy and not eating fish.' },
-  { slug: 'caffeine', title: 'Caffeine and cognitive performance', category: 'performance', primaryRating: 'Strong', cardDescription: 'Unusually strong evidence base with well-characterised individual variation in metabolism via CYP1A2 polymorphisms.' },
-  { slug: 'cognitive-nutrition', title: 'Cognitive nutrition and nootropics', category: 'cognitive-health', primaryRating: 'Moderate', cardDescription: 'Anchor entry for the cognitive nutrition category covering citicoline, lion\'s mane, bacopa, and phosphatidylserine.' },
-  { slug: 'longevity', title: 'Longevity and cellular health', category: 'longevity', primaryRating: 'Emerging', cardDescription: 'NR, Urolithin A, and Fisetin show early promise. The evidence is genuinely emerging and the commercial narrative runs ahead of it.' },
-  { slug: 'womens-hormonal-health', title: 'Hormonal balance in women', category: 'womens-health', primaryRating: 'Moderate', cardDescription: 'Covers Vitex, DIM, and Red Clover across relevant life stages. Individual hormonal status makes this a strong personalisation case.' },
 ]
 
 export default function Library() {
