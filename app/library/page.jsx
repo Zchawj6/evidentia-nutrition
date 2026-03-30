@@ -25,6 +25,7 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'magnesium', title: 'Magnesium', category: 'micronutrient', primaryRating: 'Moderate', cardDescription: 'Widespread deficiency in Western diets. Evidence is form-specific across bisglycinate, citrate, malate, and taurate.' },
   { slug: 'vitamin-b12', title: 'Vitamin B12', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Critical for vegans, older adults, and those on metformin. Evidence for enhancement in replete individuals is absent.' },
   { slug: 'folate', title: 'Folate and methylation', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'MTHFR polymorphisms affect folate metabolism. Form choice between folic acid and methylfolate has clinical implications.' },
+  { slug: 'omega-3', title: 'Omega-3 fatty acids', category: 'macronutrient', primaryRating: 'Moderate', cardDescription: 'Evidence is outcome-specific and dose-dependent. Baseline status and dietary intake are central to whether supplementation is warranted.' },
 ]
 
 export default function Library() {
