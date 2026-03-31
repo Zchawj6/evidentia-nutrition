@@ -28,6 +28,7 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'omega-3', title: 'Omega-3 fatty acids', category: 'macronutrient', primaryRating: 'Moderate', cardDescription: 'Evidence is outcome-specific and dose-dependent. Baseline status and dietary intake are central to whether supplementation is warranted.' },
   { slug: 'creatine', title: 'Creatine', category: 'performance', primaryRating: 'Strong', cardDescription: 'One of the most robustly evidenced supplements in existence. The evidence base is strong for specific outcomes but the commercial narrative consistently outruns it.' },
   { slug: 'ashwagandha', title: 'Ashwagandha', category: 'adaptogen', primaryRating: 'Moderate', cardDescription: 'Growing but still moderate evidence base for stress and sleep outcomes. Extract type matters significantly -- KSM-66 and Sensoril are the evidence-based choices.' },
+  { slug: 'vitamin-k2', title: 'Vitamin K2', category: 'micronutrient', primaryRating: 'Moderate', cardDescription: 'Distinct from vitamin K1 and frequently low in Western diets. Evidence for bone outcomes in postmenopausal women is meaningful. Form and dose specificity matter considerably.' },
 ]
 
 export default function Library() {
