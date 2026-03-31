@@ -110,7 +110,7 @@ For healthy adults with adequate dietary intake, supplementation is not well-evi
 
 ---
 
----- IN DEPTH ----
+--- IN DEPTH ---
 
 ## Evidence base by outcome
 
