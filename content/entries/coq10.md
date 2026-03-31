@@ -14,6 +14,7 @@ consistencyFlag: "Mixed"
 surrogateOnly: false
 formSpecificEvidence: true
 formStudied: "Ubiquinone (CoQ10) -- ubiquinol evidence base substantially smaller"
+singlePivotalTrial: true
 additionalOutcomes:
   - outcome: "Statin-associated muscle symptoms"
     rating: "Moderate"

@@ -14,6 +14,7 @@ consistencyFlag: "Inconsistent"
 surrogateOnly: false
 formSpecificEvidence: true
 formStudied: "Fish oil ethyl ester, algal DHA/EPA oil"
+singlePivotalTrial: true
 additionalOutcomes:
   - outcome: "Cardiovascular event prevention in high-risk populations"
     rating: "Moderate"

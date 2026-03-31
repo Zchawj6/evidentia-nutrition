@@ -87,6 +87,16 @@ export default async function EntryPage({ params }) {
                 Form-specific evidence
               </span>
             )}
+            {entry.singlePivotalTrial && (
+  <span style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#8B4513', background: '#FFF3E0', borderRadius: 4, padding: '3px 8px' }}>
+    Single pivotal trial
+  </span>
+)}
+{entry.evidenceRecencyFlag && (
+  <span style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#5D4037', background: '#EFEBE9', borderRadius: 4, padding: '3px 8px' }}>
+    Older evidence base
+  </span>
+)}
           </div>
 
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 28, color: '#1A1A2E', lineHeight: 1.2, marginBottom: 18 }}>{entry.title}</h1>
