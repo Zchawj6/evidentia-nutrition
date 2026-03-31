@@ -32,6 +32,7 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'coq10', title: 'CoQ10 (Ubiquinone)', category: 'longevity', secondaryCategories: ['womens-health'], primaryRating: 'Moderate', cardDescription: 'Reasonable evidence in specific populations -- particularly heart failure and statin users. Ubiquinone is the standard studied form. General energy and anti-ageing claims in healthy adults are not well-supported.' },
   { slug: 'citicoline', title: 'Citicoline (CDP-Choline)', category: 'cognitive-health', secondaryCategories: ['womens-health', 'longevity'], primaryRating: 'Moderate', cardDescription: 'Meaningful evidence for cognitive support in older adults and clinical populations. Distinct from other choline forms. Claims for general cognitive enhancement in healthy adults outrun the evidence.' },
   { slug: 'resveratrol', title: 'Resveratrol', category: 'longevity', primaryRating: 'Insufficient', cardDescription: 'One of the most prominent examples of preclinical promise failing to translate into human evidence. The longevity narrative is driven by animal and cell data that has not held up in clinical trials.' },
+  { slug: 'curcumin', title: 'Curcumin (Standard Extract)', category: 'botanical', primaryRating: 'Insufficient', cardDescription: 'The gap between turmeric\'s reputation and the evidence for standard curcumin extract is almost entirely a bioavailability problem. The compound shows biological activity in the lab but does not reach meaningful concentrations in the body from conventional supplements.' },
 ]
 
 export default function Library() {
