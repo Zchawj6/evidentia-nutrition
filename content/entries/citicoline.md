@@ -14,7 +14,7 @@ consistencyFlag: "Mixed"
 surrogateOnly: false
 formSpecificEvidence: true
 formStudied: "Citicoline (CDP-choline) -- evidence base distinct from alpha-GPC and choline bitartrate"
-singlePivotalTrial: true
+evidenceRecencyFlag: true
 additionalOutcomes:
   - outcome: "Cognitive support in healthy adults under cognitive demand"
     rating: "Emerging"
