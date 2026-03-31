@@ -94,11 +94,18 @@ export default async function EntryPage({ params }) {
           {/* Outcome ratings */}
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 20 }}>
             {allOutcomes.map((o, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, background: '#F7FAFA', border: '1px solid #E2E8E8', borderRadius: 8, padding: '7px 12px' }}>
-                <Badge rating={o.rating} size="sm" />
-                <span style={{ fontSize: 12, color: '#4A4A6A' }}>{o.outcome}</span>
-              </div>
-            ))}
+  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, background: '#F7FAFA', border: '1px solid #E2E8E8', borderRadius: 8, padding: '10px 14px', marginBottom: 6 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 3, minWidth: 120 }}>
+      <Badge rating={o.rating} size="sm" />
+      {o.outcomeType && (
+        <span style={{ fontSize: 9, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#888', background: '#F0F0F0', borderRadius: 4, padding: '2px 5px' }}>
+          {o.outcomeType === 'exploratory-biomarker' ? 'Biomarker' : o.outcomeType === 'validated-surrogate' ? 'Validated surrogate' : 'Clinical'}
+        </span>
+      )}
+    </div>
+    <span style={{ fontSize: 12, color: '#4A4A6A' }}>{o.outcome}</span>
+  </div>
+))}
           </div>
 
           {/* Meta */}
