@@ -26,6 +26,7 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'vitamin-b12', title: 'Vitamin B12', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Critical for vegans, older adults, and those on metformin. Evidence for enhancement in replete individuals is absent.' },
   { slug: 'folate', title: 'Folate and methylation', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'MTHFR polymorphisms affect folate metabolism. Form choice between folic acid and methylfolate has clinical implications.' },
   { slug: 'omega-3', title: 'Omega-3 fatty acids', category: 'macronutrient', primaryRating: 'Moderate', cardDescription: 'Evidence is outcome-specific and dose-dependent. Baseline status and dietary intake are central to whether supplementation is warranted.' },
+  { slug: 'creatine', title: 'Creatine', category: 'performance', primaryRating: 'Strong', cardDescription: 'One of the most robustly evidenced supplements in existence. The evidence base is strong for specific outcomes but the commercial narrative consistently outruns it.' },
 ]
 
 export default function Library() {
