@@ -31,6 +31,7 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'vitamin-k2', title: 'Vitamin K2', category: 'micronutrient', secondaryCategories: ['womens-health', 'longevity'], primaryRating: 'Moderate', cardDescription: 'Distinct from vitamin K1 and frequently low in Western diets. Evidence for bone outcomes in postmenopausal women is meaningful. Form and dose specificity matter considerably.' },
   { slug: 'coq10', title: 'CoQ10 (Ubiquinone)', category: 'longevity', secondaryCategories: ['womens-health'], primaryRating: 'Moderate', cardDescription: 'Reasonable evidence in specific populations -- particularly heart failure and statin users. Ubiquinone is the standard studied form. General energy and anti-ageing claims in healthy adults are not well-supported.' },
   { slug: 'citicoline', title: 'Citicoline (CDP-Choline)', category: 'cognitive-health', secondaryCategories: ['womens-health', 'longevity'], primaryRating: 'Moderate', cardDescription: 'Meaningful evidence for cognitive support in older adults and clinical populations. Distinct from other choline forms. Claims for general cognitive enhancement in healthy adults outrun the evidence.' },
+  { slug: 'resveratrol', title: 'Resveratrol', category: 'longevity', primaryRating: 'Insufficient', cardDescription: 'One of the most prominent examples of preclinical promise failing to translate into human evidence. The longevity narrative is driven by animal and cell data that has not held up in clinical trials.' },
 ]
 
 export default function Library() {
