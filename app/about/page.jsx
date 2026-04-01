@@ -108,7 +108,7 @@ export default function About() {
             Evidentia Nutrition is founded and directed by a surgeon and Professor at University College London, with an MSc in Evidence-Based Healthcare from the University of Oxford. The editorial methodology was developed from first principles and reviewed against established evidence appraisal frameworks including GRADE, RoB 2, and AMSTAR 2.
           </p>
           <p style={S.body}>
-            An advisory board comprising registered dieticians, clinical academics, and public health specialists provides independent oversight of the methodology and reviews entries in areas requiring specialist input before publication. Advisory board members will be listed here once formally constituted before public launch.
+            An advisory board comprising registered dieticians, clinical academics, and public health specialists provides independent oversight. Member details will be published with their consent.
           </p>
           <p style={S.body}>
             All entries follow a five-stage editorial workflow: scoping with PICO framing, structured literature search, risk-of-bias appraisal using named tools, evidence rating against published decision thresholds, and review before publication. The full workflow is documented and available on request.
