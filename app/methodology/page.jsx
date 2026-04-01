@@ -15,7 +15,7 @@ export default function Methodology() {
           <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', color: '#1A6B72', marginBottom: 12 }}>How we work</div>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 30, color: '#1A1A2E', marginBottom: 14 }}>Our methodology</h1>
           <p style={{ fontSize: 16, color: '#4A4A6A', lineHeight: 1.7, maxWidth: 600 }}>
-            Every entry on Evidentia Nutrition follows the same appraisal process. This page explains how we assess evidence, assign ratings, and handle uncertainty. The full methodology and decision appendix are available to download below.
+            Every entry on Evidentia Nutrition follows the same appraisal process. This page explains how we assess evidence, assign ratings, and handle uncertainty. The full methodology and decision appendix are available on request via the contact page.
           </p>
         </div>
 
