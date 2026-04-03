@@ -12,6 +12,7 @@ const categoryLabels = {
   'cognitive-health': 'Cognitive Health',
   'longevity': 'Longevity',
   'womens-health': "Women's Health",
+  'hormonal-metabolic': 'Hormonal & Metabolic',
 }
 
 export default function EntryCard({ entry }) {
