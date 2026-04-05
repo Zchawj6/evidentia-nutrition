@@ -4,7 +4,6 @@ slug: "probiotics"
 summary: "Probiotics are live microorganisms that, when administered in adequate amounts, confer a health benefit on the host. The evidence supporting their use is real but highly strain-specific and outcome-specific. Not all probiotics work for all conditions, and consumer products frequently do not reflect the strains studied in trials."
 primaryRating: "Moderate"
 outcomeType: "Clinical"
-additionalOutcomes: ["Biomarker", "Mechanistic"]
 safetyFlag: "low"
 individualisationRelevance: "high"
 populationSpecific: ["IBS", "antibiotic users", "infants", "women", "immunocompromised"]
@@ -12,18 +11,6 @@ formStudied: "strain-dependent"
 singlePivotalTrial: false
 evidenceRecencyFlag: false
 secondaryCategories: ["gut-health", "immune-health", "womens-health", "digestive-health"]
-type: "hub"
-relatedEntries:
-  - slug: "lactobacillus-rhamnosus-gg"
-    name: "Lactobacillus rhamnosus GG (LGG)"
-  - slug: "saccharomyces-boulardii"
-    name: "Saccharomyces boulardii"
-  - slug: "lactobacillus-reuteri"
-    name: "Lactobacillus reuteri"
-  - slug: "lactobacillus-acidophilus"
-    name: "Lactobacillus acidophilus"
-  - slug: "bifidobacterium-lactis-bb12"
-    name: "Bifidobacterium lactis BB-12"
 ---
 
 ## What probiotics are
