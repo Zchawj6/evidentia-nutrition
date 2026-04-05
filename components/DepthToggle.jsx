@@ -30,7 +30,8 @@ export default function DepthToggle({ entry, summaryContent, indepthContent }) {
           {entry.additionalOutcomes && entry.additionalOutcomes.length > 0 && (
             <div style={{ background: '#fff', border: '1px solid #E2E8E8', borderRadius: 10, padding: '22px 24px', marginBottom: 12 }}>
               <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1A1A2E', marginBottom: 14 }}>Evidence base by outcome</div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+              <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 , minWidth: 480 }}>
                 <thead>
                   <tr>
                     {['Outcome', 'Rating', 'RCTs', 'Total N', 'Risk of bias', 'Consistency'].map(h => (
