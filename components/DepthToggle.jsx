@@ -61,6 +61,7 @@ export default function DepthToggle({ entry, summaryContent, indepthContent }) {
                 </tbody>
               </table>
             </div>
+          </div>
           )}
           {indepthContent}
         </div>
