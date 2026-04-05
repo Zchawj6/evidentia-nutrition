@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import EntryCard from '../../components/EntryCard'
+import Link from 'next/link'
 
 const CATEGORIES = [
   { slug: 'all', label: 'All topics' },
@@ -50,20 +51,37 @@ const PLACEHOLDER_ENTRIES = [
   { slug: 'vitamin-k2', title: 'Vitamin K2', category: 'micronutrient', secondaryCategories: ['womens-health', 'longevity'], primaryRating: 'Moderate', cardDescription: 'Vitamin K2 has a plausible and interesting mechanism for directing calcium to bone rather than soft tissue. The human outcome evidence is growing but not yet definitive.' },
   { slug: 'zinc', title: 'Zinc', category: 'micronutrient', primaryRating: 'Strong', cardDescription: 'Zinc has important biochemical roles in immune processes, wound healing, reproductive health, and skin integrity -- but these do not translate into infection prevention or general immune enhancement in replete adults. The evidence for benefit is clearest in individuals with low or deficient zinc status. Immune boosting and testosterone claims in healthy adults are not well-supported by the trial evidence.' },
 ]
-
+const PLACEHOLDER_ARTICLES = [
+  { slug: 'how-to-choose-a-probiotic', title: 'How to choose a probiotic', type: 'article', cardDescription: 'Not all probiotics are the same. Strain, dose, and evidence base all vary widely. This guide explains what to look for.' },
+  { slug: 'magnesium-for-sleep', title: 'Magnesium for sleep: what the evidence actually shows', type: 'article', cardDescription: 'Magnesium is widely recommended for sleep. The evidence is more limited than most coverage suggests.' },
+  { slug: 'nad-infusions-evidence', title: 'NAD+ infusions: what the evidence actually shows', type: 'article', cardDescription: 'NAD+ infusions are being sold in wellness clinics worldwide. The human evidence is limited to small pilot studies.' },
+  { slug: 'probiotics-after-antibiotics', title: 'Probiotics after antibiotics: what the evidence actually shows', type: 'article', cardDescription: 'Antibiotics disrupt the gut microbiome. Probiotics are widely recommended to help. The evidence is more nuanced than most guidance suggests.' },
+  { slug: 'supplements-and-medications-interactions', title: 'Supplements and medications: the interactions that matter', type: 'article', cardDescription: 'Many supplements interact with prescription and over-the-counter medications in ways that are clinically meaningful.' },
+  { slug: 'supplements-excess-harm', title: 'The problem with excess: why more is not better with supplements', type: 'article', cardDescription: 'Most nutrients have an optimal range. Going beyond it provides no additional benefit and in some cases causes measurable harm.' },
+  { slug: 'vitamin-d-seasonal-dosing', title: 'Seasonal vitamin D: why your winter dose is not your summer dose', type: 'article', cardDescription: 'A fixed winter supplement dose assumes everyone starts from the same place and responds the same way. The evidence suggests neither is true.' },
+  { slug: 'which-form-of-magnesium', title: 'Which form of magnesium is best? What the evidence actually shows', type: 'article', cardDescription: 'Magnesium supplements come in dozens of forms. The marketing around each is extensive. The clinical evidence is thinner than most consumers realise.' },
+  { slug: 'why-one-dose-fits-nobody', title: 'Why one dose fits nobody: the case for personalised supplementation', type: 'article', cardDescription: 'Population-level recommended intakes are designed to cover the majority at a single dose. They do not account for individual variation.' },
+]
 export default function Library() {
   const [category, setCategory] = useState('all')
   const [rating, setRating] = useState('All ratings')
   const [search, setSearch] = useState('')
 
-  const filtered = useMemo(() => {
-    return PLACEHOLDER_ENTRIES.filter(e => {
-      const catMatch = category === 'all' || e.category === category || (e.secondaryCategories && e.secondaryCategories.includes(category))
-      const ratingMatch = rating === 'All ratings' || e.primaryRating === rating
-      const searchMatch = !search || e.title.toLowerCase().includes(search.toLowerCase()) || e.cardDescription?.toLowerCase().includes(search.toLowerCase())
-      return catMatch && ratingMatch && searchMatch
-    })
-  }, [category, rating, search])
+ const filtered = useMemo(() => {
+  const matchedEntries = PLACEHOLDER_ENTRIES.filter(e => {
+    const catMatch = category === 'all' || e.category === category || (e.secondaryCategories && e.secondaryCategories.includes(category))
+    const ratingMatch = rating === 'All ratings' || e.primaryRating === rating
+    const searchMatch = !search || e.title.toLowerCase().includes(search.toLowerCase()) || e.cardDescription?.toLowerCase().includes(search.toLowerCase())
+    return catMatch && ratingMatch && searchMatch
+  })
+
+  const matchedArticles = !search ? [] : PLACEHOLDER_ARTICLES.filter(a =>
+    a.title.toLowerCase().includes(search.toLowerCase()) ||
+    a.cardDescription?.toLowerCase().includes(search.toLowerCase())
+  )
+
+  return [...matchedEntries, ...matchedArticles]
+}, [category, rating, search])
 
   const pillStyle = (active) => ({
     padding: '6px 14px', border: '1px solid', borderRadius: 20, fontSize: 13, cursor: 'pointer', fontWeight: active ? 600 : 400,
@@ -114,7 +132,17 @@ export default function Library() {
 
         {/* Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
-          {filtered.map(e => <EntryCard key={e.slug} entry={e} />)}
+        {filtered.map(e =>
+  e.type === 'article'
+    ? <Link key={e.slug} href={`/articles/${e.slug}`} style={{ textDecoration: 'none' }}>
+        <div style={{ background: '#fff', border: '1px solid #E2E8E8', borderRadius: 10, padding: '20px 22px', cursor: 'pointer', height: '100%' }}>
+          <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#1A6B72', marginBottom: 8 }}>Article</div>
+          <div style={{ fontFamily: 'Georgia, serif', fontSize: 16, color: '#1A1A2E', marginBottom: 8, lineHeight: 1.35 }}>{e.title}</div>
+          <div style={{ fontSize: 13, color: '#4A4A6A', lineHeight: 1.6 }}>{e.cardDescription}</div>
+        </div>
+      </Link>
+    : <EntryCard key={e.slug} entry={e} />
+)}
         </div>
 
         {filtered.length === 0 && (
