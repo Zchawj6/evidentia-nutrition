@@ -2,7 +2,7 @@
 title: "Supplements and medications: the interactions that matter"
 slug: supplements-and-medications-interactions
 date: 2026-04-05
-category: "Evidence Review"
+category: "Safety"
 author: "Evidentia Nutrition"
 authorCredentials: ""
 excerpt: "Many supplements interact with prescription and over-the-counter medications in ways that are clinically meaningful. This article explains how those interactions happen, which combinations carry real risk, and what to do if you are taking both."

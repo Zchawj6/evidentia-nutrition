@@ -2,7 +2,7 @@
 title: "Seasonal vitamin D: why your winter dose is not your summer dose"
 slug: vitamin-d-seasonal-dosing
 date: 2026-04-05
-category: "Evidence Review"
+category: "Personalisation"
 author: "Evidentia Nutrition"
 authorCredentials: ""
 excerpt: "A fixed winter supplement dose assumes everyone starts from the same place and responds the same way. The evidence suggests neither is true. Skin pigmentation, body composition, baseline status, and genetics all shape how much vitamin D you actually make, store, and use."
