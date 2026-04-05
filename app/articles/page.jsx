@@ -10,6 +10,7 @@ const categoryColors = {
   'Gut health': { bg: '#F0FDF4', color: '#166534' },
   'Performance': { bg: '#FFF7ED', color: '#9A3412' },
   'Supplementation': { bg: '#F5F3FF', color: '#6D28D9' },
+  'Evidence Review': { bg: '#EEF2FF', color: '#4338CA' },
 }
 
 const ARTICLES = [
@@ -21,6 +22,15 @@ const ARTICLES = [
     author: 'Evidentia Nutrition',
     authorCredentials: '',
     excerpt: 'Population-level recommended intakes are designed to cover the majority at a single dose. They do not account for the individual variation in absorption, baseline status, genetics, and lifestyle that determines what any given person actually needs.',
+  },
+  {
+    slug: 'nad-infusions-evidence',
+    title: 'NAD+ Infusions: What the Evidence Actually Shows',
+    date: '2026-04-05',
+    category: 'Evidence Review',
+    author: 'Evidentia Nutrition',
+    authorCredentials: '',
+    excerpt: 'NAD+ intravenous infusions are being sold in wellness clinics worldwide for anti-ageing, fatigue, addiction recovery, and cognitive performance. The human evidence is limited to small pilot studies assessing tolerability and biomarker changes, not clinical outcomes. No adequately powered trials have confirmed meaningful benefits for any of the conditions being marketed.',
   },
 ]
 
