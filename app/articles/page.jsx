@@ -26,8 +26,6 @@ function ArticleCard({ article }) {
   return (
     <Link href={`/articles/${article.slug}`} style={{ textDecoration: 'none' }}>
       <div style={{ background: '#fff', border: '1px solid #E2E8E8', borderRadius: 10, padding: '22px 24px', cursor: 'pointer', height: '100%' }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = '#1A6B72'; e.currentTarget.style.boxShadow = '0 2px 10px rgba(26,107,114,0.08)' }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = '#E2E8E8'; e.currentTarget.style.boxShadow = 'none' }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12, gap: 8 }}>
           <CategoryTag category={article.category} />
