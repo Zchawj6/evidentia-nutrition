@@ -1,7 +1,7 @@
-'use client'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
+import { getAllArticles } from '../../lib/articles'
 
 const categoryColors = {
   'Personalisation': { bg: '#E8F4F5', color: '#1A6B72' },
@@ -13,31 +13,10 @@ const categoryColors = {
   'Evidence Review': { bg: '#EEF2FF', color: '#4338CA' },
 }
 
-const ARTICLES = [
-  {
-    slug: 'why-one-dose-fits-nobody',
-    title: 'Why one dose fits nobody: the case for personalised supplementation',
-    date: '2026-03-01',
-    category: 'Personalisation',
-    author: 'Evidentia Nutrition',
-    authorCredentials: '',
-    excerpt: 'Population-level recommended intakes are designed to cover the majority at a single dose. They do not account for the individual variation in absorption, baseline status, genetics, and lifestyle that determines what any given person actually needs.',
-  },
-  {
-    slug: 'nad-infusions-evidence',
-    title: 'NAD+ Infusions: What the Evidence Actually Shows',
-    date: '2026-04-05',
-    category: 'Evidence Review',
-    author: 'Evidentia Nutrition',
-    authorCredentials: '',
-    excerpt: 'NAD+ intravenous infusions are being sold in wellness clinics worldwide for anti-ageing, fatigue, addiction recovery, and cognitive performance. The human evidence is limited to small pilot studies assessing tolerability and biomarker changes, not clinical outcomes. No adequately powered trials have confirmed meaningful benefits for any of the conditions being marketed.',
-  },
-]
-
 function CategoryTag({ category }) {
   const style = categoryColors[category] || { bg: '#F3F4F6', color: '#374151' }
   return (
-    <span style={{ background: style.bg, color: style.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.6px', padding: '3px 9px', borderRadius: 20 }}>
+    <span style={{ background: style.bg, color: style.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.8px', padding: '3px 8px', borderRadius: 4 }}>
       {category}
     </span>
   )
@@ -74,6 +53,8 @@ function ArticleCard({ article }) {
 }
 
 export default function ArticlesPage() {
+  const articles = getAllArticles()
+
   return (
     <>
       <Nav />
@@ -85,12 +66,12 @@ export default function ArticlesPage() {
           </p>
         </div>
 
-        <div style={{ background: '#F7FAFA', border: '1px solid #E2E8E8', borderLeft: '3px solid #1A6B72', borderRadius: '0 8px 8px 0', padding: '14px 18px', marginBottom: 32, fontSize: 13, color: '#4A4A6A', lineHeight: 1.65 }}>
-          Articles represent the views of their named authors and are held to a high editorial standard, but do not follow the same structured appraisal methodology as our <Link href="/library" style={{ color: '#1A6B72', textDecoration: 'none', fontWeight: 500 }}>evidence library entries</Link>. Author credentials are noted on each piece.
+        <div style={{ background: '#F7FAFA', border: '1px solid #E2E8E8', borderLeft: '3px solid #1A6B72', borderRadius: '0 8px 8px 0', padding: '14px 20px', marginBottom: 36 }}>
+          Articles represent the views of their named authors and are held to a high editorial standard, but do not follow the same structured appraisal methodology as our <a href="/library" style={{ color: '#1A6B72', textDecoration: 'none' }}>evidence library entries</a>. Author credentials are noted on each piece.
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-          {ARTICLES.map(article => (
+          {articles.map(article => (
             <ArticleCard key={article.slug} article={article} />
           ))}
         </div>
@@ -109,5 +90,3 @@ export default function ArticlesPage() {
     </>
   )
 }
-
- 
