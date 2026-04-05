@@ -19,6 +19,7 @@ const categoryLabels = {
   'micronutrient': 'Micronutrient', 'botanical': 'Botanical', 'adaptogen': 'Adaptogen',
   'macronutrient': 'Macronutrient', 'performance': 'Performance', 'gut-health': 'Gut Health',
   'cognitive-health': 'Cognitive Health', 'longevity': 'Longevity', 'womens-health': "Women's Health",
+  'musculoskeletal': 'Musculoskeletal',
 }
 
 function Section({ title, children, accent }) {
