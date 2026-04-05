@@ -2,21 +2,12 @@
 title: "How to choose a probiotic: what the evidence actually requires"
 slug: "how-to-choose-a-probiotic"
 date: "2026-04-05"
-summary: "Most probiotic marketing focuses on CFU counts, strain numbers, and broad wellness claims. The clinical evidence points elsewhere. Here is what the research actually requires you to consider before choosing a probiotic supplement."
-category: "explainer"
-relatedEntries:
-  - slug: "probiotics"
-    name: "Probiotics hub"
-  - slug: "lactobacillus-rhamnosus-gg"
-    name: "Lactobacillus rhamnosus GG"
-  - slug: "saccharomyces-boulardii"
-    name: "Saccharomyces boulardii"
-  - slug: "lactobacillus-reuteri"
-    name: "Lactobacillus reuteri"
-  - slug: "lactobacillus-acidophilus"
-    name: "Lactobacillus acidophilus"
-  - slug: "bifidobacterium-lactis-bb12"
-    name: "Bifidobacterium lactis BB-12"
+category: "Evidence Review"
+author: "Evidentia Nutrition"
+authorCredentials: ""
+excerpt: "Most probiotic marketing focuses on CFU counts, strain numbers, and broad wellness claims. The clinical evidence points elsewhere. Here is what the research actually requires you to consider before choosing a probiotic supplement."
+tags: ["probiotics", "strain-specificity", "gut-health", "evidence-review", "supplements"]
+featured: false
 ---
 
 Walk into any pharmacy and the probiotic shelf presents an overwhelming array of options. Products compete on CFU counts in the tens of billions, on the number of strains, and on claims spanning digestive health, immune support, mood, skin, and more. The diversity is impressive. The clinical basis for most of it is harder to establish.
