@@ -131,7 +131,7 @@ export default function Library() {
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>
         {filtered.map(e =>
   e.type === 'article'
     ? <Link key={e.slug} href={`/articles/${e.slug}`} style={{ textDecoration: 'none' }}>

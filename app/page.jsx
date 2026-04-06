@@ -59,7 +59,7 @@ export default async function Home() {
 
         {/* Differentiators */}
         <div style={{ background: '#F7FAFA', borderBottom: '1px solid #E2E8E8', padding: '28px 24px' }}>
-          <div style={{ ...S.inner, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div style={{ ...S.inner, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 24 }}>
             {differentiators.map(d => (
               <div key={d.title} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                 <div style={{ width: 28, height: 28, background: '#E8F4F5', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#1A6B72', fontSize: 13 }}>{d.icon}</div>
@@ -80,7 +80,7 @@ export default async function Home() {
               Browse all {allEntries.length} entries →
             </Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>
             {featured.length > 0
               ? featured.map(e => <EntryCard key={e.slug} entry={e} />)
               : [
