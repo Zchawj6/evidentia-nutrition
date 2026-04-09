@@ -63,9 +63,9 @@ cardDescription: "Evidence is outcome-specific and dose-dependent. Baseline stat
 
 ## What it is
 
-Omega-3 fatty acids -- principally eicosapentaenoic acid (EPA) and docosahexaenoic acid (DHA) -- are long-chain polyunsaturated fatty acids with roles in cardiovascular function, inflammatory regulation, and neurodevelopment. The body cannot synthesise EPA and DHA efficiently from shorter-chain precursors, making dietary or supplemental intake the primary source for most people.
+Omega-3 fatty acids, principally eicosapentaenoic acid (EPA) and docosahexaenoic acid (DHA), are long-chain polyunsaturated fatty acids with roles in cardiovascular function, inflammatory regulation, and neurodevelopment. The body cannot synthesise EPA and DHA efficiently from shorter-chain precursors, making dietary or supplemental intake the primary source for most people.
 
-The main dietary sources are oily fish (salmon, mackerel, sardines, herring) and, for those avoiding fish, algal oil -- the original source of EPA and DHA in the marine food chain. Regular oily fish consumption provides meaningful EPA and DHA; individuals with little or no fish intake are most likely to have low omega-3 status.
+The main dietary sources are oily fish (salmon, mackerel, sardines, herring) and, for those avoiding fish, algal oil, the original source of EPA and DHA in the marine food chain. Regular oily fish consumption provides meaningful EPA and DHA; individuals with little or no fish intake are most likely to have low omega-3 status.
 
 ## What the evidence shows
 
@@ -89,13 +89,13 @@ The cardiovascular claims that dominate omega-3 marketing substantially outrun w
 
 Algal oil provides EPA and DHA without the fish supply chain and is the primary choice for those avoiding animal products. Bioavailability of algal DHA is well-established as comparable to fish oil DHA. Clinical outcome equivalence between algal and fish oil has not been established in large trials and should not be assumed from bioavailability data alone.
 
-EPA:DHA ratios vary across algal products. EPA and DHA have partially distinct biological roles -- EPA more strongly associated with triglyceride reduction and inflammatory modulation; DHA with structural neural and retinal roles. Evidence from one EPA:DHA profile should not be extrapolated to products with materially different ratios.
+EPA:DHA ratios vary across algal products. EPA and DHA have partially distinct biological roles, EPA more strongly associated with triglyceride reduction and inflammatory modulation; DHA with structural neural and retinal roles. Evidence from one EPA:DHA profile should not be extrapolated to products with materially different ratios.
 
 Triglyceride-lowering effects require 2-4g/day. General dietary adequacy and omega-3 index correction can be achieved at lower doses in most individuals.
 
 ## Who the evidence applies to
 
-The evidence is most consistent for individuals with low omega-3 status -- particularly those with minimal oily fish intake including vegetarians and vegans -- and for specific populations including pregnant women, those with elevated triglycerides, and individuals with diagnosed depression using EPA-dominant preparations.
+The evidence is most consistent for individuals with low omega-3 status, particularly those with minimal oily fish intake including vegetarians and vegans, and for specific populations including pregnant women, those with elevated triglycerides, and individuals with diagnosed depression using EPA-dominant preparations.
 
 Healthy adults with adequate dietary intake of oily fish are unlikely to benefit meaningfully from additional supplementation. The appropriate starting point is assessment of dietary intake and, where feasible, measurement of the omega-3 index.
 
@@ -121,7 +121,7 @@ High-dose EPA/DHA (2-4g/day) reliably reduces fasting triglycerides by 20-30% in
 
 Mechanistically, EPA and DHA reduce hepatic triglyceride synthesis and increase triglyceride clearance via lipoprotein lipase. The effect is well-characterised.
 
-This should be understood as a strong biomarker effect. Triglycerides are associated with cardiovascular risk in observational data but trials that lower triglycerides via omega-3 have not consistently reduced cardiovascular events -- illustrated directly by the divergence between REDUCE-IT and STRENGTH, which used high-dose preparations in similar high-risk populations and produced opposite results on clinical endpoints. The clinical outcome relevance of omega-3-induced triglyceride reduction therefore remains uncertain.
+This should be understood as a strong biomarker effect. Triglycerides are associated with cardiovascular risk in observational data but trials that lower triglycerides via omega-3 have not consistently reduced cardiovascular events, illustrated directly by the divergence between REDUCE-IT and STRENGTH, which used high-dose preparations in similar high-risk populations and produced opposite results on clinical endpoints. The clinical outcome relevance of omega-3-induced triglyceride reduction therefore remains uncertain.
 
 **Evidence rating basis:** Strong biomarker effect. Dose-dependent, consistent, well-replicated. Clinical outcome relevance uncertain; outcomeType: exploratory-biomarker.
 
@@ -129,7 +129,7 @@ This should be understood as a strong biomarker effect. Triglycerides are associ
 
 **REDUCE-IT (Bhatt et al., NEJM 2019; n = 8,179):** 4g/day icosapentaenoic acid ethyl ester (EPA-only, Vascepa) in statin-treated patients with elevated triglycerides. Reported 25% relative risk reduction in major cardiovascular events. This is a pharmaceutical-dose EPA-only preparation, not a standard combined EPA/DHA supplement. The trial used mineral oil as placebo, which raised LDL-C and CRP in the control arm, potentially inflating apparent benefit. These methodological concerns are unresolved and limit applicability to supplement use.
 
-**STRENGTH (Nicholls et al., JAMA 2020; n = 13,078):** 4g/day combined EPA/DHA carboxylic acids in a similar high-risk population. No reduction in cardiovascular events. The divergence from REDUCE-IT is not explained by trial heterogeneity alone -- the biological reason why EPA-only might benefit while EPA/DHA combined does not remains unresolved. This is a genuine scientific uncertainty.
+**STRENGTH (Nicholls et al., JAMA 2020; n = 13,078):** 4g/day combined EPA/DHA carboxylic acids in a similar high-risk population. No reduction in cardiovascular events. The divergence from REDUCE-IT is not explained by trial heterogeneity alone, the biological reason why EPA-only might benefit while EPA/DHA combined does not remains unresolved. This is a genuine scientific uncertainty.
 
 **VITAL (Manson et al., NEJM 2019; n = 25,871):** 1g/day EPA/DHA in a general population cohort. Modest reduction in cardiovascular events overall, with a stronger signal in those with low fish consumption at baseline. This is the most directly applicable trial to standard supplement use.
 
@@ -157,7 +157,7 @@ Algal DHA is used in infant formula as a preformed DHA source. Regulatory bodies
 
 ### Depression as adjunct treatment
 
-Meta-analyses including Liao et al. (2019) suggest a modest benefit of omega-3 supplementation -- particularly EPA-dominant preparations -- in people with diagnosed depression, as an adjunct to standard treatment. Effect sizes are small to moderate (SMD approximately 0.3-0.5). The evidence is sensitive to study selection, publication bias, and baseline severity of depression. Pooling across different EPA:DHA ratios, doses, and populations produces heterogeneous results.
+Meta-analyses including Liao et al. (2019) suggest a modest benefit of omega-3 supplementation, particularly EPA-dominant preparations, in people with diagnosed depression, as an adjunct to standard treatment. Effect sizes are small to moderate (SMD approximately 0.3-0.5). The evidence is sensitive to study selection, publication bias, and baseline severity of depression. Pooling across different EPA:DHA ratios, doses, and populations produces heterogeneous results.
 
 The evidence in people without a clinical diagnosis of depression is not convincing.
 
