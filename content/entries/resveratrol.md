@@ -55,13 +55,13 @@ cardDescription: "One of the most prominent examples of preclinical promise fail
 
 ## What it is
 
-Resveratrol is a polyphenol compound found naturally in the skin of red grapes, certain berries, and peanuts. It is produced by plants in response to stress, injury, and fungal infection. The compound attracted significant scientific and popular attention following observations that it extended lifespan in yeast, worms, flies, and mice -- and that it appeared to activate sirtuins, a family of proteins associated with longevity pathways.
+Resveratrol is a polyphenol compound found naturally in the skin of red grapes, certain berries, and peanuts. It is produced by plants in response to stress, injury, and fungal infection. The compound attracted significant scientific and popular attention following observations that it extended lifespan in yeast, worms, flies, and mice, and that it appeared to activate sirtuins, a family of proteins associated with longevity pathways.
 
 The commercial form is trans-resveratrol, typically derived from Japanese knotweed (Polygonum cuspidatum) rather than grape sources, at concentrations many times higher than any dietary intake could provide. This distinction is relevant: the concentrations used in preclinical research and commercial supplements bear little resemblance to those achievable through food.
 
 ## What the evidence shows
 
-The resveratrol story is one of the most instructive cases in supplement science of how promising preclinical findings can fail to replicate in humans -- and of how the commercial narrative can accelerate far ahead of the actual evidence. Where effects are observed in human trials, they are generally small and inconsistently reproduced across studies.
+The resveratrol story is one of the most instructive cases in supplement science of how promising preclinical findings can fail to replicate in humans, and of how the commercial narrative can accelerate far ahead of the actual evidence. Where effects are observed in human trials, they are generally small and inconsistently reproduced across studies.
 
 **Longevity and lifespan extension** in humans has not been demonstrated. The animal data generated enormous excitement but has not translated into human trials of meaningful duration or outcomes. No human trial has assessed longevity endpoints directly, and surrogate markers associated with longevity pathways have shown inconsistent responses.
 
@@ -69,7 +69,7 @@ The resveratrol story is one of the most instructive cases in supplement science
 
 **Metabolic health** represents the most modest positive signal in the literature. Some trials in individuals with type 2 diabetes or metabolic syndrome have reported small improvements in insulin sensitivity and fasting glucose, but effect sizes are small, durations short, and replication incomplete.
 
-**SIRT1 activation and longevity pathway modulation** has not been consistently demonstrated in humans at commercially relevant doses. The current understanding positions resveratrol's effects -- where they exist -- as likely indirect, potentially AMPK-mediated, rather than as direct SIRT1 activation.
+**SIRT1 activation and longevity pathway modulation** has not been consistently demonstrated in humans at commercially relevant doses. The current understanding positions resveratrol's effects, where they exist, as likely indirect, potentially AMPK-mediated, rather than as direct SIRT1 activation.
 
 ## Five questions
 
@@ -87,7 +87,7 @@ Inconsistently and without a clear direction. Results across trials examining bl
 
 ### Does resveratrol improve outcomes in clinical populations?
 
-There is a modest and inconsistent signal in metabolic populations -- particularly individuals with type 2 diabetes or insulin resistance -- for small improvements in fasting glucose and insulin sensitivity. This is the most credible clinical signal in the current literature but does not support a broad therapeutic claim.
+There is a modest and inconsistent signal in metabolic populations, particularly individuals with type 2 diabetes or insulin resistance, for small improvements in fasting glucose and insulin sensitivity. This is the most credible clinical signal in the current literature but does not support a broad therapeutic claim.
 
 ### Does resveratrol benefit healthy, replete adults?
 
@@ -97,7 +97,7 @@ The evidence does not support this. The theoretical longevity and anti-ageing ra
 
 There is no well-characterised population for whom resveratrol supplementation produces consistent and clinically meaningful benefit. The metabolic signal in individuals with type 2 diabetes and insulin resistance is the closest candidate, but the evidence is too inconsistent and the effect sizes too small to support targeted recommendations at present.
 
-Genetic variation in resveratrol metabolism (particularly CYP1B1 and sulphotransferase activity) may influence bioavailability, but this has not been translated into clinically useful guidance.
+Genetic variation in resveratrol metabolism, particularly CYP1B1 and sulphotransferase activity, may influence bioavailability, but this has not been translated into clinically useful guidance.
 
 ## Safety
 
@@ -117,7 +117,7 @@ Where evidence is limited or outcomes are uncertain, conclusions should be treat
 
 ### Longevity and lifespan extension
 
-No human trial has directly assessed longevity or lifespan endpoints. The foundational animal data -- particularly Howitz et al. (2003) showing lifespan extension in yeast and Baur et al. (2006) in mice -- generated substantial excitement. These findings have not been followed by human trials of sufficient duration or design to assess longevity outcomes. Surrogate markers associated with longevity pathways (SIRT1 activity, NAD+ levels, mitochondrial function markers) have shown inconsistent responses in human studies.
+No human trial has directly assessed longevity or lifespan endpoints. The foundational animal data, particularly Howitz et al. (2003) showing lifespan extension in yeast and Baur et al. (2006) in mice, generated substantial excitement. These findings have not been followed by human trials of sufficient duration or design to assess longevity outcomes. Surrogate markers associated with longevity pathways (SIRT1 activity, NAD+ levels, mitochondrial function markers) have shown inconsistent responses in human studies.
 
 **Evidence rating basis:** Insufficient. No human longevity trial data exists. Preclinical findings are not generalisable to human outcomes at achievable doses.
 
@@ -131,7 +131,7 @@ The French paradox epidemiological argument has been undermined by cohort data u
 
 ### Metabolic outcomes in type 2 diabetes and insulin resistance
 
-This is the most credible domain for resveratrol in humans. Several trials in individuals with type 2 diabetes or metabolic syndrome have reported modest improvements in fasting glucose and insulin sensitivity. Liu et al. (2022) conducted a meta-analysis confirming small glycaemic effects, with fasting glucose reductions in the range of 0.3--0.5 mmol/L in some analyses. Trial durations are short (typically 8--16 weeks) and independent replication across different research groups is limited.
+This is the most credible domain for resveratrol in humans. Several trials in individuals with type 2 diabetes or metabolic syndrome have reported modest improvements in fasting glucose and insulin sensitivity. Liu et al. (2022) conducted a meta-analysis confirming small glycaemic effects, with fasting glucose reductions in the range of 0.3 to 0.5 mmol/L in some analyses. Trial durations are short (typically 8 to 16 weeks) and independent replication across different research groups is limited.
 
 The mechanism may involve AMPK activation and improved insulin signalling rather than SIRT1-mediated effects. Local gastrointestinal mechanisms cannot be excluded given the bioavailability constraints of the compound.
 
@@ -139,15 +139,15 @@ The mechanism may involve AMPK activation and improved insulin signalling rather
 
 ### SIRT1 activation and longevity pathway modulation
 
-The original foundational claim -- that resveratrol is a potent SIRT1 activator -- was based on an assay using a fluorescent peptide substrate. Subsequent work by Borra et al. (2005) and others demonstrated that the fluorophore contributed to the apparent activation, and that activity was substantially reduced using native substrates. While resveratrol does interact with SIRT1 under some conditions, the magnitude is far more modest than the early literature suggested.
+The original foundational claim, that resveratrol is a potent SIRT1 activator, was based on an assay using a fluorescent peptide substrate. Subsequent work by Borra et al. (2005) and others demonstrated that the fluorophore contributed to the apparent activation, and that activity was substantially reduced using native substrates. While resveratrol does interact with SIRT1 under some conditions, the magnitude is far more modest than the early literature suggested.
 
-Current mechanistic understanding positions any human effects as likely indirect -- potentially AMPK-mediated or context-dependent -- rather than direct potent SIRT1 activation. The assay artefact was one contributor to the translation failure, not the whole explanation. Human trials using validated SIRT1 activity assays have not shown consistent activation at commercially relevant doses.
+Current mechanistic understanding positions any human effects as likely indirect, potentially AMPK-mediated or context-dependent, rather than direct potent SIRT1 activation. The assay artefact was one contributor to the translation failure, not the whole explanation. Human trials using validated SIRT1 activity assays have not shown consistent activation at commercially relevant doses.
 
 **Evidence rating basis:** Insufficient. The original mechanistic claim was substantially overstated. Indirect effects may exist but are not consistently demonstrated in humans at achievable concentrations.
 
 ### Why preclinical evidence did not translate
 
-**Dose and bioavailability:** Oral resveratrol is rapidly conjugated in the gut and liver. Free resveratrol plasma concentrations following typical supplement doses are extremely low. There is an unresolved question about whether sulphate and glucuronide metabolites retain biological activity following tissue deconjugation -- this means the low plasma level argument is not fully settled, but does not rescue the clinical evidence picture. This creates a mismatch between doses that may be required for biological activity and doses that are practical and tolerable. Variation in formulation across trials further limits comparability.
+**Dose and bioavailability:** Oral resveratrol is rapidly conjugated in the gut and liver. Free resveratrol plasma concentrations following typical supplement doses are extremely low. There is an unresolved question about whether sulphate and glucuronide metabolites retain biological activity following tissue deconjugation. This means the low plasma level argument is not fully settled, but does not rescue the clinical evidence picture. This creates a mismatch between doses that may be required for biological activity and doses that are practical and tolerable. Variation in formulation across trials further limits comparability.
 
 **Species differences:** Lifespan extension in yeast, worms, and flies occurs in organisms with very different metabolic and genetic regulation from humans. Mouse lifespan studies used supra-physiological doses. These findings do not reliably predict human effects.
 
@@ -159,7 +159,7 @@ No validated surrogate for resveratrol's proposed clinical effects exists in hum
 
 ## Funding and independence
 
-The resveratrol evidence base has been substantially shaped by commercial interest. GlaxoSmithKline acquired Sirtris Pharmaceuticals for $720 million in 2008 before discontinuing the resveratrol programme after trials failed to demonstrate clinical efficacy. This is illustrative of the translation gap, not in itself proof of inefficacy -- the more meaningful signal is that the discontinuation aligned with a broader pattern of null or inconsistent human trial results across multiple independent research groups. Several academic trials have been independently funded, but the field has been subject to significant publication bias toward positive findings.
+The resveratrol evidence base has been substantially shaped by commercial interest. GlaxoSmithKline acquired Sirtris Pharmaceuticals for $720 million in 2008 before discontinuing the resveratrol programme after trials failed to demonstrate clinical efficacy. This is illustrative of the translation gap, not in itself proof of inefficacy. The more meaningful signal is that the discontinuation aligned with a broader pattern of null or inconsistent human trial results across multiple independent research groups. Several academic trials have been independently funded, but the field has been subject to significant publication bias toward positive findings.
 
 ## Key references
 
