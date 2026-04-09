@@ -55,19 +55,19 @@ cardDescription: "Distinct from vitamin K1 and frequently low in Western diets. 
 
 ## What it is
 
-Vitamin K2 (menaquinone) is a fat-soluble vitamin distinct from vitamin K1 (phylloquinone). While K1 is found in green leafy vegetables and is primarily involved in blood clotting, K2 is found mainly in fermented foods and animal products and activates proteins involved in calcium regulation -- directing calcium towards bones and teeth and away from soft tissues and arterial walls.
+Vitamin K2 (menaquinone) is a fat-soluble vitamin distinct from vitamin K1 (phylloquinone). While K1 is found in green leafy vegetables and is primarily involved in blood clotting, K2 is found mainly in fermented foods and animal products and activates proteins involved in calcium regulation, directing calcium towards bones and teeth and away from soft tissues and arterial walls.
 
-The two principal forms studied in clinical research are MK-4 (menaquinone-4) and MK-7 (menaquinone-7). MK-7 has a substantially longer half-life (approximately 72 hours versus 1-2 hours for MK-4) and is effective at nutritional doses of 90-180mcg/day. MK-4 has been studied primarily in Japan at pharmacological doses of 45mg/day -- thousands of times higher than typical MK-7 supplement doses. Evidence from MK-4 trials at these doses does not transfer to MK-7 supplementation without direct comparative data.
+The two principal forms studied in clinical research are MK-4 (menaquinone-4) and MK-7 (menaquinone-7). MK-7 has a substantially longer half-life (approximately 72 hours versus 1-2 hours for MK-4) and is effective at nutritional doses of 90-180mcg/day. MK-4 has been studied primarily in Japan at pharmacological doses of 45mg/day, thousands of times higher than typical MK-7 supplement doses. Evidence from MK-4 trials at these doses does not transfer to MK-7 supplementation without direct comparative data.
 
-Low dietary K2 intake is common in Western populations, as the richest dietary sources -- natto, hard cheeses, egg yolks, and liver -- are not widely consumed. Clinical deficiency in the sense of a defined syndrome with a consensus threshold has not been established.
+Low dietary K2 intake is common in Western populations, as the richest dietary sources, natto, hard cheeses, egg yolks, and liver, are not widely consumed. Clinical deficiency in the sense of a defined syndrome with a consensus threshold has not been established.
 
 ## What the evidence shows
 
-**Bone mineral density** in postmenopausal women is the best-evidenced application for MK-7 at nutritional doses. Supplementation at 90-180mcg/day attenuates age-related bone loss in postmenopausal women, with effect sizes that are modest -- typically small reductions in the rate of BMD loss rather than meaningful increases in bone density. The evidence base is concentrated in a small number of research groups with industry links, and no large independent multi-centre replication trials are available. Activation of osteocalcin by K2 has not been shown to consistently translate into reduced clinical fracture events in adequately powered MK-7 trials.
+**Bone mineral density** in postmenopausal women is the best-evidenced application for MK-7 at nutritional doses. Supplementation at 90-180mcg/day attenuates age-related bone loss in postmenopausal women, with effect sizes that are modest, typically small reductions in the rate of BMD loss rather than meaningful increases in bone density. The evidence base is concentrated in a small number of research groups with industry links, and no large independent multi-centre replication trials are available. Activation of osteocalcin by K2 has not been shown to consistently translate into reduced clinical fracture events in adequately powered MK-7 trials.
 
 **Fracture risk reduction** with demonstrated effect applies specifically to MK-4 at pharmacological doses (45mg/day) in Japanese osteoporotic women. This is a licensed pharmaceutical application in Japan. Whether MK-7 at nutritional doses produces equivalent fracture risk reduction has not been established.
 
-**Cardiovascular calcification biomarkers** show a consistent directional signal from small intervention trials, including reductions in dp-ucMGP and modest improvements in arterial stiffness. This is biomarker-level evidence only -- dp-ucMGP clinical threshold values have not been established, and there is no evidence from randomised controlled trials that reducing dp-ucMGP translates into reduced cardiovascular events. Observational associations between dietary K2 intake and coronary heart disease risk cannot establish causation.
+**Cardiovascular calcification biomarkers** show a consistent directional signal from small intervention trials, including reductions in dp-ucMGP and modest improvements in arterial stiffness. This is biomarker-level evidence only, dp-ucMGP clinical threshold values have not been established, and there is no evidence from randomised controlled trials that reducing dp-ucMGP translates into reduced cardiovascular events. Observational associations between dietary K2 intake and coronary heart disease risk cannot establish causation.
 
 **Vitamin D3 co-administration** has a mechanistically plausible rationale but clinical benefit has not been established in adequately powered trials. This is a secondary hypothesis rather than a primary evidence-based application.
 
@@ -81,7 +81,7 @@ General supplementation in healthy adults with no specific bone or cardiovascula
 
 ## Form and dose considerations
 
-MK-7 is the appropriate form for supplementation at nutritional doses, with a typical evidence-based range of 90-180mcg/day. Vitamin K2 is fat-soluble and should be taken with a meal containing fat. MK-4 at 45mg/day is a pharmaceutical dose with a distinct Japanese evidence base -- it is not interchangeable with MK-7 at nutritional doses and the evidence does not transfer between them.
+MK-7 is the appropriate form for supplementation at nutritional doses, with a typical evidence-based range of 90-180mcg/day. Vitamin K2 is fat-soluble and should be taken with a meal containing fat. MK-4 at 45mg/day is a pharmaceutical dose with a distinct Japanese evidence base, it is not interchangeable with MK-7 at nutritional doses and the evidence does not transfer between them.
 
 ## Who the evidence applies to
 
@@ -109,17 +109,17 @@ Where evidence is limited or outcomes are uncertain, conclusions should be treat
 
 ## Evidence base by outcome
 
-### Bone mineral density -- MK-7 at nutritional doses
+### Bone mineral density, MK-7 at nutritional doses
 
 The mechanism is well-characterised. Osteocalcin requires K2-dependent carboxylation to bind calcium effectively in bone matrix. Undercarboxylated osteocalcin (ucOC) is a functional marker of K2 insufficiency. MK-7 supplementation reduces ucOC and increases carboxylated osteocalcin in a dose-dependent manner.
 
-The MedKid trial (Knapen et al., 2013; n = 244 postmenopausal women) found significant improvements in bone mineral density at the lumbar spine and femoral neck with 180mcg/day MK-7 over three years. A subsequent trial by Knapen et al. (2015) using 180mcg/day found significant attenuation of age-related bone loss at the lumbar spine. Effect sizes in these trials are modest -- the findings represent slowing of bone loss rather than substantial gains in bone density, and the clinical significance for fracture prevention has not been established.
+The MedKid trial (Knapen et al., 2013; n = 244 postmenopausal women) found significant improvements in bone mineral density at the lumbar spine and femoral neck with 180mcg/day MK-7 over three years. A subsequent trial by Knapen et al. (2015) using 180mcg/day found significant attenuation of age-related bone loss at the lumbar spine. Effect sizes in these trials are modest, the findings represent slowing of bone loss rather than substantial gains in bone density, and the clinical significance for fracture prevention has not been established.
 
 Both landmark trials originate from the same research group with NattoPharma industry involvement. No large independent multi-centre replication trials are available. This is a material limitation on the robustness of the evidence base. Activation of osteocalcin by K2 is well-established biologically, but this has not been shown to consistently translate into reduced fracture events in adequately powered MK-7 trials.
 
 **Evidence rating basis:** Moderate, with important caveats. Evidence is form-specific, concentrated in one industry-linked research group, limited to attenuation of bone loss with modest effect sizes in postmenopausal women, and without independent multi-centre replication.
 
-### Fracture risk -- MK-4 at pharmacological doses
+### Fracture risk, MK-4 at pharmacological doses
 
 A distinct body of evidence from Japan examines MK-4 at 45mg/day in osteoporotic women. Several randomised controlled trials have shown reductions in vertebral fracture rates, and 45mg/day MK-4 is a licensed pharmaceutical treatment for osteoporosis in Japan.
 
@@ -129,7 +129,7 @@ This is a pharmacological intervention at doses approximately 500 times higher t
 
 ### Cardiovascular calcification and arterial stiffness
 
-Matrix Gla protein (MGP) requires K2-dependent carboxylation to inhibit vascular calcification. Dephosphorylated-uncarboxylated MGP (dp-ucMGP) is elevated in populations with higher cardiovascular risk and lower K2 status. Clinical threshold values for dp-ucMGP have not been established -- it is a biomarker of K2-dependent protein undercarboxylation, not a validated surrogate with a demonstrated relationship to patient-important outcomes.
+Matrix Gla protein (MGP) requires K2-dependent carboxylation to inhibit vascular calcification. Dephosphorylated-uncarboxylated MGP (dp-ucMGP) is elevated in populations with higher cardiovascular risk and lower K2 status. Clinical threshold values for dp-ucMGP have not been established, it is a biomarker of K2-dependent protein undercarboxylation, not a validated surrogate with a demonstrated relationship to patient-important outcomes.
 
 Intervention trials: Knapen et al. (2015) found that 180mcg/day MK-7 significantly reduced arterial stiffness measured by pulse wave velocity in healthy postmenopausal women over three years. Shea et al. (2020) found reductions in dp-ucMGP with MK-7 supplementation. These are surrogate endpoints, not cardiovascular events.
 
@@ -148,7 +148,7 @@ This is a secondary hypothesis supported by mechanism and limited trial data. It
 
 ### Women across life stages
 
-**Perimenopause and menopause** represent the highest-relevance life stage for K2 supplementation. Accelerated bone loss in the first five to ten years after menopause -- driven by declining oestrogen -- is the primary window where the MK-7 bone evidence is most applicable. The cardiovascular risk increase after menopause adds context for the vascular calcification evidence, though that evidence remains at the biomarker level.
+**Perimenopause and menopause** represent the highest-relevance life stage for K2 supplementation. Accelerated bone loss in the first five to ten years after menopause, driven by declining oestrogen, is the primary window where the MK-7 bone evidence is most applicable. The cardiovascular risk increase after menopause adds context for the vascular calcification evidence, though that evidence remains at the biomarker level.
 
 **Younger premenopausal women:** Evidence for bone benefit in premenopausal women with normal oestrogen levels is limited. The intervention trial evidence is concentrated in postmenopausal populations.
 
@@ -164,7 +164,7 @@ This is a secondary hypothesis supported by mechanism and limited trial data. It
 
 **Anticoagulant use:** Individuals on warfarin or other K antagonists must involve their prescriber. INR stability depends on consistent vitamin K intake.
 
-**Age:** Older adults have higher rates of K2 insufficiency, lower bone density, and higher cardiovascular risk -- the population with the most consistent evidence base.
+**Age:** Older adults have higher rates of K2 insufficiency, lower bone density, and higher cardiovascular risk, the population with the most consistent evidence base.
 
 ## Funding and independence
 
@@ -178,5 +178,5 @@ The MK-7 bone evidence base has significant NattoPharma (now Gnosis by Lesaffre)
 - Gast GC et al. A high menaquinone intake reduces the incidence of coronary heart disease. Nutr Metab Cardiovasc Dis. 2009;19(7):504-510.
 - Wen L et al. Efficacy and safety of the combined use of vitamin D and vitamin K2 supplementation in bone metabolism. Clin Nutr. 2021;40(3):951-959.
 - Shea MK et al. Vitamin K status and vascular calcification: evidence from observational and clinical studies. Adv Nutr. 2012;3(2):158-165.
-- Vermeer C. Vitamin K: the effect on health beyond coagulation -- an overview. Food Nutr Res. 2012;56:5329.
+- Vermeer C. Vitamin K: the effect on health beyond coagulation, an overview. Food Nutr Res. 2012;56:5329.
 - van Ballegooijen AJ et al. The Synergistic Interplay between Vitamins D and K for Bone and Cardiovascular Health. Int J Endocrinol. 2017;2017:7454376.
