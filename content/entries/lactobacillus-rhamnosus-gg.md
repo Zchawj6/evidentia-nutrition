@@ -75,7 +75,7 @@ cardDescription: "Lactobacillus rhamnosus GG is the most broadly evidenced indiv
 
 ## What makes LGG distinct
 
-Lactobacillus rhamnosus GG (strain ATCC 53103) is the most extensively studied individual probiotic strain in the clinical literature. Isolated in 1985 by Gorbach and Goldin -- the GG designation refers to their initials -- it has accumulated a trial base that spans antibiotic-associated diarrhoea, acute infectious diarrhoea in children, IBS, eczema prevention, and immune outcomes. No other single probiotic strain has comparable breadth of replicated clinical evidence.
+Lactobacillus rhamnosus GG (strain ATCC 53103) is the most extensively studied individual probiotic strain in the clinical literature. Isolated in 1985 by Gorbach and Goldin  the GG designation refers to their initials  it has accumulated a trial base that spans antibiotic-associated diarrhoea, acute infectious diarrhoea in children, IBS, eczema prevention, and immune outcomes. No other single probiotic strain has comparable breadth of replicated clinical evidence.
 
 Its distinguishing biological characteristics include strong adhesion to intestinal epithelial cells, resistance to stomach acid and bile, and the ability to persist in the gut for one to two weeks after supplementation ceases. These properties support its clinical efficacy and are the reason it became the reference strain against which other probiotics are frequently compared.
 
@@ -83,7 +83,7 @@ The strain designation is critical. Products labelled as Lactobacillus rhamnosus
 
 ## What the evidence shows
 
-**Antibiotic-associated diarrhoea prevention.** LGG has the strongest individual strain evidence for this indication. A Cochrane review and multiple subsequent meta-analyses consistently show approximately 50 to 60% reduction in antibiotic-associated diarrhoea incidence compared to placebo. The effect is robust across antibiotic types and patient populations. Timing matters -- LGG initiated at the same time as the antibiotic course is more effective than delayed initiation.
+**Antibiotic-associated diarrhoea prevention.** LGG has the strongest individual strain evidence for this indication. A Cochrane review and multiple subsequent meta-analyses consistently show approximately 50 to 60% reduction in antibiotic-associated diarrhoea incidence compared to placebo. The effect is robust across antibiotic types and patient populations. Timing matters  LGG initiated at the same time as the antibiotic course is more effective than delayed initiation.
 
 **Acute diarrhoea in children.** LGG reduces the duration of acute infectious diarrhoea in children by approximately one day, with the most consistent effect seen in rotavirus-associated diarrhoea. This is one of the most robustly evidenced paediatric probiotic applications and is reflected in several national paediatric gastroenterology guidelines.
 
@@ -95,19 +95,19 @@ The strain designation is critical. Products labelled as Lactobacillus rhamnosus
 
 ## Practical considerations
 
-LGG requires viable organisms at point of consumption. Storage conditions -- many products require refrigeration -- directly affect viability. Products should be checked for storage requirements and expiry dates. Doses used in trials typically range from 10 to 20 billion CFU per day; lower doses may be less effective, though dose-response data are limited.
+LGG requires viable organisms at point of consumption. Storage conditions  many products require refrigeration  directly affect viability. Products should be checked for storage requirements and expiry dates. Doses used in trials typically range from 10 to 20 billion CFU per day; lower doses may be less effective, though dose-response data are limited.
 
 LGG should be started at the same time as an antibiotic course rather than after diarrhoea develops if the goal is antibiotic-associated diarrhoea prevention.
 
 ## Safety
 
-LGG has an excellent safety record across a large number of trials spanning several decades. It is well-tolerated in healthy adults, children, and infants. Transient GI effects at initiation are the most commonly reported adverse effects. As with all live probiotics, use in immunocompromised individuals requires medical supervision -- LGG bacteraemia has been documented in severely immunocompromised patients, though this is rare.
+LGG has an excellent safety record across a large number of trials spanning several decades. It is well-tolerated in healthy adults, children, and infants. Transient GI effects at initiation are the most commonly reported adverse effects. As with all live probiotics, use in immunocompromised individuals requires medical supervision  LGG bacteraemia has been documented in severely immunocompromised patients, though this is rare.
 
 ## What can reasonably be concluded
 
 LGG is the best-evidenced individual probiotic strain for antibiotic-associated diarrhoea prevention and acute diarrhoea in children. These applications are supported by consistent, replicated evidence and are reflected in clinical guidelines. Evidence for eczema prevention in high-risk infants is meaningful and underappreciated. IBS evidence is real but modest. General immune and wellness claims are not well-supported.
 
-The key practical point is strain verification -- the evidence applies specifically to Lactobacillus rhamnosus GG (ATCC 53103) and does not transfer to other Lactobacillus rhamnosus products. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
+The key practical point is strain verification  the evidence applies specifically to Lactobacillus rhamnosus GG (ATCC 53103) and does not transfer to other Lactobacillus rhamnosus products. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
 ---
 
