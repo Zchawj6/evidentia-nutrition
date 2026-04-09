@@ -77,9 +77,9 @@ cardDescription: "Berberine has a meaningful evidence base for glycaemic control
 
 Berberine is an isoquinoline alkaloid found in several plants including Berberis aristata (Indian barberry), Berberis vulgaris (common barberry), Hydrastis canadensis (goldenseal), and Coptis chinensis (Chinese goldthread). It has been used in traditional Chinese and Ayurvedic medicine for centuries, primarily for gastrointestinal conditions and infections. Contemporary interest centres on its metabolic effects, particularly glycaemic control.
 
-Unlike essential nutrients, berberine does not correct a deficiency state. Its effects are pharmacological -- it behaves more like a drug than a nutrient. The primary mechanism with the strongest evidence is activation of AMP-activated protein kinase (AMPK), a cellular energy sensor central to glucose and lipid metabolism. Additional proposed mechanisms include inhibition of mitochondrial complex I and effects on intestinal glucose absorption. Modulation of gut microbiome composition has also been proposed but represents a more exploratory mechanism with weaker direct evidence. The multiplicity of mechanisms reflects the complexity of berberine's pharmacology and the difficulty of attributing clinical effects to any single pathway.
+Unlike essential nutrients, berberine does not correct a deficiency state. Its effects are pharmacological. It behaves more like a drug than a nutrient. The primary mechanism with the strongest evidence is activation of AMP-activated protein kinase (AMPK), a cellular energy sensor central to glucose and lipid metabolism. Additional proposed mechanisms include inhibition of mitochondrial complex I and effects on intestinal glucose absorption. Modulation of gut microbiome composition has also been proposed but represents a more exploratory mechanism with weaker direct evidence. The multiplicity of mechanisms reflects the complexity of berberine's pharmacology and the difficulty of attributing clinical effects to any single pathway.
 
-Berberine hydrochloride (HCl) is the form used in virtually all clinical trials. Oral bioavailability is poor -- estimated at less than 5% in some pharmacokinetic studies -- due to extensive first-pass metabolism and efflux by intestinal transporters. This has driven interest in alternative forms including dihydroberberine, which has higher gut absorption, and phytosome formulations, but human clinical data for these alternatives remain limited.
+Berberine hydrochloride (HCl) is the form used in virtually all clinical trials. Oral bioavailability is poor, estimated at less than 5% in some pharmacokinetic studies, due to extensive first-pass metabolism and efflux by intestinal transporters. This has driven interest in alternative forms including dihydroberberine, which has higher gut absorption, and phytosome formulations, but human clinical data for these alternatives remain limited.
 
 The "natural metformin" label that circulates widely in consumer health media deserves direct scrutiny. Berberine and metformin share some overlapping mechanisms, particularly AMPK activation, and several small trials have made direct comparisons. These comparisons do not establish equivalence. Metformin has decades of safety data, established cardiovascular outcome evidence, and is a regulated pharmaceutical. Berberine has neither. The comparison is mechanistically interesting but clinically premature.
 
@@ -87,13 +87,13 @@ The "natural metformin" label that circulates widely in consumer health media de
 
 The berberine evidence base is more substantial than most botanical compounds but more limited than the commercial discourse suggests. The strongest evidence is for glycaemic and lipid effects in metabolically compromised populations.
 
-**Glycaemic control in type 2 diabetes and insulin resistance.** Multiple RCTs and several meta-analyses report significant reductions in fasting blood glucose, postprandial glucose, and HbA1c in individuals with type 2 diabetes or impaired fasting glucose. Effect sizes on HbA1c are typically in the range of 0.7 to 1.0 percentage points, which is clinically meaningful in the context of type 2 diabetes management -- though these effects are larger in poorly controlled populations with high baseline HbA1c and may be smaller in milder disease. There is no evidence that these biomarker changes translate into reduced complications or mortality. Several trials have compared berberine directly to metformin and found broadly similar glycaemic effects, which is frequently cited in marketing. These comparisons do not establish that berberine is equivalent to metformin as a clinical intervention -- they are small, short, heavily concentrated in China, and do not assess hard clinical endpoints.
+**Glycaemic control in type 2 diabetes and insulin resistance.** Multiple RCTs and several meta-analyses report significant reductions in fasting blood glucose, postprandial glucose, and HbA1c in individuals with type 2 diabetes or impaired fasting glucose. Effect sizes on HbA1c are typically in the range of 0.7 to 1.0 percentage points, which is clinically meaningful in the context of type 2 diabetes management, though these effects are larger in poorly controlled populations with high baseline HbA1c and may be smaller in milder disease. There is no evidence that these biomarker changes translate into reduced complications or mortality. Several trials have compared berberine directly to metformin and found broadly similar glycaemic effects, which is frequently cited in marketing. These comparisons do not establish that berberine is equivalent to metformin as a clinical intervention. They are small, short, heavily concentrated in China, and do not assess hard clinical endpoints.
 
-**Lipid profile.** Consistent reductions in total cholesterol, LDL-C, and triglycerides are reported across trials in dyslipidaemic populations. The mechanism is partially distinct from statins -- berberine increases LDL receptor expression via a post-transcriptional mechanism. LDL-C reductions of 15 to 25% have been reported in trial populations, though baseline lipid levels in these populations are often substantially elevated and effects in milder dyslipidaemia may be smaller. As with glycaemic effects, there is no evidence that lipid reductions with berberine translate into reduced cardiovascular events.
+**Lipid profile.** Consistent reductions in total cholesterol, LDL-C, and triglycerides are reported across trials in dyslipidaemic populations. The mechanism is partially distinct from statins. Berberine increases LDL receptor expression via a post-transcriptional mechanism. LDL-C reductions of 15 to 25% have been reported in trial populations, though baseline lipid levels in these populations are often substantially elevated and effects in milder dyslipidaemia may be smaller. As with glycaemic effects, there is no evidence that lipid reductions with berberine translate into reduced cardiovascular events.
 
 **Weight and body composition.** Several trials report modest reductions in body weight and waist circumference. Effect sizes are small and the evidence is confounded by concurrent dietary interventions in many trials. Weight loss claims that appear in marketing substantially exceed what the evidence supports.
 
-**PCOS.** Small trials show improvements in insulin sensitivity, androgen levels, and menstrual regularity in women with PCOS. Direct comparisons with metformin in PCOS show broadly similar effects on insulin and androgen markers, but these comparisons are underpowered, do not establish equivalence, and share the same limitations as the diabetes comparisons -- small, short, not powered for clinical outcomes.
+**PCOS.** Small trials show improvements in insulin sensitivity, androgen levels, and menstrual regularity in women with PCOS. Direct comparisons with metformin in PCOS show broadly similar effects on insulin and androgen markers, but these comparisons are underpowered, do not establish equivalence, and share the same limitations as the diabetes comparisons, small, short, not powered for clinical outcomes.
 
 **What the evidence does not show.** There is no evidence from adequately powered trials for reduction in cardiovascular events, microvascular complications, or mortality. The glycaemic and lipid biomarker effects observed in trials are plausible intermediates for long-term benefit but this has not been demonstrated. Evidence in healthy adults without metabolic indication is absent.
 
@@ -105,7 +105,7 @@ No. Berberine is not an essential nutrient and there is no deficiency state. Thi
 
 ### Does supplementation prevent disease in at-risk populations?
 
-Not established. The biomarker evidence -- lower glucose, lower LDL-C -- is consistent with a plausible preventive mechanism in individuals with metabolic risk factors, but no adequately powered prevention trials for hard endpoints exist. Prevention claims are not currently supportable.
+Not established. The biomarker evidence, lower glucose, lower LDL-C, is consistent with a plausible preventive mechanism in individuals with metabolic risk factors, but no adequately powered prevention trials for hard endpoints exist. Prevention claims are not currently supportable.
 
 ### Does berberine produce meaningful biomarker effects?
 
@@ -113,7 +113,7 @@ Yes, in metabolically compromised populations. Reductions in fasting glucose, Hb
 
 ### Does berberine improve outcomes in clinical populations?
 
-Glycaemic and lipid biomarker effects in type 2 diabetes and dyslipidaemia are established at a Moderate evidence level. Whether these translate into improved clinical outcomes -- fewer cardiovascular events, reduced microvascular complications -- is not demonstrated. In PCOS, modest effects on hormonal and metabolic markers are reported but evidence is early-stage.
+Glycaemic and lipid biomarker effects in type 2 diabetes and dyslipidaemia are established at a Moderate evidence level. Whether these translate into improved clinical outcomes, fewer cardiovascular events, reduced microvascular complications, is not demonstrated. In PCOS, modest effects on hormonal and metabolic markers are reported but evidence is early-stage.
 
 ### Does berberine benefit healthy, replete adults?
 
@@ -121,9 +121,9 @@ The evidence does not support this. All meaningful clinical evidence is in popul
 
 ## Individual variation
 
-The clinical evidence is almost entirely in populations with type 2 diabetes, impaired glucose regulation, dyslipidaemia, or PCOS. Within these populations, individuals with higher baseline glucose and lipid levels tend to show larger absolute effects in trials -- effects are likely smaller in individuals with milder metabolic dysfunction, which is an important consideration when interpreting trial effect sizes in a real-world context.
+The clinical evidence is almost entirely in populations with type 2 diabetes, impaired glucose regulation, dyslipidaemia, or PCOS. Within these populations, individuals with higher baseline glucose and lipid levels tend to show larger absolute effects in trials. Effects are likely smaller in individuals with milder metabolic dysfunction, which is an important consideration when interpreting trial effect sizes in a real-world context.
 
-Individuals on medications metabolised by CYP3A4 or CYP2D6 are at meaningful risk of drug interactions. This is not a theoretical concern -- berberine's inhibitory effects on these enzymes are well-characterised and clinically relevant. A full medication review is important before initiating berberine in anyone on regular medication.
+Individuals on medications metabolised by CYP3A4 or CYP2D6 are at meaningful risk of drug interactions. This is not a theoretical concern. Berberine's inhibitory effects on these enzymes are well-characterised and clinically relevant. A full medication review is important before initiating berberine in anyone on regular medication.
 
 Individuals taking glucose-lowering medications face additive hypoglycaemia risk. This includes metformin, sulfonylureas, GLP-1 agonists, SGLT2 inhibitors, and insulin. Berberine should not be combined with these without medical supervision.
 
@@ -141,7 +141,7 @@ The drug interaction profile is the most clinically important safety considerati
 
 Berberine should be avoided in pregnancy. Animal data demonstrate embryotoxic effects and berberine crosses the placenta. It should also be avoided in breastfeeding. The long-term human safety profile beyond 12 months is not established.
 
-Berberine behaves pharmacologically more like a drug than a nutrient. Its clinical potency -- which is part of what makes it clinically interesting -- means that the drug interaction and safety considerations are more substantial than for most supplements, regardless of its natural origin.
+Berberine behaves pharmacologically more like a drug than a nutrient. Its clinical potency, which is part of what makes it clinically interesting, means that the drug interaction and safety considerations are more substantial than for most supplements, regardless of its natural origin.
 
 ## What can reasonably be concluded
 
@@ -173,7 +173,7 @@ Liang Y et al. (2019, Frontiers in Pharmacology; meta-analysis, 46 RCTs) confirm
 
 ### Lipid profile
 
-Kong WJ et al. (2004, Journal of Lipid Research; mechanistic and clinical data) characterised berberine's LDL receptor upregulation mechanism -- distinct from statins, which act via HMG-CoA reductase. Berberine stabilises LDL receptor mRNA, increasing receptor expression post-transcriptionally.
+Kong WJ et al. (2004, Journal of Lipid Research; mechanistic and clinical data) characterised berberine's LDL receptor upregulation mechanism, distinct from statins, which act via HMG-CoA reductase. Berberine stabilises LDL receptor mRNA, increasing receptor expression post-transcriptionally.
 
 Hu Y et al. (2012, Phytomedicine; meta-analysis, 11 RCTs) found significant reductions in total cholesterol, LDL-C, and triglycerides in berberine-treated versus control groups. LDL-C reductions averaged approximately 0.65 mmol/L across trials.
 
@@ -199,7 +199,7 @@ Gut microbiome outcomes are not validated clinical surrogates. The variability i
 
 The berberine evidence base sits in an interesting intermediate position: more credible than most botanical compounds, less established than pharmaceutical alternatives. The glycaemic and lipid signals are real and consistently observed. The absence of hard endpoint data, the geographic concentration of trials, and the limited long-term safety information are genuine constraints on interpretation.
 
-The direct metformin comparisons deserve particular scrutiny. They are frequently cited as establishing equivalence, but equivalence trials require specific statistical designs that these studies did not employ. Finding similar point estimates in small underpowered trials does not establish equivalence -- it is consistent with both true equivalence and with insufficient power to detect a meaningful difference. This distinction matters clinically.
+The direct metformin comparisons deserve particular scrutiny. They are frequently cited as establishing equivalence, but equivalence trials require specific statistical designs that these studies did not employ. Finding similar point estimates in small underpowered trials does not establish equivalence. It is consistent with both true equivalence and with insufficient power to detect a meaningful difference. This distinction matters clinically.
 
 The drug interaction profile is the most underappreciated aspect of berberine's clinical use and deserves more prominence in consumer-facing content than it typically receives.
 
@@ -219,4 +219,4 @@ An Y et al. (2014). The use of berberine for women with polycystic ovary syndrom
 
 Imenshahidi M, Hosseinzadeh H (2019). Berberine and barberine: clinical and pharmacological effects. Phytotherapy Research, 33(3), 504-523. doi:10.1002/ptr.6252
 
-Och A et al. (2020). Biological activity of berberine -- a summary update. Toxins, 12(11), 713. doi:10.3390/toxins12110713
+Och A et al. (2020). Biological activity of berberine, a summary update. Toxins, 12(11), 713. doi:10.3390/toxins12110713
