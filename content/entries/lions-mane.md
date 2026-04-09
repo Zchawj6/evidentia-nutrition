@@ -89,7 +89,7 @@ No robust evidence supports this. There are no adequately powered long-duration 
 
 ### Does Lion's Mane produce meaningful biomarker effects?
 
-In preclinical models, consistently yes -- increased NGF expression, enhanced neurite outgrowth, and neuroprotective effects are well-replicated in cell and animal work. In humans, biomarker evidence is minimal and peripheral NGF is not a validated surrogate for cognitive outcomes. The preclinical findings underpin the mechanistic rationale but do not constitute human efficacy evidence.
+In preclinical models, consistently yes  increased NGF expression, enhanced neurite outgrowth, and neuroprotective effects are well-replicated in cell and animal work. In humans, biomarker evidence is minimal and peripheral NGF is not a validated surrogate for cognitive outcomes. The preclinical findings underpin the mechanistic rationale but do not constitute human efficacy evidence.
 
 ### Does Lion's Mane improve outcomes in clinical populations?
 
@@ -101,7 +101,7 @@ The evidence does not support this. Available trials in healthy adults are incon
 
 ## Individual variation
 
-The only population with a meaningful directional signal is individuals with mild cognitive impairment. The mechanistic rationale -- that Lion's Mane supports neurotrophic signalling that is already compromised in MCI -- is plausible, but this does not make the evidence base more robust than it is.
+The only population with a meaningful directional signal is individuals with mild cognitive impairment. The mechanistic rationale  that Lion's Mane supports neurotrophic signalling that is already compromised in MCI  is plausible, but this does not make the evidence base more robust than it is.
 
 Extract type is likely an important moderating variable. Erinacine-enriched mycelium extracts have the stronger preclinical case and are beginning to appear in newer trials. Most existing human trials used whole fruiting body powder, which may have meaningfully different bioactive compound profiles. Until comparative trials exist, the form-specificity of any effect cannot be assumed.
 
@@ -123,7 +123,7 @@ Lion's Mane has a scientifically interesting preclinical profile and a plausible
 
 Claims around neurogenesis, dementia prevention, and cognitive enhancement in healthy adults go substantially beyond what the current human evidence supports. The gap between the preclinical story and the clinical evidence is large and has been substantially closed by commercial interest rather than scientific progress.
 
-This is an area where the evidence base may genuinely develop -- the mechanistic rationale is credible enough to justify further investigation -- but where current conclusions should be treated as provisional and subject to meaningful revision as larger, better-designed trials emerge. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
+This is an area where the evidence base may genuinely develop  the mechanistic rationale is credible enough to justify further investigation  but where current conclusions should be treated as provisional and subject to meaningful revision as larger, better-designed trials emerge. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
 ---
 
@@ -153,13 +153,13 @@ No independent replication of this finding exists in the published literature.
 
 Preclinical evidence for Lion's Mane effects on NGF is extensive and consistent. Erinacine A in particular has been shown to cross the blood-brain barrier in rodent models and to increase NGF in the hippocampus. Hericenones stimulate NGF synthesis in cell culture. These findings are replicated and biologically plausible.
 
-The critical limitation is that this has not been validated as a clinical pathway in humans. Peripheral blood NGF measurements in human trials do not reliably reflect central nervous system NGF activity. Furthermore, NGF itself is not a validated surrogate endpoint for cognitive outcomes even if central changes could be measured -- the link between NGF modulation and clinically meaningful cognition improvement in humans is assumed rather than demonstrated. Claims that supplementation increases brain NGF or promotes neurogenesis in humans are not supported by current evidence.
+The critical limitation is that this has not been validated as a clinical pathway in humans. Peripheral blood NGF measurements in human trials do not reliably reflect central nervous system NGF activity. Furthermore, NGF itself is not a validated surrogate endpoint for cognitive outcomes even if central changes could be measured  the link between NGF modulation and clinically meaningful cognition improvement in humans is assumed rather than demonstrated. Claims that supplementation increases brain NGF or promotes neurogenesis in humans are not supported by current evidence.
 
 **Evidence rating basis:** Insufficient for human clinical application. Preclinical data are consistent but human translation is undemonstrated.
 
 ## How to interpret this evidence
 
-Lion's Mane sits in a common position for botanical nootropics: a strong and internally consistent mechanistic story that has generated genuine scientific interest and rapid commercial adoption, but where the human clinical evidence base remains early-stage and insufficient to support the claims that are routinely made.
+Lion's Mane sits in a common position for botanical nootropics  a strong and internally consistent mechanistic story that has generated genuine scientific interest and rapid commercial adoption, but where the human clinical evidence base remains early-stage and insufficient to support the claims that are routinely made.
 
 The MCI signal is worth monitoring as the evidence base develops. If erinacine-enriched extracts produce consistent results in larger independent trials, Lion's Mane could become a more credibly evidence-based option for this population. The current evidence does not reach that bar.
 
