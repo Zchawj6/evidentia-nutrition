@@ -79,7 +79,7 @@ Its primary clinically relevant effect is on bowel function, particularly stool 
 
 **Respiratory infections.** Some trials suggest that BB-12 reduces the duration or severity of upper respiratory tract infections, particularly in children and physically active populations. Results are inconsistent across trials and effect sizes are small. Immune biomarker changes observed with BB-12 do not reliably translate into clinical infection outcomes and should not be used to support general immune health claims.
 
-**Immune biomarkers.** BB-12 influences immune markers in some studies. These are exploratory findings only -- they do not constitute evidence of clinical immune benefit.
+**Immune biomarkers.** BB-12 influences immune markers in some studies. These are exploratory findings only. They do not constitute evidence of clinical immune benefit.
 
 **IBS.** Evidence is limited and inconsistent. BB-12 should not be presented as a reliable IBS intervention.
 
@@ -91,7 +91,7 @@ The most relevant individual factor is baseline bowel function. Individuals with
 
 ## Safety
 
-BB-12 is generally well tolerated in healthy adults, children, and older adults. Adverse effects are rare and usually limited to mild and transient GI symptoms at initiation. As with all live probiotic supplements, caution is advised in immunocompromised individuals and critically ill patients -- rare adverse events including bacteraemia have been documented with Bifidobacterium species in these populations.
+BB-12 is generally well tolerated in healthy adults, children, and older adults. Adverse effects are rare and usually limited to mild and transient GI symptoms at initiation. As with all live probiotic supplements, caution is advised in immunocompromised individuals and critically ill patients. Rare adverse events including bacteraemia have been documented with Bifidobacterium species in these populations.
 
 ## What can reasonably be concluded
 
