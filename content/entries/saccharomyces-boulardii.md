@@ -67,7 +67,7 @@ cardDescription: "Saccharomyces boulardii CNCM I-745 is one of the best-evidence
 
 ## What makes Saccharomyces boulardii distinct
 
-Saccharomyces boulardii is a probiotic yeast, not a bacterium. This is the most important practical difference between S. boulardii and the more familiar bacterial probiotics such as Lactobacillus and Bifidobacterium. Because it is a yeast, it is not inactivated by antibacterial antibiotics, which makes it particularly useful during antibiotic exposure -- the context in which its evidence base is strongest.
+Saccharomyces boulardii is a probiotic yeast, not a bacterium. This is the most important practical difference between S. boulardii and the more familiar bacterial probiotics such as Lactobacillus and Bifidobacterium. Because it is a yeast, it is not inactivated by antibacterial antibiotics, which makes it particularly useful during antibiotic exposure, the context in which its evidence base is strongest.
 
 The specific preparation that carries the main clinical evidence base is **Saccharomyces boulardii CNCM I-745**. The strain or preparation designation matters here just as much as it does for bacterial probiotics. Products labelled simply as Saccharomyces boulardii without further characterisation may not be equivalent to the preparations used in the key trials.
 
@@ -87,9 +87,9 @@ Its biological properties include resistance to gastric acid, relative stability
 
 ## Practical considerations
 
-S. boulardii is typically used at doses of 250mg twice daily to 500mg twice daily, depending on formulation and indication. For antibiotic-associated diarrhoea prevention, the relevant practical point is timing -- it should be started with the antibiotic course rather than after diarrhoea has already developed if the goal is prevention.
+S. boulardii is typically used at doses of 250mg twice daily to 500mg twice daily, depending on formulation and indication. For antibiotic-associated diarrhoea prevention, the relevant practical point is timing, it should be started with the antibiotic course rather than after diarrhoea has already developed if the goal is prevention.
 
-Because it is a yeast, ambient stability is often better than for some bacterial probiotics, but this is formulation-dependent and should not be assumed. Expiry date, product quality, and strain verification still matter. As with all probiotics, a labelled organism is not by itself evidence of efficacy -- the question is whether the specific preparation matches the studied one.
+Because it is a yeast, ambient stability is often better than for some bacterial probiotics, but this is formulation-dependent and should not be assumed. Expiry date, product quality, and strain verification still matter. As with all probiotics, a labelled organism is not by itself evidence of efficacy, the question is whether the specific preparation matches the studied one.
 
 ## Safety
 
@@ -115,7 +115,7 @@ The key practical point is that S. boulardii is not a general “good gut health
 
 Szajewska H and Kołodziej M (2015, Alimentary Pharmacology and Therapeutics; meta-analysis of 21 RCTs, n = 4,780) found that S. boulardii reduced the risk of antibiotic-associated diarrhoea in adults and children. This remains the most important strain-specific meta-analysis for this indication and underpins the Strong rating.
 
-A useful practical way to interpret the effect is that the reduction is clinically meaningful rather than marginal. This is not a vague “digestive support” signal. It is a prevention effect in a well-defined setting. The main caveat is that the absolute benefit depends on baseline risk -- people receiving higher-risk antibiotic regimens or with greater susceptibility to antibiotic-associated diarrhoea are likely to derive more absolute benefit than lower-risk outpatient populations.
+A useful practical way to interpret the effect is that the reduction is clinically meaningful rather than marginal. This is not a vague “digestive support” signal. It is a prevention effect in a well-defined setting. The main caveat is that the absolute benefit depends on baseline risk, people receiving higher-risk antibiotic regimens or with greater susceptibility to antibiotic-associated diarrhoea are likely to derive more absolute benefit than lower-risk outpatient populations.
 
 **Evidence rating basis:** Strong. Consistent effect across multiple RCTs and meta-analyses, with clear clinical relevance and a strong practical fit to the indication.
 
@@ -131,7 +131,7 @@ This is the key reason not to over-rate this indication. The signal is present, 
 
 Szajewska H et al. (2015, Alimentary Pharmacology and Therapeutics; meta-analysis of 11 RCTs, n = 2,200) found that S. boulardii supplementation reduced overall H. pylori therapy-related adverse effects and modestly increased eradication rates when added to standard treatment.
 
-The important clinical nuance is that the most dependable benefit here is tolerability -- particularly less diarrhoea and nausea during eradication therapy. The eradication-rate improvement is smaller and should not be over-interpreted as evidence that S. boulardii is itself an H. pylori treatment.
+The important clinical nuance is that the most dependable benefit here is tolerability, particularly less diarrhoea and nausea during eradication therapy. The eradication-rate improvement is smaller and should not be over-interpreted as evidence that S. boulardii is itself an H. pylori treatment.
 
 **Evidence rating basis:** Moderate. Useful adjunctive role for reducing treatment-related adverse effects; modest supportive effect on eradication rates; not a standalone anti-H. pylori therapy.
 
@@ -147,12 +147,12 @@ The fairest interpretation is that this is an area of genuine uncertainty rather
 
 Szajewska H, Kołodziej M (2015). Systematic review with meta-analysis: Saccharomyces boulardii in the prevention of antibiotic-associated diarrhoea. Alimentary Pharmacology & Therapeutics, 42(7), 793-801. doi:10.1111/apt.13344
 
-Szajewska H, Kołodziej M, Zalewski BM (2020). Systematic review with meta-analysis: Saccharomyces boulardii for treating acute gastroenteritis in children -- a 2020 update. Alimentary Pharmacology & Therapeutics, 51(7), 678-688. doi:10.1111/apt.15659
+Szajewska H, Kołodziej M, Zalewski BM (2020). Systematic review with meta-analysis: Saccharomyces boulardii for treating acute gastroenteritis in children, a 2020 update. Alimentary Pharmacology & Therapeutics, 51(7), 678-688. doi:10.1111/apt.15659
 
 Szajewska H, Horvath A, Piwowarczyk A (2015). Systematic review with meta-analysis: Saccharomyces boulardii supplementation and eradication of Helicobacter pylori infection. Alimentary Pharmacology & Therapeutics, 41(12), 1237-1245. doi:10.1111/apt.13214
 
 Tariq R, Tahir MW, Hayat M, Pardi DS, Khanna S (2023). Safety and efficacy of Saccharomyces boulardii for prevention of Clostridioides difficile infection: systematic review and meta-analysis. Journal of Gastrointestinal Infections, 12(2), 94-100. doi:10.1055/s-0043-1760738
 
-Hojsak I et al. (2023). Probiotics for the Management of Pediatric Gastrointestinal Disorders -- Position Paper of the ESPGHAN Special Interest Group on Gut Microbiota and Modifications. Journal of Pediatric Gastroenterology and Nutrition.
+Hojsak I et al. (2023). Probiotics for the Management of Pediatric Gastrointestinal Disorders, Position Paper of the ESPGHAN Special Interest Group on Gut Microbiota and Modifications. Journal of Pediatric Gastroenterology and Nutrition.
 
 Rannikko J, Holmberg V, Karppelin M, et al. (2021). Fungemia and other fungal infections associated with use of Saccharomyces boulardii probiotic supplements. Emerging Infectious Diseases, 27(8), 2103-2109. doi:10.3201/eid2708.210018
