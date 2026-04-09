@@ -64,7 +64,7 @@ cardDescription: "The gap between turmeric's reputation and the evidence for sta
 
 Curcumin is the primary bioactive polyphenol in turmeric (Curcuma longa), a plant used for centuries in Ayurvedic and traditional Chinese medicine. It is responsible for turmeric's characteristic yellow colour and is the compound behind most of the scientific and commercial interest in turmeric-based supplements.
 
-This entry covers standard curcumin extract -- typically standardised to 95% curcuminoids -- which is the form found in the vast majority of commercially available turmeric and curcumin supplements. It does not cover enhanced-bioavailability formulations such as curcumin phytosome, BCM-95, or nanoparticle forms. Evidence from those forms is not transferable to standard extract, and their distinct evidence base is addressed separately.
+This entry covers standard curcumin extract, typically standardised to 95% curcuminoids, which is the form found in the vast majority of commercially available turmeric and curcumin supplements. It does not cover enhanced-bioavailability formulations such as curcumin phytosome, BCM-95, or nanoparticle forms. Evidence from those forms is not transferable to standard extract, and their distinct evidence base is addressed separately.
 
 The distinction matters because much of the positive clinical trial data cited in marketing materials for curcumin supplements was generated using enhanced formulations, not the standard extract in the product being sold.
 
@@ -72,11 +72,11 @@ The distinction matters because much of the positive clinical trial data cited i
 
 The curcumin story is, at its core, a bioavailability story. There is genuine and replicated evidence of biological activity in cell culture and animal models. The problem is not the compound; it is whether enough of it ever reaches the relevant tissues in humans when taken orally in standard form.
 
-**Bioavailability of standard curcumin extract is poor.** Oral curcumin is rapidly metabolised and conjugated in the gut and liver. Free curcumin plasma concentrations following standard oral doses are extremely low -- often at or below the limit of detection in well-conducted pharmacokinetic studies. Low systemic exposure does not entirely exclude local gastrointestinal or hepatic effects, which may contribute to some metabolic and inflammatory signals observed in trials -- but this does not rescue the case for standard extract as a systemic therapeutic agent. Bioavailability is a major constraint, but not the only explanation; the intrinsic magnitude of curcumin's biological effects in humans may also be limited independent of delivery.
+**Bioavailability of standard curcumin extract is poor.** Oral curcumin is rapidly metabolised and conjugated in the gut and liver. Free curcumin plasma concentrations following standard oral doses are extremely low, often at or below the limit of detection in well-conducted pharmacokinetic studies. Low systemic exposure does not entirely exclude local gastrointestinal or hepatic effects, which may contribute to some metabolic and inflammatory signals observed in trials, but this does not rescue the case for standard extract as a systemic therapeutic agent. Bioavailability is a major constraint, but not the only explanation; the intrinsic magnitude of curcumin's biological effects in humans may also be limited independent of delivery.
 
 **Inflammatory biomarker effects** are the most commonly cited application. Positive meta-analyses are driven substantially by enhanced-formulation trials. When standard extract trials are isolated, effects on inflammatory markers are small, inconsistent, and not reliably distinguishable from placebo. Where reductions in CRP are observed they are modest in absolute terms and not consistently reproduced.
 
-**Joint pain in osteoarthritis** -- the most frequently marketed application -- is largely supported by enhanced-formulation trial data. Standard extract trials are mixed and underpowered.
+**Joint pain in osteoarthritis**, the most frequently marketed application, is largely supported by enhanced-formulation trial data. Standard extract trials are mixed and underpowered.
 
 **Cognitive function** evidence with standard extract is very limited. Standard extract is unlikely to achieve concentrations sufficient for meaningful CNS activity, though human brain penetration data is limited and this is not definitively ruled out.
 
@@ -84,7 +84,7 @@ The curcumin story is, at its core, a bioavailability story. There is genuine an
 
 ## Why the evidence base is structurally misleading
 
-The curcumin RCT evidence base is not testing a single intervention. It is testing multiple chemically and biophysically distinct formulations -- standard extract, phytosome, BCM-95, nanoparticle, piperine-enhanced, and others -- each with substantially different bioavailability profiles. Pooling these in meta-analyses creates analyses of non-comparable interventions, and the aggregate result does not apply to any single formulation.
+The curcumin RCT evidence base is not testing a single intervention. It is testing multiple chemically and biophysically distinct formulations, standard extract, phytosome, BCM-95, nanoparticle, piperine-enhanced, and others, each with substantially different bioavailability profiles. Pooling these in meta-analyses creates analyses of non-comparable interventions, and the aggregate result does not apply to any single formulation.
 
 A product containing standard curcumin extract cannot claim the evidence base generated by curcumin phytosome trials. The marketing practice of doing so is not scientifically defensible.
 
@@ -118,7 +118,7 @@ Individuals taking standard extract alongside dietary fat may see modestly impro
 
 ## Safety
 
-Standard curcumin extract is generally well-tolerated at doses up to 8g/day in short-term studies. GI discomfort is the most commonly reported side effect. Reversible elevations in liver enzymes have been reported in isolated cases at high doses. Curcumin has antiplatelet and anticoagulant properties -- caution with warfarin, aspirin, clopidogrel. CYP3A4 and P-glycoprotein inhibition is relevant for narrow therapeutic window medications. High-dose use may reduce non-haem iron absorption. Avoid in gallbladder disease.
+Standard curcumin extract is generally well-tolerated at doses up to 8g/day in short-term studies. GI discomfort is the most commonly reported side effect. Reversible elevations in liver enzymes have been reported in isolated cases at high doses. Curcumin has antiplatelet and anticoagulant properties, caution with warfarin, aspirin, clopidogrel. CYP3A4 and P-glycoprotein inhibition is relevant for narrow therapeutic window medications. High-dose use may reduce non-haem iron absorption. Avoid in gallbladder disease.
 
 ## A note on product quality
 
@@ -126,7 +126,7 @@ The curcumin supplement market has significant quality control issues. Third-par
 
 ## What can reasonably be concluded
 
-Standard curcumin extract does not produce consistent, clinically meaningful effects in humans. The fundamental problem is bioavailability -- the compound shows genuine biological activity in the lab but does not reach relevant concentrations in systemic circulation from conventional oral supplements. Small effects may exist, particularly via local gastrointestinal mechanisms, but these are not clinically actionable. The evidence base that appears positive for curcumin is largely derived from enhanced-bioavailability formulations and does not apply to standard extract products.
+Standard curcumin extract does not produce consistent, clinically meaningful effects in humans. The fundamental problem is bioavailability, the compound shows genuine biological activity in the lab but does not reach relevant concentrations in systemic circulation from conventional oral supplements. Small effects may exist, particularly via local gastrointestinal mechanisms, but these are not clinically actionable. The evidence base that appears positive for curcumin is largely derived from enhanced-bioavailability formulations and does not apply to standard extract products.
 
 Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
@@ -146,19 +146,19 @@ Sahebkar et al. (2015) conducted a meta-analysis across 34 RCTs showing signific
 
 ### Joint pain and function in osteoarthritis
 
-Positive trial evidence -- including the widely cited studies by Belcaro et al. (2010) and Appendino et al. (2011) -- used Meriva (curcumin phytosome), not standard extract. Liu et al. (2021) conducted a systematic review of curcumin versus NSAIDs in osteoarthritis; the positive findings were again predominantly from enhanced forms. Standard extract trials in osteoarthritis are mixed and generally underpowered.
+Positive trial evidence, including the widely cited studies by Belcaro et al. (2010) and Appendino et al. (2011), used Meriva (curcumin phytosome), not standard extract. Liu et al. (2021) conducted a systematic review of curcumin versus NSAIDs in osteoarthritis; the positive findings were again predominantly from enhanced forms. Standard extract trials in osteoarthritis are mixed and generally underpowered.
 
 **Evidence rating basis:** Insufficient for standard extract. Osteoarthritis evidence is largely formulation-dependent and does not generalise to standard extract products.
 
 ### Cognitive function and mood
 
-Standard extract does not achieve plasma concentrations that would be expected to support CNS activity based on pharmacokinetic data. The positive cognitive trial data -- including Small et al. (2018) which is frequently cited -- used Theracurmin, an enhanced form. This evidence is not transferable to standard extract.
+Standard extract does not achieve plasma concentrations that would be expected to support CNS activity based on pharmacokinetic data. The positive cognitive trial data, including Small et al. (2018) which is frequently cited, used Theracurmin, an enhanced form. This evidence is not transferable to standard extract.
 
 **Evidence rating basis:** Insufficient for standard extract. Standard extract is unlikely to achieve concentrations sufficient for CNS effects.
 
 ### Metabolic and glycaemic outcomes
 
-This is the one domain where a modest positive signal may exist with standard extract, potentially mediated via local gastrointestinal mechanisms rather than systemic bioavailability. Some trials in type 2 diabetes report small improvements in fasting glucose and insulin sensitivity. The similar magnitude of metabolic effects seen with standard and enhanced forms suggests that systemic bioavailability may not be the primary driver for metabolic endpoints -- local GI and hepatic effects may be more relevant here.
+This is the one domain where a modest positive signal may exist with standard extract, potentially mediated via local gastrointestinal mechanisms rather than systemic bioavailability. Some trials in type 2 diabetes report small improvements in fasting glucose and insulin sensitivity. The similar magnitude of metabolic effects seen with standard and enhanced forms suggests that systemic bioavailability may not be the primary driver for metabolic endpoints, local GI and hepatic effects may be more relevant here.
 
 **Evidence rating basis:** Emerging. Weak signal specific to metabolic populations. Not robust enough for clinical recommendation.
 
