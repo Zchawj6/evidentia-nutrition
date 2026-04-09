@@ -56,17 +56,17 @@ cardDescription: "Meaningful evidence for cognitive support in older adults and 
 
 ## What it is
 
-Citicoline (CDP-choline, cytidine diphosphate choline) is a naturally occurring compound that serves as an intermediate in the biosynthesis of phosphatidylcholine, a major component of neuronal cell membranes. It provides both choline and cytidine upon absorption -- cytidine is converted to uridine in the body, which plays roles in neural membrane synthesis and neurotransmitter signalling. These mechanisms are plausible but not sufficient on their own to establish clinical efficacy -- the clinical evidence must be assessed independently.
+Citicoline (CDP-choline, cytidine diphosphate choline) is a naturally occurring compound that serves as an intermediate in the biosynthesis of phosphatidylcholine, a major component of neuronal cell membranes. It provides both choline and cytidine upon absorption. Cytidine is converted to uridine in the body, which plays roles in neural membrane synthesis and neurotransmitter signalling. These mechanisms are plausible but not sufficient on their own to establish clinical efficacy. The clinical evidence must be assessed independently.
 
 Citicoline is distinct from other choline-containing supplements including alpha-GPC and choline bitartrate. Evidence from citicoline trials does not transfer to these other forms without direct comparative data.
 
-Dietary choline is found in eggs, liver, meat, and some legumes. Low intake is common in Western populations, particularly in older adults and those with low animal product consumption. The relationship between low choline intake and cognitive outcomes has not been clearly established -- low intake is common but clinical deficiency in the sense of a defined cognitive syndrome is not.
+Dietary choline is found in eggs, liver, meat, and some legumes. Low intake is common in Western populations, particularly in older adults and those with low animal product consumption. The relationship between low choline intake and cognitive outcomes has not been clearly established. Low intake is common but clinical deficiency in the sense of a defined cognitive syndrome is not.
 
 ## What the evidence shows
 
 **Cognitive function in older adults and mild cognitive impairment** is the most consistently supported application, though the entry sits at the lower end of Moderate given the age of much of the evidence and limited modern replication. Multiple trials in older adults with age-associated memory impairment or mild cognitive impairment have shown improvements in memory and attention with citicoline at doses of 500-2000mg/day. Effect sizes are in the small to moderate range (approximately SMD 0.2-0.5), with effects varying by cognitive domain and no consistent improvement across all measures. The most consistent findings are in those with some degree of baseline cognitive decline.
 
-**Stroke recovery and vascular cognitive impairment** has a mixed evidence base materially weakened by the ICTUS trial. The ICTUS trial (n = 2298) -- the largest and most robustly designed citicoline trial conducted -- found no benefit on the primary endpoint in acute ischaemic stroke, and no subsequent large trial has overturned this finding. This null result from the most rigorous trial in the evidence base substantially reduces confidence in the earlier positive findings from smaller trials.
+**Stroke recovery and vascular cognitive impairment** has a mixed evidence base materially weakened by the ICTUS trial. The ICTUS trial (n = 2298), the largest and most robustly designed citicoline trial conducted, found no benefit on the primary endpoint in acute ischaemic stroke, and no subsequent large trial has overturned this finding. This null result from the most rigorous trial in the evidence base substantially reduces confidence in the earlier positive findings from smaller trials.
 
 **Cognitive support in healthy adults** under conditions of cognitive demand shows a modest, task-specific signal in small trials. Effect sizes are small and task-dependent, and independent replication is limited.
 
@@ -108,7 +108,7 @@ The mechanistic basis is plausible: citicoline supports phosphatidylcholine synt
 
 Clinical evidence: Alvarez et al. (1997) found significant improvements in recall with 1000mg/day citicoline over 3 months in older adults with memory complaints. The Cochrane review by Fioravanti and Yanagi (2005) found consistent positive effects on memory and behaviour across multiple trials, though noting variable quality. The review is dated (2005) and does not reflect more recent evidence. Nakazaki et al. (2021) found improvements in memory in healthy older adults with 500mg/day Cognizin over 12 weeks, providing more recent trial data. A systematic review by Gareri et al. (2015) in mild vascular cognitive impairment found consistent positive effects on attention and memory.
 
-Effect sizes are in the small to moderate range (approximately SMD 0.2-0.5). Effects vary by cognitive domain -- memory and attention show the most consistent signal; improvements across all cognitive measures simultaneously are not reliably demonstrated. The evidence base has important limitations: many positive trials are from the 1990s and early 2000s, use heterogeneous outcome measures, and have variable methodological quality.
+Effect sizes are in the small to moderate range (approximately SMD 0.2-0.5). Effects vary by cognitive domain. Memory and attention show the most consistent signal; improvements across all cognitive measures simultaneously are not reliably demonstrated. The evidence base has important limitations: many positive trials are from the 1990s and early 2000s, use heterogeneous outcome measures, and have variable methodological quality.
 
 **Evidence rating basis:** Moderate (low confidence; positioned at the lower end of Moderate). Consistent directional signal; reduced confidence by trial age, heterogeneous quality, domain variability, and limited modern large-scale replication.
 
@@ -122,7 +122,7 @@ The divergence between earlier positive findings and the ICTUS null result has n
 
 ### Cognitive support in healthy adults
 
-Trials using Cognizin citicoline at 250-500mg/day have found improvements in attention and working memory in healthy adults, particularly under cognitive demand. McGlade et al. (2012) and Nakazaki et al. (2021) represent the stronger trials in this domain. Effects are small and task-dependent -- consistent improvements across all cognitive measures have not been demonstrated. Some trials have Cognizin manufacturer involvement. Independent replication depth is limited.
+Trials using Cognizin citicoline at 250-500mg/day have found improvements in attention and working memory in healthy adults, particularly under cognitive demand. McGlade et al. (2012) and Nakazaki et al. (2021) represent the stronger trials in this domain. Effects are small and task-dependent. Consistent improvements across all cognitive measures have not been demonstrated. Some trials have Cognizin manufacturer involvement. Independent replication depth is limited.
 
 **Evidence rating basis:** Emerging. Small, task-specific effect sizes; some industry involvement; insufficient independent replication.
 
@@ -130,11 +130,11 @@ Trials using Cognizin citicoline at 250-500mg/day have found improvements in att
 
 **Age:** Older adults have the most consistent evidence base, consistent with the proposed mechanisms around neuronal membrane and neurotransmitter function.
 
-**Dietary choline status:** Low dietary choline intake is common but the relationship between low intake and cognitive outcomes -- and therefore the response window for citicoline -- has not been clearly established in intervention trials.
+**Dietary choline status:** Low dietary choline intake is common but the relationship between low intake and cognitive outcomes, and therefore the response window for citicoline, has not been clearly established in intervention trials.
 
 **Cognitive baseline:** Evidence most consistent in those with some degree of cognitive concern or impairment. Evidence in fully healthy younger adults is more limited.
 
-**Genetics:** PEMT gene variants affect endogenous choline synthesis. Individuals with reduced PEMT activity -- more common in postmenopausal women -- may have higher choline requirements. No direct trial evidence links PEMT variants to citicoline response specifically; this represents a plausible but unvalidated source of individual variation.
+**Genetics:** PEMT gene variants affect endogenous choline synthesis. Individuals with reduced PEMT activity, more common in postmenopausal women, may have higher choline requirements. No direct trial evidence links PEMT variants to citicoline response specifically; this represents a plausible but unvalidated source of individual variation.
 
 **Cognitive demand:** The healthy adult signal is most consistent under cognitive stress or demand.
 
