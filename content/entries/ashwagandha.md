@@ -79,7 +79,7 @@ A significant proportion of the trial evidence is industry-funded by the manufac
 
 **Sleep quality** in individuals with baseline sleep disturbance shows a consistent directional signal across several trials. Improvements in sleep onset latency, total sleep time, and sleep efficiency have been reported. Effects are most consistent in individuals with self-reported sleep problems at baseline; evidence in good sleepers is limited.
 
-**Cortisol** reductions of approximately 15-30% from baseline have been reported in stressed populations. These estimates vary widely across trials and are sensitive to measurement methodology, assay type, and timing of sampling. Cortisol is best understood here as an exploratory biomarker -- consistent directional finding in stressed populations, but uncertain clinical translation.
+**Cortisol** reductions of approximately 15-30% from baseline have been reported in stressed populations. These estimates vary widely across trials and are sensitive to measurement methodology, assay type, and timing of sampling. Cortisol is best understood here as an exploratory biomarker, a consistent directional finding in stressed populations, but with uncertain clinical translation.
 
 ## What the evidence does not show
 
@@ -103,7 +103,7 @@ Women in perimenopause and menopause represent an emerging relevant population, 
 
 ## Safety and contraindications
 
-Ashwagandha is generally well-tolerated at doses used in clinical trials. However, rare but serious cases of liver injury have been reported, with incidence unknown due to the absence of denominator data. Any symptoms of liver dysfunction -- jaundice, abdominal pain, dark urine -- should prompt discontinuation and clinical assessment. Individuals with pre-existing liver conditions should not use ashwagandha without medical supervision.
+Ashwagandha is generally well-tolerated at doses used in clinical trials. However, rare but serious cases of liver injury have been reported, with incidence unknown due to the absence of denominator data. Any symptoms of liver dysfunction, jaundice, abdominal pain, dark urine, should prompt discontinuation and clinical assessment. Individuals with pre-existing liver conditions should not use ashwagandha without medical supervision.
 
 Ashwagandha is contraindicated in pregnancy due to traditional use as a uterine stimulant. It should not be used during breastfeeding without clinical review.
 
@@ -115,7 +115,7 @@ Ashwagandha has a genuine and growing evidence base for stress reduction and sle
 
 Extract standardisation matters: KSM-66 and Sensoril are the evidence-based choices. Non-standardised products cannot be assumed equivalent.
 
-The safety profile is generally acceptable at normal doses but includes rare serious risks -- particularly hepatotoxicity -- that are often absent from commercial communications and should be part of any honest assessment.
+The safety profile is generally acceptable at normal doses but includes rare serious risks, particularly hepatotoxicity, that are often absent from commercial communications and should be part of any honest assessment.
 
 Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
@@ -129,7 +129,7 @@ Where evidence is limited or outcomes are uncertain, conclusions should be treat
 
 Multiple randomised controlled trials using KSM-66 or Sensoril at 300-600mg/day demonstrate reductions in self-reported stress on validated scales. The most cited include Chandrasekhar et al. (2012), which used 300mg KSM-66 twice daily and found significant reductions on the PSS and GHQ-28 over 60 days, and a meta-analysis by Pratte et al. (2014) that pooled available trial data and found consistent directional effects.
 
-Effect sizes across trials are approximately SMD 0.4-0.7 -- moderate by conventional thresholds. However, these figures are drawn predominantly from industry-funded trials with small samples and short durations. Independent trials tend to show smaller effect sizes. The true population-level effect, corrected for funding bias, is likely at the lower end of this range.
+Effect sizes across trials are approximately SMD 0.4-0.7, moderate by conventional thresholds. However, these figures are drawn predominantly from industry-funded trials with small samples and short durations. Independent trials tend to show smaller effect sizes. The true population-level effect, corrected for funding bias, is likely at the lower end of this range.
 
 Trial durations are almost uniformly 6-12 weeks. Long-term effects beyond 3 months are not well-characterised. Most stress measures are subjective self-report scales, which are susceptible to expectancy effects and are harder to blind effectively than objective endpoints.
 
@@ -137,7 +137,7 @@ Trial durations are almost uniformly 6-12 weeks. Long-term effects beyond 3 mont
 
 ### Sleep quality
 
-Langade et al. (2019) used 300mg KSM-66 twice daily in adults with insomnia and found significant improvements in sleep onset latency, total sleep time, and sleep efficiency measured by actigraphy -- an objective endpoint, which strengthens this finding relative to the purely subjective stress data. Chandrasekhar et al. (2012) found sleep quality improvements as a secondary outcome.
+Langade et al. (2019) used 300mg KSM-66 twice daily in adults with insomnia and found significant improvements in sleep onset latency, total sleep time, and sleep efficiency measured by actigraphy, an objective endpoint, which strengthens this finding relative to the purely subjective stress data. Chandrasekhar et al. (2012) found sleep quality improvements as a secondary outcome.
 
 A meta-analysis by Cheah et al. (2021) pooled five trials and found significant improvements across sleep quality measures. Effects were strongest in participants with self-reported sleep problems at baseline. Evidence in good sleepers is limited and less consistent.
 
@@ -189,7 +189,7 @@ This is a meaningful personalisation consideration for women in perimenopause an
 
 **Stress, HPA axis, and hormonal interactions:** Women experience higher rates of stress-related conditions including generalised anxiety and burnout, and HPA axis dysregulation interacts with oestrogen and progesterone in ways that may make women more responsive to HPA-modulating interventions. This is mechanistically plausible but has not been specifically tested in adequately powered sex-stratified trials.
 
-The overall picture for women is that ashwagandha's core evidence domains -- stress and sleep -- are directly relevant to common concerns at multiple life stages. The perimenopausal and menopausal evidence, while early, is promising and particularly well-matched to the proposed mechanism. Women with thyroid conditions require specific caution.
+The overall picture for women is that ashwagandha's core evidence domains, stress and sleep, are directly relevant to common concerns at multiple life stages. The perimenopausal and menopausal evidence, while early, is promising and particularly well-matched to the proposed mechanism. Women with thyroid conditions require specific caution.
 
 ## Individual variation
 
@@ -201,7 +201,7 @@ The overall picture for women is that ashwagandha's core evidence domains -- str
 
 **Hormonal status:** The testosterone and fertility evidence is most applicable to men with sub-optimal baseline parameters. Women in perimenopause and menopause represent a specific relevant population for stress, sleep, and symptom outcomes.
 
-**Thyroid status:** Individuals with thyroid conditions -- particularly more prevalent in women -- should exercise caution and seek clinical advice before use.
+**Thyroid status:** Individuals with thyroid conditions, particularly more prevalent in women, should exercise caution and seek clinical advice before use.
 
 ## Funding and independence
 
