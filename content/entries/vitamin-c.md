@@ -100,9 +100,9 @@ The vitamin C evidence base is a case study in the importance of population cont
 
 **Deficiency correction and repletion** represent the clearest application. In individuals with low or deficient vitamin C status, supplementation reliably corrects biochemical markers and resolves or prevents deficiency symptoms. This is a nutritional correction effect, not a pharmacological one, and the evidence is consistent and uncontested.
 
-**Common cold -- general population.** The most widely cited Cochrane review (Hemila and Chalker) pooled over 10,000 participants across more than 30 trials. Regular supplementation (not therapeutic dosing at onset) modestly reduces cold duration -- approximately 8% relative reduction in adults (typically less than one day in absolute terms) and 14% in children. It does not reduce cold incidence in the general population. Starting supplementation after cold onset does not meaningfully affect duration or severity. This is a useful signal but a modest one, and it does not support the widespread perception that high-dose vitamin C prevents or cures colds in ordinary healthy adults.
+**Common cold, general population.** The most widely cited Cochrane review (Hemila and Chalker) pooled over 10,000 participants across more than 30 trials. Regular supplementation (not therapeutic dosing at onset) modestly reduces cold duration, approximately 8% relative reduction in adults (typically less than one day in absolute terms) and 14% in children. It does not reduce cold incidence in the general population. Starting supplementation after cold onset does not meaningfully affect duration or severity. This is a useful signal but a modest one, and it does not support the widespread perception that high-dose vitamin C prevents or cures colds in ordinary healthy adults.
 
-**Common cold -- high-stress populations.** A distinct and robust subgroup finding from the same evidence base shows approximately 50% reduction in cold incidence in people exposed to brief periods of extreme physical stress -- marathon runners, skiers, soldiers on intensive exercise. This effect is specific to this context and does not generalise.
+**Common cold, high-stress populations.** A distinct and robust subgroup finding from the same evidence base shows approximately 50% reduction in cold incidence in people exposed to brief periods of extreme physical stress, marathon runners, skiers, soldiers on intensive exercise. This effect is specific to this context and does not generalise.
 
 **Iron absorption.** Vitamin C reliably enhances non-haem iron absorption when consumed simultaneously with iron-containing food or supplements. The mechanism is well-understood: ascorbic acid reduces ferric iron to ferrous iron, which is more readily absorbed, and forms soluble chelate complexes that prevent precipitation. This interaction is clinically useful for individuals with low iron status or those relying on plant-based iron.
 
@@ -122,7 +122,7 @@ Yes, in a specific and limited sense. Regular supplementation prevents scurvy in
 
 ### Does vitamin C produce meaningful biomarker effects?
 
-Yes for iron absorption -- reliably and via a well-characterised mechanism. For antioxidant biomarkers (plasma ascorbate, oxidative stress markers) supplementation produces expected biochemical effects in low-status individuals, but these do not translate to hard clinical benefit in replete populations as established by large trials.
+Yes for iron absorption, reliably and via a well-characterised mechanism. For antioxidant biomarkers (plasma ascorbate, oxidative stress markers) supplementation produces expected biochemical effects in low-status individuals, but these do not translate to hard clinical benefit in replete populations as established by large trials.
 
 ### Does vitamin C improve outcomes in clinical populations?
 
@@ -134,7 +134,7 @@ Beyond modest cold duration reduction, the evidence for supplementation in reple
 
 ## Individual variation
 
-Smokers have meaningfully higher vitamin C requirements due to increased oxidative turnover from tobacco smoke. UK dietary reference values reflect this with a higher recommended intake for smokers. Low-status individuals -- whether from inadequate diet, malabsorption, or high physiological demand -- benefit more clearly from supplementation than replete individuals.
+Smokers have meaningfully higher vitamin C requirements due to increased oxidative turnover from tobacco smoke. UK dietary reference values reflect this with a higher recommended intake for smokers. Low-status individuals, whether from inadequate diet, malabsorption, or high physiological demand, benefit more clearly from supplementation than replete individuals.
 
 Individuals relying on plant-based iron sources represent a practical use case where vitamin C co-consumption is well-supported. Those with predisposition to calcium oxalate kidney stones should be aware that high-dose supplementation increases urinary oxalate excretion.
 
@@ -148,15 +148,15 @@ Status testing is most useful in individuals at elevated risk of low status: smo
 
 ## Safety
 
-Vitamin C is well-tolerated across a wide dose range. GI side effects -- diarrhoea, nausea, abdominal discomfort -- are the primary dose-limiting factor and typically occur above 1,000mg per day in most individuals. The tolerable upper intake level of 2,000mg per day reflects this. High-dose supplementation is not appropriate for individuals with haemochromatosis or other iron overload conditions given the enhancement of iron absorption. Individuals with a history of kidney stones, particularly calcium oxalate stones, should avoid high-dose supplementation. Laboratory test interference at high doses is a practical consideration for clinical settings.
+Vitamin C is well-tolerated across a wide dose range. GI side effects, diarrhoea, nausea, abdominal discomfort, are the primary dose-limiting factor and typically occur above 1,000mg per day in most individuals. The tolerable upper intake level of 2,000mg per day reflects this. High-dose supplementation is not appropriate for individuals with haemochromatosis or other iron overload conditions given the enhancement of iron absorption. Individuals with a history of kidney stones, particularly calcium oxalate stones, should avoid high-dose supplementation. Laboratory test interference at high doses is a practical consideration for clinical settings.
 
 ## What can reasonably be concluded
 
-Vitamin C has a well-established and important role in correcting low status, in collagen synthesis, and in enhancing iron absorption. The evidence for cold duration reduction in the general population is real but modest -- less than one day in absolute terms -- and the popular belief in high-dose vitamin C as a cold cure is not well-supported by the trial evidence. The meaningful cold prevention effect is specific to individuals under acute physical or environmental stress.
+Vitamin C has a well-established and important role in correcting low status, in collagen synthesis, and in enhancing iron absorption. The evidence for cold duration reduction in the general population is real but modest, less than one day in absolute terms, and the popular belief in high-dose vitamin C as a cold cure is not well-supported by the trial evidence. The meaningful cold prevention effect is specific to individuals under acute physical or environmental stress.
 
 For replete healthy adults, the large prevention trials provide consistent null findings for cardiovascular disease and cancer. Supplementation in this context is unlikely to cause harm at conventional doses but the evidence base does not support a strong clinical rationale.
 
-The strongest case for vitamin C supplementation is in individuals at risk of low status -- smokers, older adults with limited dietary variety, those with malabsorption -- and in the specific context of iron absorption optimisation. The core evidence base for vitamin C is mature, with most large trials completed before 2010; this reflects the settled nature of the primary findings rather than a gap in the literature. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
+The strongest case for vitamin C supplementation is in individuals at risk of low status, smokers, older adults with limited dietary variety, those with malabsorption, and in the specific context of iron absorption optimisation. The core evidence base for vitamin C is mature, with most large trials completed before 2010; this reflects the settled nature of the primary findings rather than a gap in the literature. Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
 ---
 
@@ -164,19 +164,19 @@ The strongest case for vitamin C supplementation is in individuals at risk of lo
 
 ## Evidence base by outcome
 
-### Common cold -- general population
+### Common cold, general population
 
 Hemila H and Chalker E (2013, Cochrane Database of Systematic Reviews; meta-analysis of 29 RCTs, n = 11,306) found that regular vitamin C supplementation (not therapeutic dosing at onset) reduced cold duration by 8% in adults (95% CI 3 to 12%) and 14% in children (95% CI 7 to 21%). Incidence was not reduced in the general population. Therapeutic dosing initiated at the onset of symptoms showed no consistent benefit on duration or severity in the general population.
 
-The effect on duration is consistent across trials but small in absolute terms -- typically less than one day for a cold lasting seven to ten days. The evidence does not support the widespread use of high-dose vitamin C at cold onset.
+The effect on duration is consistent across trials but small in absolute terms, typically less than one day for a cold lasting seven to ten days. The evidence does not support the widespread use of high-dose vitamin C at cold onset.
 
 **Evidence rating basis:** Moderate. Consistent signal across a large and well-conducted meta-analysis. Effect size is small and the clinical significance is limited. Does not support cold prevention or therapeutic dosing.
 
-### Common cold -- high-stress populations
+### Common cold, high-stress populations
 
 In the subgroup analysis within the Hemila and Chalker Cochrane review, trials in marathon runners, skiers, and soldiers showed a 50% reduction in cold incidence with regular supplementation. This effect was consistent across six trials in n = 642 participants exposed to acute physical and environmental stress.
 
-This finding is biologically plausible -- intense physical exertion depletes ascorbate and may transiently impair immune function. The effect is population-specific and should not be extrapolated to sedentary or unstressed individuals.
+This finding is biologically plausible, intense physical exertion depletes ascorbate and may transiently impair immune function. The effect is population-specific and should not be extrapolated to sedentary or unstressed individuals.
 
 **Evidence rating basis:** Strong for this specific population. Consistent across multiple trials in well-defined high-stress contexts.
 
@@ -218,13 +218,13 @@ Nusgens BV et al. and subsequent work confirmed that oral supplementation in low
 
 ## How to interpret this evidence
 
-Vitamin C exemplifies the distinction between repletion effects and pharmacological effects. In low-status individuals the evidence for benefit is clear and the physiological rationale is well-established. In replete individuals, the same supplementation produces measurable biochemical changes -- plasma ascorbate rises, oxidative stress markers improve -- but these do not translate into meaningful hard clinical outcomes in large trials.
+Vitamin C exemplifies the distinction between repletion effects and pharmacological effects. In low-status individuals the evidence for benefit is clear and the physiological rationale is well-established. In replete individuals, the same supplementation produces measurable biochemical changes, plasma ascorbate rises, oxidative stress markers improve, but these do not translate into meaningful hard clinical outcomes in large trials.
 
 The cold duration finding is real but frequently overstated. A consistent 8% reduction in duration in the general population is a statistical signal, not a clinical treatment. The high-stress population finding is more clinically meaningful but applies to a narrow context.
 
 The cardiovascular and cancer prevention claims that drive much of the commercial market for vitamin C supplements are not supported by the intervention evidence. The gap between observational associations and trial results is a recurring pattern in antioxidant research and is not unique to vitamin C.
 
-The core vitamin C evidence base is mature -- most large trials were completed before 2010. This reflects the settled nature of the primary findings rather than a gap in research activity. Recent work has focused on specific clinical contexts including critical illness and pharmacokinetics of high-dose intravenous administration, which are outside the scope of routine supplementation.
+The core vitamin C evidence base is mature, most large trials were completed before 2010. This reflects the settled nature of the primary findings rather than a gap in research activity. Recent work has focused on specific clinical contexts including critical illness and pharmacokinetics of high-dose intravenous administration, which are outside the scope of routine supplementation.
 
 ## Key references
 
