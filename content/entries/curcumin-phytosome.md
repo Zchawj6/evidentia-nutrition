@@ -70,7 +70,7 @@ cardDescription: "Solving the bioavailability problem changes the evidence pictu
 
 ## What it is
 
-This entry covers curcumin formulations engineered to overcome the poor bioavailability of standard curcumin extract. Several distinct proprietary forms exist, each using different delivery technology to increase systemic absorption and tissue availability of curcuminoids. The evidence base for these forms is substantially stronger than for standard extract -- but is not uniform across formulations, and is not transferable between them without caution.
+This entry covers curcumin formulations engineered to overcome the poor bioavailability of standard curcumin extract. Several distinct proprietary forms exist, each using different delivery technology to increase systemic absorption and tissue availability of curcuminoids. The evidence base for these forms is substantially stronger than for standard extract, but is not uniform across formulations, and is not transferable between them without caution.
 
 This entry should be read alongside the standard curcumin extract entry, which explains why the unenhanced form has insufficient evidence and why the distinction between forms matters.
 
@@ -78,7 +78,7 @@ This entry should be read alongside the standard curcumin extract entry, which e
 
 **Curcumin phytosome (Meriva)** complexes curcumin with phosphatidylcholine, a phospholipid component of cell membranes. This substantially improves gastrointestinal absorption. Meriva has the largest and most independently replicated trial base of any enhanced curcumin form and is the reference standard for this category. A pharmacokinetic study by Cuomo et al. (2011) showed approximately 29-fold higher absorption compared to standard extract.
 
-**BCM-95 (Biocurcumax)** combines curcuminoids with turmeric essential oils (ar-turmerone), which appear to enhance absorption and may contribute independent biological activity. BCM-95 has a meaningful trial base, particularly in cognitive and mood outcomes. Bioavailability is substantially higher than standard extract -- approximately 6-7 fold in comparative studies.
+**BCM-95 (Biocurcumax)** combines curcuminoids with turmeric essential oils (ar-turmerone), which appear to enhance absorption and may contribute independent biological activity. BCM-95 has a meaningful trial base, particularly in cognitive and mood outcomes. Bioavailability is substantially higher than standard extract, approximately 6-7 fold in comparative studies.
 
 **Theracurmin** uses colloidal nanoparticle technology to reduce curcumin particle size and improve water dispersibility. Bioavailability data suggests approximately 27-fold improvement over standard extract. Theracurmin has been used in several cognitive trials and is among the better-studied forms for CNS applications.
 
@@ -118,7 +118,7 @@ No robust evidence supports this for any enhanced form. No adequately powered pr
 
 ### Does curcumin (enhanced forms) produce meaningful biomarker effects?
 
-Yes, with moderate confidence for inflammatory markers using Meriva and other well-studied forms. CRP and IL-6 reductions are more consistent with enhanced forms than with standard extract. The clinical relevance of these biomarker effects is uncertain -- they are not validated surrogates for clinical outcomes in this context, but the directional consistency across trials is a meaningful signal.
+Yes, with moderate confidence for inflammatory markers using Meriva and other well-studied forms. CRP and IL-6 reductions are more consistent with enhanced forms than with standard extract. The clinical relevance of these biomarker effects is uncertain. They are not validated surrogates for clinical outcomes in this context, but the directional consistency across trials is a meaningful signal.
 
 ### Does curcumin (enhanced forms) improve outcomes in clinical populations?
 
@@ -132,7 +132,7 @@ The evidence is limited for healthy adults without specific indication. The exer
 
 **Age:** Older adults have the strongest evidence base across cognitive, inflammatory, and joint outcomes.
 
-**Joint disease:** Individuals with osteoarthritis -- particularly knee osteoarthritis -- represent the best-characterised population for clinical benefit with Meriva.
+**Joint disease:** Individuals with osteoarthritis, particularly knee osteoarthritis, represent the best-characterised population for clinical benefit with Meriva.
 
 **Inflammatory status:** Individuals with elevated baseline inflammatory markers may show greater absolute responses.
 
@@ -146,7 +146,7 @@ Enhanced bioavailability forms are generally well-tolerated. GI side effects are
 
 ## What can reasonably be concluded
 
-Enhanced bioavailability forms -- particularly Meriva -- have meaningful evidence for joint pain and inflammatory outcomes that standard curcumin extract does not. The osteoarthritis evidence is the most robust application. Cognitive, metabolic, and mood applications are emerging areas with promising but not yet reliable evidence. Form selection matters: evidence from one formulation does not automatically apply to another.
+Enhanced bioavailability forms, particularly Meriva, have meaningful evidence for joint pain and inflammatory outcomes that standard curcumin extract does not. The osteoarthritis evidence is the most robust application. Cognitive, metabolic, and mood applications are emerging areas with promising but not yet reliable evidence. Form selection matters: evidence from one formulation does not automatically apply to another.
 
 Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
@@ -174,7 +174,7 @@ CRP, IL-6, and TNF-alpha reductions are reported consistently across multiple en
 
 Small et al. (2018) conducted an 18-month double-blind RCT with Theracurmin (90mg twice daily) in 40 non-demented older adults, finding improvements in memory and attention alongside reductions in amyloid and tau deposition on PET imaging. This is the most notable single finding in the enhanced curcumin cognitive literature. However, the trial is small (n=40), the PET imaging findings are exploratory biomarker endpoints not validated surrogates for cognitive outcomes, and independent replication has not occurred. BCM-95 trials have shown improvements in depressive symptoms and some cognitive measures.
 
-**Evidence rating basis:** Emerging. Promising single trial finding requiring replication. Evidence should be interpreted at the level of individual formulations -- Theracurmin for cognitive outcomes, BCM-95 for mood.
+**Evidence rating basis:** Emerging. Promising single trial finding requiring replication. Evidence should be interpreted at the level of individual formulations, Theracurmin for cognitive outcomes, BCM-95 for mood.
 
 ### Metabolic and glycaemic outcomes
 
@@ -184,7 +184,7 @@ Modest improvements in fasting glucose and insulin sensitivity are reported acro
 
 ### Exercise-induced muscle damage and recovery
 
-Several small trials using various enhanced forms have reported reductions in muscle soreness markers (CK, LDH) and CRP following exercise. The mechanistic rationale -- reduced inflammatory signalling in response to exercise-induced muscle damage -- is plausible. The evidence base is too small for a confident recommendation but is directionally consistent.
+Several small trials using various enhanced forms have reported reductions in muscle soreness markers (CK, LDH) and CRP following exercise. The mechanistic rationale, reduced inflammatory signalling in response to exercise-induced muscle damage, is plausible. The evidence base is too small for a confident recommendation but is directionally consistent.
 
 **Evidence rating basis:** Emerging. Plausible mechanism; directionally consistent small trials; insufficient volume for recommendation.
 
@@ -200,7 +200,7 @@ For joint and inflammatory outcomes, Meriva (curcumin phytosome) has the deepest
 
 ## Funding and independence
 
-A meaningful proportion of trials using proprietary enhanced forms are funded by the respective patent holders -- Indena (Meriva), Arjuna Natural (BCM-95), Theravalues (Theracurmin). This creates a structural positive bias in the literature for each form. Independent replication of the key findings is limited but exists for Meriva osteoarthritis outcomes. This funding pattern should be factored into confidence ratings but does not invalidate the evidence given the consistency of findings.
+A meaningful proportion of trials using proprietary enhanced forms are funded by the respective patent holders, Indena (Meriva), Arjuna Natural (BCM-95), Theravalues (Theracurmin). This creates a structural positive bias in the literature for each form. Independent replication of the key findings is limited but exists for Meriva osteoarthritis outcomes. This funding pattern should be factored into confidence ratings but does not invalidate the evidence given the consistency of findings.
 
 ## Key references
 
