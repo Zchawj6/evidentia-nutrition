@@ -56,7 +56,7 @@ cardDescription: "Reasonable evidence in specific populations -- particularly he
 
 ## What it is
 
-Coenzyme Q10 (CoQ10) is a fat-soluble compound found in virtually every cell in the body, with the highest concentrations in tissues with high energy demands -- the heart, liver, kidneys, and skeletal muscle. It plays a central role in mitochondrial ATP production and functions as a lipid-soluble antioxidant in cell membranes. The body synthesises CoQ10 endogenously, but synthesis declines with age and is reduced by certain medications, particularly statins.
+Coenzyme Q10 (CoQ10) is a fat-soluble compound found in virtually every cell in the body, with the highest concentrations in tissues with high energy demands, the heart, liver, kidneys, and skeletal muscle. It plays a central role in mitochondrial ATP production and functions as a lipid-soluble antioxidant in cell membranes. The body synthesises CoQ10 endogenously, but synthesis declines with age and is reduced by certain medications, particularly statins.
 
 CoQ10 exists in two interconvertible forms: ubiquinone (the oxidised form) and ubiquinol (the reduced form). Ubiquinone is the standard studied form in clinical trials and has the largest evidence base. Ubiquinol has not demonstrated superior clinical outcomes compared to ubiquinone in adequately powered head-to-head trials for the key outcomes reviewed here.
 
@@ -64,13 +64,13 @@ CoQ10 exists in two interconvertible forms: ubiquinone (the oxidised form) and u
 
 **Heart failure** is the best-evidenced application. The Q-SYMBIO trial found that CoQ10 supplementation at 300mg/day as an adjunct to standard heart failure therapy reduced major adverse cardiovascular events and cardiovascular mortality over two years. This is an important finding, but it has not been replicated in a large contemporary trial using current standard heart failure therapy, and the overall evidence base relies heavily on this single pivotal trial. Improvements in ejection fraction and exercise tolerance seen in meta-analyses are meaningful intermediate endpoints, but improvements in these measures do not necessarily translate into mortality benefit and should not be read as equivalent to event-level evidence from multiple large trials.
 
-**Statin-associated muscle symptoms (SAMS)** represent the most common reason for CoQ10 supplementation. Statins reduce CoQ10 synthesis alongside cholesterol, and muscle CoQ10 concentrations are lower in statin users. Clinical trials show mixed results -- some show small to modest reductions in pain scores; others show no benefit over placebo. The placebo response in SAMS trials is substantial, no clear responder phenotype has been identified, and effect sizes where present are small to modest with high variability.
+**Statin-associated muscle symptoms (SAMS)** represent the most common reason for CoQ10 supplementation. Statins reduce CoQ10 synthesis alongside cholesterol, and muscle CoQ10 concentrations are lower in statin users. Clinical trials show mixed results, some show small to modest reductions in pain scores; others show no benefit over placebo. The placebo response in SAMS trials is substantial, no clear responder phenotype has been identified, and effect sizes where present are small to modest with high variability.
 
-**Fertility in women** is an emerging application. Small trials in women undergoing IVF show modest improvements in ovarian response metrics and embryo quality. The mechanistic rationale -- declining mitochondrial function in ageing oocytes -- is stronger than the current clinical outcome evidence. Live birth rates, which are the clinically important endpoint, remain insufficiently established.
+**Fertility in women** is an emerging application. Small trials in women undergoing IVF show modest improvements in ovarian response metrics and embryo quality. The mechanistic rationale, declining mitochondrial function in ageing oocytes, is stronger than the current clinical outcome evidence. Live birth rates, which are the clinically important endpoint, remain insufficiently established.
 
 ## What the evidence does not show
 
-General energy enhancement, cognitive improvement, and anti-ageing effects in healthy adults without specific indication are not supported -- trials are generally null in these populations. No evidence shows that restoring CoQ10 levels reverses age-related functional decline in healthy older adults.
+General energy enhancement, cognitive improvement, and anti-ageing effects in healthy adults without specific indication are not supported, trials are generally null in these populations. No evidence shows that restoring CoQ10 levels reverses age-related functional decline in healthy older adults.
 
 Ubiquinol has not demonstrated superior clinical outcomes to ubiquinone in adequately powered comparative trials.
 
@@ -84,11 +84,11 @@ The evidence is strongest for individuals with heart failure as an adjunct to st
 
 ## Safety and contraindications
 
-CoQ10 is well-tolerated across a wide dose range. A modest interaction with warfarin has been reported -- individuals on anticoagulants should monitor INR when starting supplementation. GI effects including nausea and loose stools occur at higher doses and are reduced by splitting the daily dose. A modest blood pressure lowering effect has been reported in some trials; individuals on antihypertensive medication should be aware of this.
+CoQ10 is well-tolerated across a wide dose range. A modest interaction with warfarin has been reported, individuals on anticoagulants should monitor INR when starting supplementation. GI effects including nausea and loose stools occur at higher doses and are reduced by splitting the daily dose. A modest blood pressure lowering effect has been reported in some trials; individuals on antihypertensive medication should be aware of this.
 
 ## What can reasonably be concluded
 
-CoQ10 has meaningful evidence in specific populations: heart failure as an adjunct to standard therapy, statin-associated muscle symptoms, and fertility in older women or those with diminished ovarian reserve undergoing IVF. In each case the evidence base has important limitations -- single trial dominance in heart failure, mixed results and high placebo response in SAMS, surrogate endpoints and absent live birth data in fertility -- that should temper confidence.
+CoQ10 has meaningful evidence in specific populations: heart failure as an adjunct to standard therapy, statin-associated muscle symptoms, and fertility in older women or those with diminished ovarian reserve undergoing IVF. In each case the evidence base has important limitations, single trial dominance in heart failure, mixed results and high placebo response in SAMS, surrogate endpoints and absent live birth data in fertility, that should temper confidence.
 
 For healthy adults without specific indication, evidence for general energy, cognitive, or anti-ageing benefit is insufficient.
 
@@ -104,7 +104,7 @@ Where evidence is limited or outcomes are uncertain, conclusions should be treat
 
 The Q-SYMBIO trial (Mortensen et al., 2014; n = 420) randomised patients with moderate to severe heart failure to 300mg/day CoQ10 or placebo as an adjunct to standard therapy over two years. CoQ10 supplementation significantly reduced major adverse cardiovascular events (hazard ratio 0.50, 95% CI 0.32-0.80) and cardiovascular mortality. The mechanistic rationale is strong: heart failure is characterised by mitochondrial dysfunction, oxidative stress, and reduced myocardial CoQ10 concentrations.
 
-This finding has not been replicated in a large contemporary trial using current standard heart failure therapy, which now includes SGLT2 inhibitors, sacubitril-valsartan, and other agents not widely used when Q-SYMBIO was conducted. The incremental benefit of CoQ10 on top of modern background therapy is unknown. The large effect size (HR ~0.50) warrants both interest and caution -- large effect sizes in single trials are more vulnerable to overinterpretation and to shrinkage on replication.
+This finding has not been replicated in a large contemporary trial using current standard heart failure therapy, which now includes SGLT2 inhibitors, sacubitril-valsartan, and other agents not widely used when Q-SYMBIO was conducted. The incremental benefit of CoQ10 on top of modern background therapy is unknown. The large effect size (HR ~0.50) warrants both interest and caution, large effect sizes in single trials are more vulnerable to overinterpretation and to shrinkage on replication.
 
 Meta-analyses including Q-SYMBIO and earlier smaller trials consistently show improvements in ejection fraction (weighted mean approximately 3-4 percentage points) and exercise tolerance. These are meaningful intermediate clinical endpoints, but improvements in ejection fraction do not necessarily translate into mortality benefit and should not be treated as equivalent to event-level evidence from multiple large trials.
 
@@ -124,7 +124,7 @@ The placebo response in SAMS trials is substantial. The correlation between musc
 
 Mitochondrial function is central to oocyte quality. Oocytes have exceptionally high mitochondrial density and energy demands, and mitochondrial function declines with age, contributing to age-related fertility decline.
 
-Xu et al. (2018) found improvements in ovarian response and fertilisation rates in women with diminished ovarian reserve undergoing IVF. Ben-Meir et al. (2015) found modest improvements in embryo quality metrics in older women undergoing IVF. Both trials used surrogate endpoints -- oocyte quantity and quality, embryo metrics, ovarian response. Live birth rates, the clinically important outcome, remain insufficiently established. The mechanistic rationale for CoQ10 in this context is stronger than the current clinical outcome evidence.
+Xu et al. (2018) found improvements in ovarian response and fertilisation rates in women with diminished ovarian reserve undergoing IVF. Ben-Meir et al. (2015) found modest improvements in embryo quality metrics in older women undergoing IVF. Both trials used surrogate endpoints, oocyte quantity and quality, embryo metrics, ovarian response. Live birth rates, the clinically important outcome, remain insufficiently established. The mechanistic rationale for CoQ10 in this context is stronger than the current clinical outcome evidence.
 
 Trial sizes are small, replication is limited, and the IVF population may not generalise to women attempting natural conception.
 
@@ -132,7 +132,7 @@ Trial sizes are small, replication is limited, and the IVF population may not ge
 
 ### General energy and cognitive function in healthy adults
 
-Trials in healthy adults are generally null. The theoretical rationale -- that supplementing CoQ10 in people with adequate mitochondrial function will meaningfully enhance energy production -- is not supported by clinical trial data. No evidence shows that restoring CoQ10 levels in healthy older adults reverses age-related functional decline.
+Trials in healthy adults are generally null. The theoretical rationale, that supplementing CoQ10 in people with adequate mitochondrial function will meaningfully enhance energy production, is not supported by clinical trial data. No evidence shows that restoring CoQ10 levels in healthy older adults reverses age-related functional decline.
 
 **Evidence rating basis:** Insufficient.
 
@@ -162,7 +162,7 @@ Endogenous CoQ10 synthesis declines substantially with age, affecting tissues wi
 
 ## Funding and independence
 
-Q-SYMBIO received partial funding from Pharma Nord, a CoQ10 manufacturer -- a relevant limitation alongside the trial's generally sound methodology. Much of the earlier heart failure and SAMS trial evidence was independently or institutionally funded. The fertility evidence has variable funding sources.
+Q-SYMBIO received partial funding from Pharma Nord, a CoQ10 manufacturer, a relevant limitation alongside the trial's generally sound methodology. Much of the earlier heart failure and SAMS trial evidence was independently or institutionally funded. The fertility evidence has variable funding sources.
 
 ## Key references
 
