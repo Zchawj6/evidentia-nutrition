@@ -62,7 +62,7 @@ cardDescription: "One of the most robustly evidenced supplements in existence. T
 
 ## What it is
 
-Creatine is a naturally occurring compound synthesised in the body from the amino acids glycine, arginine, and methionine. It is stored primarily in skeletal muscle as phosphocreatine -- a rapid substrate for ATP resynthesis during maximal short-duration effort. Creatine is also obtained from the diet through meat and fish; individuals with little or no intake from these sources have lower baseline muscle creatine stores.
+Creatine is a naturally occurring compound synthesised in the body from the amino acids glycine, arginine, and methionine. It is stored primarily in skeletal muscle as phosphocreatine, a rapid substrate for ATP resynthesis during maximal short-duration effort. Creatine is also obtained from the diet through meat and fish; individuals with little or no intake from these sources have lower baseline muscle creatine stores.
 
 Creatine monohydrate is the standard studied form with the largest evidence base by a substantial margin. It has consistently matched or outperformed alternative forms in head-to-head comparisons.
 
@@ -70,21 +70,21 @@ Creatine monohydrate is the standard studied form with the largest evidence base
 
 **High-intensity exercise performance** is where the evidence is strongest. Supplementation increases the phosphocreatine pool available for ATP resynthesis during maximal efforts, producing consistent improvements in peak power, repeated sprint performance, and total work in high-intensity activities. Multiple meta-analyses confirm moderate, consistent effect sizes.
 
-**Resistance training outcomes** -- muscle strength and lean mass -- are well-evidenced when creatine is combined with progressive resistance training. The effect involves both initial intramuscular water retention and longer-term training adaptations. These are distinct mechanisms. The training stimulus is essential; creatine without progressive overload produces substantially smaller effects.
+**Resistance training outcomes**, muscle strength and lean mass, are well-evidenced when creatine is combined with progressive resistance training. The effect involves both initial intramuscular water retention and longer-term training adaptations. These are distinct mechanisms. The training stimulus is essential; creatine without progressive overload produces substantially smaller effects.
 
-**Muscle creatine store increase** in individuals with low baseline status is a reliable biomarker effect. Those with the lowest baseline stores -- including vegetarians, vegans, women, and older adults -- show the greatest absolute increase. This is a strong biomarker effect; the clinical outcome that follows depends on how those stores are used and does not fully predict performance due to the moderating roles of neural factors and training status.
+**Muscle creatine store increase** in individuals with low baseline status is a reliable biomarker effect. Those with the lowest baseline stores, including vegetarians, vegans, women, and older adults, show the greatest absolute increase. This is a strong biomarker effect; the clinical outcome that follows depends on how those stores are used and does not fully predict performance due to the moderating roles of neural factors and training status.
 
-**Cognitive function** shows a modest but consistent signal in populations with low baseline brain creatine -- particularly vegetarians, vegans, and older adults. In healthy omnivores with normal dietary creatine intake under normal conditions, the evidence is insufficient.
+**Cognitive function** shows a modest but consistent signal in populations with low baseline brain creatine, particularly vegetarians, vegans, and older adults. In healthy omnivores with normal dietary creatine intake under normal conditions, the evidence is insufficient.
 
 **Older adults** represent one of the most clinically relevant populations. Creatine combined with resistance training consistently improves muscle mass, strength, and functional outcomes relevant to sarcopenia prevention and healthy ageing.
 
-**Women across life stages** represent an important and growing area of evidence. Women have lower baseline creatine stores than men on average, and the biology supports particular benefit -- especially during and after the menopause transition, when losses in muscle mass and cognitive function accelerate. This evidence is at an earlier stage than the core exercise domains but is developing positively.
+**Women across life stages** represent an important and growing area of evidence. Women have lower baseline creatine stores than men on average, and the biology supports particular benefit, especially during and after the menopause transition, when losses in muscle mass and cognitive function accelerate. This evidence is at an earlier stage than the core exercise domains but is developing positively.
 
 ## What the evidence does not show
 
 The evidence does not support general cognitive enhancement in healthy omnivores under normal conditions. Claims about mood, sleep, recovery, and general wellbeing in replete individuals with normal dietary intake are not well-evidenced.
 
-Alternative creatine forms -- ethyl ester, buffered creatine, hydrochloride -- have not demonstrated superiority over monohydrate in direct comparison trials. Claims of superiority are marketing rather than evidence.
+Alternative creatine forms, ethyl ester, buffered creatine, hydrochloride, have not demonstrated superiority over monohydrate in direct comparison trials. Claims of superiority are marketing rather than evidence.
 
 ## Form and dose considerations
 
@@ -94,7 +94,7 @@ Co-ingestion with carbohydrate or a mixed meal improves muscle uptake via insuli
 
 ## Who the evidence applies to
 
-The evidence is strongest for individuals with low baseline creatine stores -- vegetarians, vegans, older adults, women, and omnivores with low meat intake. In these populations, the performance, cognitive, and functional benefits are most likely to be meaningful.
+The evidence is strongest for individuals with low baseline creatine stores, vegetarians, vegans, older adults, women, and omnivores with low meat intake. In these populations, the performance, cognitive, and functional benefits are most likely to be meaningful.
 
 In trained omnivores with high habitual creatine intake and saturated stores, the marginal benefit is smaller. The training context matters: performance benefits require high-intensity training; lean mass benefits require progressive resistance training.
 
@@ -102,7 +102,7 @@ In trained omnivores with high habitual creatine intake and saturated stores, th
 
 Creatine monohydrate is well-tolerated at standard doses with decades of research supporting its safety profile. Supplementation raises plasma creatinine as a metabolic byproduct; this is benign but can be misinterpreted as a sign of renal impairment on routine blood tests. Where formal renal assessment is needed, alternative markers such as cystatin C may be more reliable. No evidence of renal harm exists in healthy individuals at standard doses, though long-term data beyond five years remains limited.
 
-Loading protocols may cause GI discomfort in some individuals; the non-loading protocol reduces this substantially. Initial supplementation increases intramuscular water retention, typically 0.5-1.5kg in the first week -- this is a normal physiological response, not fat gain.
+Loading protocols may cause GI discomfort in some individuals; the non-loading protocol reduces this substantially. Initial supplementation increases intramuscular water retention, typically 0.5-1.5kg in the first week, this is a normal physiological response, not fat gain.
 
 One unreplicated trial observed elevated DHT levels with creatine use. This has not been confirmed in subsequent research and is insufficient to support a causal relationship with hair loss, though individuals with significant androgenic alopecia concerns may wish to note it.
 
@@ -110,9 +110,9 @@ One unreplicated trial observed elevated DHT levels with creatine use. This has 
 
 Creatine monohydrate has strong evidence for high-intensity exercise performance and resistance training outcomes including strength and lean mass. These are among the most consistently demonstrated effects in sports nutrition.
 
-Cognitive benefits are meaningful but population-specific -- most reliable in vegetarians, vegans, and older adults. The case for creatine in women across life stages, particularly perimenopause and beyond, is scientifically grounded and growing, though not yet at the same evidence level as the core exercise outcomes.
+Cognitive benefits are meaningful but population-specific, most reliable in vegetarians, vegans, and older adults. The case for creatine in women across life stages, particularly perimenopause and beyond, is scientifically grounded and growing, though not yet at the same evidence level as the core exercise outcomes.
 
-Creatine monohydrate at standard doses is the appropriate choice. Baseline status -- primarily determined by dietary intake -- is the most important factor in predicting likely response.
+Creatine monohydrate at standard doses is the appropriate choice. Baseline status, primarily determined by dietary intake, is the most important factor in predicting likely response.
 
 Where evidence is limited or outcomes are uncertain, conclusions should be treated as provisional and subject to revision as the evidence base develops.
 
@@ -134,7 +134,7 @@ Meta-analyses consistently show improvements in peak power output, repeated spri
 
 Creatine combined with resistance training consistently produces greater gains in strength and lean mass compared to training alone. The effect on lean mass involves both increased intramuscular water retention (acute, first 1-2 weeks) and enhanced training adaptation over time (chronic). These mechanisms are distinct and should not be conflated.
 
-Meta-analyses show clear benefit on one-repetition maximum strength and lean mass across multiple populations and training durations. The training component is essential -- creatine without progressive overload produces substantially smaller lean mass effects.
+Meta-analyses show clear benefit on one-repetition maximum strength and lean mass across multiple populations and training durations. The training component is essential, creatine without progressive overload produces substantially smaller lean mass effects.
 
 **Evidence rating basis:** Strong. Consistent across meta-analyses, multiple populations including untrained individuals, athletes, and older adults. Training context is a required moderator.
 
@@ -148,11 +148,11 @@ Supplementation reliably increases intramuscular phosphocreatine content in a do
 
 The cognitive evidence requires careful stratification by baseline status.
 
-In vegetarians and vegans -- who have lower brain creatine stores due to absent dietary intake -- supplementation produces modest but consistent improvements on tasks requiring rapid information processing and working memory. Benton and Donohoe (2011) directly compared vegetarians and omnivores and found a significant benefit only in the former. Rae et al. (2003) showed broader cognitive improvements in a general population crossover design.
+In vegetarians and vegans, who have lower brain creatine stores due to absent dietary intake, supplementation produces modest but consistent improvements on tasks requiring rapid information processing and working memory. Benton and Donohoe (2011) directly compared vegetarians and omnivores and found a significant benefit only in the former. Rae et al. (2003) showed broader cognitive improvements in a general population crossover design.
 
 A meta-analysis by Prokopidis et al. (2023) found a significant overall effect on memory performance, but the effect was driven substantially by studies in older adults and vegetarians. Pooling these with younger omnivores produces a misleading average.
 
-In healthy omnivores with normal dietary intake under normal conditions, evidence from well-powered trials is generally null. A more consistent signal appears under conditions of cognitive stress, sleep deprivation, or hypoxia -- states that impose acute demands on cerebral energy metabolism. The clinical relevance of this for most users is uncertain.
+In healthy omnivores with normal dietary intake under normal conditions, evidence from well-powered trials is generally null. A more consistent signal appears under conditions of cognitive stress, sleep deprivation, or hypoxia, states that impose acute demands on cerebral energy metabolism. The clinical relevance of this for most users is uncertain.
 
 **Evidence rating basis:** Moderate in vegetarians, vegans, and older adults. Modest but consistent effect sizes in appropriately stratified populations. Insufficient in healthy omnivores under normal conditions.
 
@@ -192,7 +192,7 @@ The evidence does not support paying a premium for alternative forms. All compar
 
 ## Individual variation
 
-**Baseline stores** are the primary predictor of response. Low responders -- those already near saturation, typically high meat consumers -- show minimal performance benefit. High responders -- vegetarians, vegans, older adults, women, and low meat consumers -- show the greatest benefit. Diet history provides a practical proxy for baseline status.
+**Baseline stores** are the primary predictor of response. Low responders, those already near saturation, typically high meat consumers, show minimal performance benefit. High responders, vegetarians, vegans, older adults, women, and low meat consumers, show the greatest benefit. Diet history provides a practical proxy for baseline status.
 
 **Sex:** Women have lower baseline stores on average and may show a larger relative response. The depression signal is primarily in female populations. Perimenopausal and postmenopausal women represent a specific high-relevance group.
 
