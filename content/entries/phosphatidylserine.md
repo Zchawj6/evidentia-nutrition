@@ -36,7 +36,7 @@ populationSpecific: true
 populationNotes: Most evidence concentrated in older adults with cognitive decline or age-associated memory impairment; evidence in healthy younger adults is limited and inconsistent; all cortisol studies conducted in healthy males only
 safetyFlag: true
 safetyNotes: Potential mild anticoagulant properties; caution with warfarin, heparin, aspirin, clopidogrel, and other antiplatelet agents; possible cholinergic interactions; gastrointestinal side effects at higher doses; avoid before surgery; pregnancy safety not established
-lastReviewed: 2025-08-01
+lastReviewed: "2025-08-01"
 reviewInterval: 18
 version: 1
 advisoryReview: false
