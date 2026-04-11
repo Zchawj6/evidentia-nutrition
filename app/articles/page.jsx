@@ -68,7 +68,7 @@ export default function ArticlesPage() {
           Articles represent the views of their named authors and are held to a high editorial standard, but do not follow the same structured appraisal methodology as our <a href="/library" style={{ color: '#1A6B72', textDecoration: 'none' }}>evidence library entries</a>. Author credentials are noted on each piece.
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
           {articles.map(article => (
             <ArticleCard key={article.slug} article={article} />
           ))}
