@@ -50,7 +50,7 @@ populationSpecific: true
 populationNotes: Strongest evidence in postmenopausal women for intravaginal route; oral evidence mostly in women over 60; limited data in premenopausal women and men; no meaningful data in younger healthy adults
 safetyFlag: true
 safetyNotes: Androgenic adverse effects (acne, hirsutism) at higher doses; potential interaction with hormone-sensitive conditions; breast cancer contraindication for intravaginal prasterone; long-term safety of oral supplementation not established beyond two years
-lastReviewed: 2025-04-10
+lastReviewed: "2025-04-10"
 reviewInterval: 12
 version: 1.0
 advisoryReview: false
