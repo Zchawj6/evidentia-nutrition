@@ -3,8 +3,8 @@ title: "Omega-3 dosing: how much is actually needed?"
 slug: "omega-3-dosing"
 date: "2026-04-08"
 category: "Personalisation"
-author: "Evidentia Nutrition"
-authorCredentials: ""
+author: "Professor Jatin Joshi"
+authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Omega-3 supplements range from 250 mg to 4,000 mg on the same shelf, and the label rarely makes clear what those numbers mean. The right dose depends on what you are trying to achieve, which omega-3s are actually in the product, and whether your diet is already providing some. Here is how to think through it."
 tags: ["omega-3", "EPA", "DHA", "fish-oil", "dosing", "triglycerides", "cardiovascular", "supplementation"]
 featured: false

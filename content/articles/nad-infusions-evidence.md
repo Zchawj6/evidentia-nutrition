@@ -3,8 +3,8 @@ title: "NAD+ Infusions: What the Evidence Actually Shows"
 slug: "nad-infusions-evidence"
 date: "2026-04-05"
 category: "Evidence Review"
-author: "Evidentia Nutrition"
-authorCredentials: ""
+author: "Professor Jatin Joshi"
+authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "NAD+ intravenous infusions are being sold in wellness clinics worldwide for anti-ageing, fatigue, addiction recovery, and cognitive performance. The human evidence is limited to small pilot studies assessing tolerability and biomarker changes, not clinical outcomes. No adequately powered trials have confirmed meaningful benefits for any of the conditions being marketed."
 tags: ["NAD+", "infusions", "anti-ageing", "evidence-review", "NMN"]
 featured: false

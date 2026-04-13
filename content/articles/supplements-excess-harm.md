@@ -3,8 +3,8 @@ title: "The problem with excess: why more is not better with supplements"
 slug: supplements-excess-harm
 date: 2026-04-05
 category: "Evidence Review"
-author: "Evidentia Nutrition"
-authorCredentials: ""
+author: "Professor Jatin Joshi"
+authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "The assumption that a higher dose means a better outcome runs through a lot of supplement culture. The evidence does not support it. Most nutrients have an optimal range, and going beyond it provides no additional benefit -- and in some cases causes measurable harm."
 tags: ["dosing", "toxicity", "vitamin A", "vitamin D", "selenium", "iron", "beta-carotene", "safety", "excess"]
 featured: false

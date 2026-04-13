@@ -3,8 +3,8 @@ title: "Why one dose fits nobody: the case for personalised supplementation"
 slug: "why-one-dose-fits-nobody"
 date: "2026-03-01"
 category: "Personalisation"
-author: "Evidentia Nutrition"
-authorCredentials: ""
+author: "Professor Jatin Joshi"
+authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Population-level recommended intakes are designed to cover the majority at a single dose. They do not account for the individual variation in absorption, baseline status, genetics, and lifestyle that determines what any given person actually needs. This is not a minor caveat. It is a fundamental limitation of generic supplementation advice."
 tags: ["personalisation", "individual-variation", "dosing", "nutrigenomics"]
 featured: true
