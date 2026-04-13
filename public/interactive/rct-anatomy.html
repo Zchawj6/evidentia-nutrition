@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read a Clinical Trial</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #4a4a6a;
+    --ink-muted: #8888aa;
+    --cream: #faf8f4;
+    --teal: #0d7377;
+    --teal-light: #e8f5f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e3;
+    --red: #b5342a;
+    --red-light: #fcecea;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --rule: #e2ddd8;
+    --stage-bg: #f5f3ef;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  /* Tab navigation */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .tab:hover { color: var(--ink-soft); background: rgba(255,255,255,0.5); }
+
+  .tab.active {
+    background: white;
+    color: var(--ink);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .tab .tab-num {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--teal);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* Panels */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.25s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Stage 1: Trial anatomy flow */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-step {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 0 0 0 20px;
+  }
+
+  .flow-step::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 36px;
+    bottom: -8px;
+    width: 2px;
+    background: var(--rule);
+  }
+
+  .flow-step:last-child::before { display: none; }
+
+  .step-dot {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--teal);
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    flex: 1;
+  }
+
+  .step-content.critical {
+    border-color: var(--teal);
+    border-width: 1.5px;
+    background: #f9fdfd;
+  }
+
+  .critical-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--teal);
+    background: var(--teal-light);
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .step-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
+
+  .step-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .step-text {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  .bias-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .bias-tag.risk {
+    background: var(--red-light);
+    color: var(--red);
+  }
+
+  .bias-tag.safe {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  /* Split arms */
+  .arms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 8px 0 8px;
+  }
+
+  .arm {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: white;
+  }
+
+  .arm.intervention { border-left: 3px solid var(--teal); }
+  .arm.control { border-left: 3px solid var(--ink-muted); }
+
+  .arm-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
+
+  .arm.intervention .arm-label { color: var(--teal); }
+  .arm.control .arm-label { color: var(--ink-muted); }
+
+  .arm-desc { font-size: 12px; color: var(--ink-soft); font-weight: 300; }
+
+  /* Stage 2: Outcome types */
+  .outcome-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .outcome-card {
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid var(--rule);
+  }
+
+  .outcome-card.clinical { background: var(--green-light); border-color: #b0d9bf; }
+  .outcome-card.surrogate { background: var(--amber-light); border-color: #f0cfa0; }
+
+  .outcome-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .outcome-card.clinical h3 { color: var(--green); }
+  .outcome-card.surrogate h3 { color: var(--amber); }
+
+  .outcome-examples {
+    list-style: none;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .outcome-examples li {
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .outcome-examples li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+  }
+
+  .outcome-card.clinical .outcome-examples li::before { color: var(--green); }
+  .outcome-card.surrogate .outcome-examples li::before { color: var(--amber); }
+
+  .gap-note {
+    background: var(--red-light);
+    border: 1px solid #e8b4b0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--red);
+    font-weight: 400;
+  }
+
+  .gap-note strong { font-weight: 500; }
+
+  /* Stage 3: CI explainer */
+  .ci-explainer { }
+
+  .ci-intro {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .ci-chart {
+    margin: 24px 0;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+
+  .ci-chart-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
+
+  .ci-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  .ci-row-label {
+    width: 130px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+
+  .ci-track {
+    flex: 1;
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  .zero-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+    transform: translateX(-50%);
+  }
+
+  .zero-label {
+    position: absolute;
+    left: 50%;
+    top: -18px;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  .ci-bar {
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  .ci-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid white;
+  }
+
+  .ci-end {
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ci-verdict {
+    width: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .verdict-good { color: var(--green); }
+  .verdict-unclear { color: var(--amber); }
+  .verdict-none { color: var(--red); }
+  .verdict-size { color: var(--teal); }
+
+  .ci-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+
+  .ci-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-line {
+    width: 20px;
+    height: 3px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .ci-key-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .key-point {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  .key-point-head {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .key-point-body {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Stage 4: bias checklist */
+  .bias-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .bias-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+
+  .bias-item:hover { border-color: var(--teal); }
+
+  .bias-item.expanded { border-color: var(--teal); }
+
+  .bias-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--teal-light);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .bias-main { flex: 1; }
+
+  .bias-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .bias-short {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .bias-expand {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    line-height: 1.6;
+    display: none;
+  }
+
+  .bias-item.expanded .bias-expand { display: block; }
+
+  .bias-chevron {
+    color: var(--ink-muted);
+    font-size: 12px;
+    margin-top: 2px;
+    transition: transform 0.2s ease;
+  }
+
+  .bias-item.expanded .bias-chevron { transform: rotate(180deg); }
+
+  /* Checklist question */
+  .check-question {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--amber);
+    background: var(--amber-light);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-top: 8px;
+    display: inline-flex;
+  }
+
+  /* Responsive */
+  @media (max-width: 560px) {
+    .arms { grid-template-columns: 1fr; }
+    .outcome-compare { grid-template-columns: 1fr; }
+    .ci-key-points { grid-template-columns: 1fr; }
+    .ci-row-label { width: 90px; font-size: 11px; }
+    .ci-verdict { width: 80px; font-size: 10px; }
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: none; width: calc(50% - 2px); }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>How to read a clinical trial</h1>
+    <p>An interactive guide to the four dimensions of trial quality</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel(0)">
+      <span class="tab-num">Part 1</span>
+      Trial structure
+    </button>
+    <button class="tab" onclick="showPanel(1)">
+      <span class="tab-num">Part 2</span>
+      What was measured
+    </button>
+    <button class="tab" onclick="showPanel(2)">
+      <span class="tab-num">Part 3</span>
+      Reading the result
+    </button>
+    <button class="tab" onclick="showPanel(3)">
+      <span class="tab-num">Part 4</span>
+      Where bias enters
+    </button>
+  </div>
+
+  <!-- PANEL 1: Trial structure -->
+  <div class="panel active" id="panel-0">
+    <div class="flow">
+
+      <div class="flow-step">
+        <div class="step-dot"></div>
+        <div class="step-content">
+          <div class="step-label">Step 1 — Eligibility</div>
+          <div class="step-title">Defining who can participate</div>
+          <div class="step-text">Inclusion and exclusion criteria are set before recruitment begins. These determine what population the trial actually tests — not necessarily the population most likely to buy the supplement. A trial in elderly people with low baseline status may tell us little about healthy middle-aged adults.</div>
+          <span class="bias-tag risk">⚠ Check: does the study population match you?</span>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-dot"></div>
+        <div class="step-content critical">
+          <div class="critical-badge">Core quality dimension</div>
+          <div class="step-label">Step 2 — Randomisation &amp; allocation concealment</div>
+          <div class="step-title">Assigning participants to groups</div>
+          <div class="step-text">Participants are randomly assigned so that known and unknown differences between people are distributed evenly across groups. Allocation concealment means the person doing the enrolling does not know which group a participant will be placed in — preventing conscious or unconscious selection bias before the trial starts.</div>
+          <div class="arms">
+            <div class="arm intervention">
+              <div class="arm-label">Intervention group</div>
+              <div class="arm-desc">Receives the active compound at the tested dose and formulation</div>
+            </div>
+            <div class="arm control">
+              <div class="arm-label">Control group</div>
+              <div class="arm-desc">Receives a placebo — ideally identical in appearance, taste and smell</div>
+            </div>
+          </div>
+          <span class="bias-tag risk">⚠ Check: was allocation sequence concealed from enrollers?</span>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-dot"></div>
+        <div class="step-content critical">
+          <div class="critical-badge">Core quality dimension</div>
+          <div class="step-label">Step 3 — Blinding</div>
+          <div class="step-title">Keeping group assignment unknown</div>
+          <div class="step-text">In a double-blind trial, neither participants nor researchers know who received the active intervention until after analysis. Participant blinding controls for the placebo effect. Researcher blinding prevents differential treatment of groups and biased recording of outcomes.</div>
+          <span class="bias-tag safe">✓ Strong: double-blind with blinding integrity check</span>
+          <span class="bias-tag risk" style="margin-left:6px;">⚠ Weak: open-label with no justification</span>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-dot"></div>
+        <div class="step-content">
+          <div class="step-label">Step 4 — Follow-up &amp; analysis</div>
+          <div class="step-title">Collecting and interpreting outcomes</div>
+          <div class="step-text">Outcomes are measured at pre-specified time points. Intention-to-treat analysis includes all randomised participants regardless of whether they completed the protocol — preventing the distortion that comes from only analysing those who responded well enough to stay in the trial.</div>
+          <span class="bias-tag risk">⚠ Check: was there significant dropout? Were dropouts reported?</span>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-dot"></div>
+        <div class="step-content">
+          <div class="step-label">Step 5 — Publication</div>
+          <div class="step-title">Reporting the findings</div>
+          <div class="step-text">A well-reported trial publishes all pre-specified outcomes, including null and negative findings. Comparing the published paper with the trial's registry entry reveals whether outcomes were switched or selectively reported after data was collected.</div>
+          <span class="bias-tag risk">⚠ Check: does the registry entry match the published outcomes?</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PANEL 2: What was measured -->
+  <div class="panel" id="panel-1">
+
+    <div class="outcome-compare">
+      <div class="outcome-card clinical">
+        <h3>Patient-relevant outcomes</h3>
+        <ul class="outcome-examples">
+          <li>Reduced symptom burden</li>
+          <li>Improved physical function</li>
+          <li>Avoided hospitalisation</li>
+          <li>Better quality of life</li>
+          <li>Reduced disease incidence</li>
+          <li>Longer survival</li>
+        </ul>
+      </div>
+      <div class="outcome-card surrogate">
+        <h3>Surrogate markers</h3>
+        <ul class="outcome-examples">
+          <li>Blood test result</li>
+          <li>Biomarker level</li>
+          <li>Imaging measurement</li>
+          <li>Physiological variable</li>
+          <li>Enzyme activity</li>
+          <li>Tissue concentration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gap-note">
+      <strong>The gap that marketing exploits.</strong> A surrogate marker may be genuinely related to a clinical outcome — but changing a blood number does not automatically mean clinical benefit follows. Many interventions that shifted surrogates in the right direction failed to reduce disease incidence or improve wellbeing in trials large enough to measure those outcomes. The inferential leap from "this changes a biomarker" to "this improves your health" is where most supplement overclaiming lives.
+    </div>
+
+    <div style="margin-top: 16px;">
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">?</div>
+        <div class="bias-main">
+          <div class="bias-name">When are surrogates acceptable?</div>
+          <div class="bias-short">Not all biomarker evidence is equal</div>
+          <div class="bias-expand">Some surrogate markers have been formally validated as reliable predictors of clinical outcomes through decades of evidence. LDL cholesterol predicting cardiovascular events is an example. Most biomarkers used in supplement research have not been validated in this way. The question to ask is: has a change in this biomarker been directly linked to a change in the clinical outcome in large, independent trials?</div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" style="margin-top:8px;" onclick="toggleBias(this)">
+        <div class="bias-icon">?</div>
+        <div class="bias-main">
+          <div class="bias-name">What does Evidentia do with this distinction?</div>
+          <div class="bias-short">How the library labels outcome types</div>
+          <div class="bias-expand">Evidentia separates clinical outcome evidence from biomarker evidence throughout the library. A rating of Moderate for a biomarker change is not equivalent to a Moderate rating for a clinical outcome. Each entry states the type of evidence the rating reflects, so readers can see whether the evidence base rests on blood test results or on outcomes that matter in practice.</div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: Reading the result -->
+  <div class="panel" id="panel-2">
+
+    <p class="ci-intro">A p-value tells you the probability of seeing a result this extreme if the intervention had no effect. It says nothing about how large the effect is or whether it matters. A confidence interval tells you both things at once: the most likely effect size and the range of plausible values around it. These four examples show how to read them.</p>
+
+    <div class="ci-chart">
+      <div class="ci-chart-title">Effect estimates with 95% confidence intervals — four scenarios</div>
+
+      <!-- Zero line labels -->
+      <div style="position:relative; height:20px; margin-left:142px; margin-right:112px; margin-bottom:6px;">
+        <div style="position:absolute; left:50%; transform:translateX(-50%); font-size:10px; color:var(--ink-muted); white-space:nowrap;">← Favours control &nbsp;|&nbsp; Favours intervention →</div>
+      </div>
+
+      <div class="ci-row">
+        <div class="ci-row-label">Clear benefit,<br>precise estimate</div>
+        <div class="ci-track">
+          <div class="zero-line"></div>
+          <!-- bar from ~60% to 80% of track -->
+          <div class="ci-bar" style="left:62%; right:16%; background:var(--green); opacity:0.3;"></div>
+          <div class="ci-end" style="left:62%; background:var(--green);"></div>
+          <div class="ci-end" style="left:84%; background:var(--green);"></div>
+          <div class="ci-dot" style="left:73%; background:var(--green);"></div>
+        </div>
+        <div class="ci-verdict verdict-good">Clear benefit</div>
+      </div>
+
+      <div class="ci-row">
+        <div class="ci-row-label">Possible benefit,<br>wide interval</div>
+        <div class="ci-track">
+          <div class="zero-line"></div>
+          <div class="ci-bar" style="left:38%; right:8%; background:var(--amber); opacity:0.3;"></div>
+          <div class="ci-end" style="left:38%; background:var(--amber);"></div>
+          <div class="ci-end" style="left:92%; background:var(--amber);"></div>
+          <div class="ci-dot" style="left:65%; background:var(--amber);"></div>
+        </div>
+        <div class="ci-verdict verdict-unclear">Uncertain</div>
+      </div>
+
+      <div class="ci-row">
+        <div class="ci-row-label">Crosses zero —<br>cannot rule out<br>no difference</div>
+        <div class="ci-track">
+          <div class="zero-line"></div>
+          <div class="ci-bar" style="left:36%; right:30%; background:var(--red); opacity:0.25;"></div>
+          <div class="ci-end" style="left:36%; background:var(--red);"></div>
+          <div class="ci-end" style="left:70%; background:var(--red);"></div>
+          <div class="ci-dot" style="left:53%; background:var(--red);"></div>
+        </div>
+        <div class="ci-verdict verdict-none">Cannot rule out no effect</div>
+      </div>
+
+      <div class="ci-row">
+        <div class="ci-row-label">Statistically sig.<br>but trivially small</div>
+        <div class="ci-track">
+          <div class="zero-line"></div>
+          <div class="ci-bar" style="left:52%; right:38%; background:var(--teal); opacity:0.3;"></div>
+          <div class="ci-end" style="left:52%; background:var(--teal);"></div>
+          <div class="ci-end" style="left:62%; background:var(--teal);"></div>
+          <div class="ci-dot" style="left:57%; background:var(--teal);"></div>
+        </div>
+        <div class="ci-verdict verdict-size">Sig. but tiny</div>
+      </div>
+
+      <div class="ci-legend">
+        <div class="ci-legend-item"><div class="legend-dot" style="background:var(--green);"></div> Point estimate (most likely effect)</div>
+        <div class="ci-legend-item"><div class="legend-line" style="background:var(--ink-muted);"></div> 95% confidence interval</div>
+        <div class="ci-legend-item"><div class="legend-line" style="background:var(--rule); width:1px; height:14px;"></div> Zero line (no difference)</div>
+      </div>
+    </div>
+
+    <p style="font-size:12px; color:var(--ink-muted); font-weight:300; margin-top:14px; line-height:1.6;">These scenarios illustrate uncertainty within a single trial. Across multiple studies, estimates may vary further due to differences in populations, doses, and methods — a concept explored in Part 4 of this series.</p>
+
+    <div class="ci-key-points">
+      <div class="key-point">
+        <div class="key-point-head">Width = precision</div>
+        <div class="key-point-body">A narrow interval means the trial had enough participants and a consistent enough outcome to estimate the effect precisely. A wide interval means substantial uncertainty remains about the true size of the effect.</div>
+      </div>
+      <div class="key-point">
+        <div class="key-point-head">Crossing zero</div>
+        <div class="key-point-body">When the interval includes zero, the estimate is compatible with both benefit and no effect. This applies regardless of whether the p-value is just above or just below 0.05.</div>
+      </div>
+      <div class="key-point">
+        <div class="key-point-head">Size matters</div>
+        <div class="key-point-body">A statistically significant effect that is clinically trivial — too small to be noticed or to change quality of life — is not evidence of a meaningful benefit, even if the p-value is very small.</div>
+      </div>
+      <div class="key-point">
+        <div class="key-point-head">p-values alone mislead</div>
+        <div class="key-point-body">A result reported as "significant (p = 0.04)" without an effect size and confidence interval is incomplete. Ask what the actual difference was, and how large the uncertainty around it is.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 4: Bias sources -->
+  <div class="panel" id="panel-3">
+
+    <div class="bias-list">
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">1</div>
+        <div class="bias-main">
+          <div class="bias-name">Selection bias</div>
+          <div class="bias-short">Inadequate randomisation or concealment</div>
+          <div class="bias-expand">Occurs when the method of assigning participants to groups is flawed or the assignment can be predicted or influenced. Even well-intentioned investigators may unconsciously enrol participants likely to respond well into the intervention group. Trials with inadequate allocation concealment consistently report larger apparent treatment effects than those with proper concealment.
+            <div class="check-question">Ask: was sequence generation random and allocation concealed from enrollers?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">2</div>
+        <div class="bias-main">
+          <div class="bias-name">Performance bias</div>
+          <div class="bias-short">Unblinded participants or researchers</div>
+          <div class="bias-expand">When participants know which group they are in, they may behave differently, report outcomes differently, or respond to the expectation of benefit through the placebo effect. When researchers know group assignment, they may interact with participants or record ambiguous outcomes in ways that favour the intervention.
+            <div class="check-question">Ask: were both participants and investigators blinded? Was blinding tested?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">3</div>
+        <div class="bias-main">
+          <div class="bias-name">Attrition bias</div>
+          <div class="bias-short">Differential dropout between groups</div>
+          <div class="bias-expand">When participants drop out of a trial at different rates across groups, and when those dropouts are not accounted for, the remaining participants in each group may no longer be comparable. People who drop out because of side effects or lack of benefit are systematically different from those who complete the trial, and excluding them distorts the results.
+            <div class="check-question">Ask: what was the dropout rate? Were dropouts analysed under intention-to-treat?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">4</div>
+        <div class="bias-main">
+          <div class="bias-name">Reporting bias</div>
+          <div class="bias-short">Selective publication of outcomes</div>
+          <div class="bias-expand">Trials commonly measure multiple outcomes but publish only those that reached significance. When this happens without pre-registration, it is not possible to know how many outcomes were measured and not reported. Studies comparing trial protocols with published papers consistently find that the majority of trials change, add, or omit at least one primary outcome.
+            <div class="check-question">Ask: was the trial pre-registered? Do published outcomes match the registry?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">5</div>
+        <div class="bias-main">
+          <div class="bias-name">Funding bias</div>
+          <div class="bias-short">Industry sponsorship and results</div>
+          <div class="bias-expand">Trials funded by manufacturers of the product being tested consistently produce more favourable findings than independently funded trials on the same interventions. This operates through design choices, selective reporting, choice of comparator, and publication practices. It does not mean every industry-funded trial is biased, but it is a documented systematic effect across multiple fields.
+            <div class="check-question">Ask: who funded the trial? Are the authors independent of the sponsor?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">6</div>
+        <div class="bias-main">
+          <div class="bias-name">Small-study effect</div>
+          <div class="bias-short">Effect size inflation in underpowered trials</div>
+          <div class="bias-expand">Small trials can only produce statistically significant results when the observed effect is large, either because the true effect is large or because chance produced an unusually extreme result. This means that small trials that do reach significance systematically overestimate the true effect size. As larger, better-powered trials are conducted, effects from small trials often shrink considerably.
+            <div class="check-question">Ask: was the sample size justified? Has the finding been replicated in larger independent trials?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+      <div class="bias-item" onclick="toggleBias(this)">
+        <div class="bias-icon">7</div>
+        <div class="bias-main">
+          <div class="bias-name">Applicability (external validity)</div>
+          <div class="bias-short">Population, dose, and formulation mismatch</div>
+          <div class="bias-expand">A well-conducted trial in one population does not automatically apply to another. Trials in elderly people with documented deficiency, in clinical populations, or at doses far higher or lower than typical supplements use may say little about a healthy adult reading a product label. Dose and formulation differences further limit transferability — evidence from one form of a compound does not establish that a different form will behave the same way.
+            <div class="check-question">Ask: does the study population, dose, and formulation match the situation in question?</div>
+          </div>
+        </div>
+        <div class="bias-chevron">▾</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showPanel(index) {
+  document.querySelectorAll('.panel').forEach((p, i) => {
+    p.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', i === index);
+  });
+}
+
+function toggleBias(el) {
+  el.classList.toggle('expanded');
+}
+</script>
+</body>
+</html>
