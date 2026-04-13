@@ -61,7 +61,6 @@ export default async function ArticlePage({ params }) {
               {new Date(article.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
             </span>
           </div>
-        </div>
 
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 30, color: '#1A1A2E', lineHeight: 1.25, marginBottom: 16 }}>
             {article.title}
