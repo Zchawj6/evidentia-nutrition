@@ -31,8 +31,7 @@ export default async function ArticlePage({ params }) {
 
   const catStyle = categoryColors[article.category] || { bg: '#F3F4F6', color: '#374151' }
   const isGuest = article.author && article.author !== 'Evidentia Nutrition'
-  const initials = isGuest ? article.author.split(' ').map(n => n[0]).join('').slice(0, 2) : 'EN'
-
+  const initials = isGuest ? article.author.split(' ').slice(-2).map(n => n[0]).join('') : 'EN'
   return (
     <>
       <Nav />
