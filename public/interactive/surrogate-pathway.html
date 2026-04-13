@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surrogate Markers: From Biomarker to Benefit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #4a4a6a;
+    --ink-muted: #8888aa;
+    --cream: #faf8f4;
+    --teal: #0d7377;
+    --teal-light: #e8f5f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e3;
+    --red: #b5342a;
+    --red-light: #fcecea;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --rule: #e2ddd8;
+    --stage-bg: #f5f3ef;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .tab:hover { color: var(--ink-soft); background: rgba(255,255,255,0.5); }
+  .tab.active { background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  .tab .tab-num {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--teal);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- PANEL 1: The chain ---- */
+  .chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .chain-node {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 44px;
+    margin-bottom: 4px;
+  }
+
+  .node-circle {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+
+  .node-circle.science { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
+  .node-circle.marker { background: var(--amber-light); color: var(--amber); border-color: var(--amber); }
+  .node-circle.outcome { background: var(--green-light); color: var(--green); border-color: var(--green); }
+
+  .node-body {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 13px 15px;
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .node-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 3px;
+  }
+
+  .node-label.science { color: var(--teal); }
+  .node-label.marker { color: var(--amber); }
+  .node-label.outcome { color: var(--green); }
+
+  .node-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .node-text {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Arrow between nodes */
+  .chain-arrow {
+    display: flex;
+    align-items: center;
+    padding-left: 44px;
+    margin: 2px 0;
+    gap: 10px;
+  }
+
+  .arrow-line {
+    width: 2px;
+    height: 20px;
+    background: var(--rule);
+    margin-left: 17px;
+  }
+
+  .arrow-label {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 8px;
+  }
+
+  /* The gap callout */
+  .gap-callout {
+    margin: 20px 0 0;
+    padding: 16px 18px;
+    background: var(--red-light);
+    border: 1px solid #e8b4b0;
+    border-radius: 8px;
+  }
+
+  .gap-callout-head {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--red);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .gap-callout-body {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ---- PANEL 2: Validation spectrum ---- */
+  .spectrum {
+    margin-bottom: 24px;
+  }
+
+  .spectrum-track {
+    position: relative;
+    height: 10px;
+    background: linear-gradient(to right, var(--red), var(--amber), var(--green));
+    border-radius: 5px;
+    margin: 32px 0 48px;
+  }
+
+  .spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .spectrum-marker {
+    position: absolute;
+    top: -22px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .spectrum-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px currentColor;
+    margin-top: 16px;
+  }
+
+  .spectrum-tag {
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .example-card {
+    border-radius: 8px;
+    padding: 14px 15px;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .example-card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .valid-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .example-card-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .example-card-body {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .valid-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-top: 7px;
+  }
+
+  .badge-validated { background: var(--green-light); color: var(--green); }
+  .badge-partial { background: var(--amber-light); color: var(--amber); }
+  .badge-unvalidated { background: var(--red-light); color: var(--red); }
+
+  /* ---- PANEL 3: Case studies ---- */
+  .case-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .case-item {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .case-item:hover { border-color: var(--teal); }
+  .case-item.expanded { border-color: var(--teal); }
+
+  .case-header {
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .case-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .case-icon.fail { background: var(--red-light); }
+  .case-icon.partial { background: var(--amber-light); }
+  .case-icon.validated { background: var(--green-light); }
+
+  .case-main { flex: 1; }
+
+  .case-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .case-short {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .case-chevron {
+    color: var(--ink-muted);
+    font-size: 12px;
+    margin-top: 2px;
+    transition: transform 0.2s;
+  }
+
+  .case-item.expanded .case-chevron { transform: rotate(180deg); }
+
+  .case-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 0;
+  }
+
+  .case-item.expanded .case-body { display: block; }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .case-row-label {
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding-top: 1px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .case-row-value {
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .verdict-box {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .verdict-box.fail { background: var(--red-light); color: var(--red); }
+  .verdict-box.partial { background: var(--amber-light); color: var(--amber); }
+  .verdict-box.validated { background: var(--green-light); color: var(--green); }
+
+  /* ---- PANEL 4: Self-reported outcomes ---- */
+  .selfreport-intro {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .sr-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .sr-card {
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid var(--rule);
+  }
+
+  .sr-card.weak { border-left: 3px solid var(--red); }
+  .sr-card.strong { border-left: 3px solid var(--green); }
+
+  .sr-card h3 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .sr-card.weak h3 { color: var(--red); }
+  .sr-card.strong h3 { color: var(--green); }
+
+  .sr-factor {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+
+  .sr-factor:last-child { border-bottom: none; }
+
+  .sr-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .sr-card.weak .sr-dot { background: var(--red); }
+  .sr-card.strong .sr-dot { background: var(--green); }
+
+  .sr-note {
+    background: var(--teal-light);
+    border: 1px solid #b0d8d8;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    .examples-grid { grid-template-columns: 1fr; }
+    .sr-compare { grid-template-columns: 1fr; }
+    .case-row { grid-template-columns: 90px 1fr; }
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: none; width: calc(50% - 2px); }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>Surrogate markers and what they do not tell you</h1>
+    <p>Tracing the path from biomarker to clinical benefit — and where it breaks</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel(0)">
+      <span class="tab-num">Part 1</span>
+      The chain
+    </button>
+    <button class="tab" onclick="showPanel(1)">
+      <span class="tab-num">Part 2</span>
+      Validation spectrum
+    </button>
+    <button class="tab" onclick="showPanel(2)">
+      <span class="tab-num">Part 3</span>
+      Case studies
+    </button>
+    <button class="tab" onclick="showPanel(3)">
+      <span class="tab-num">Part 4</span>
+      Self-reported outcomes
+    </button>
+  </div>
+
+  <!-- PANEL 1: The chain -->
+  <div class="panel active" id="panel-0">
+
+    <div class="chain">
+
+      <div class="chain-node">
+        <div class="node-circle science">1</div>
+        <div class="node-body">
+          <div class="node-label science">Step 1 — Preclinical science</div>
+          <div class="node-title">A mechanism is identified</div>
+          <div class="node-text">Laboratory or animal research shows that a compound interacts with a biological pathway. A plausible mechanism connecting the compound to a health-relevant process is established.</div>
+        </div>
+      </div>
+
+      <div class="chain-arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-label">often assumed to translate to humans</div>
+      </div>
+
+      <div class="chain-node">
+        <div class="node-circle marker">2</div>
+        <div class="node-body">
+          <div class="node-label marker">Step 2 — Biomarker trial</div>
+          <div class="node-title">A marker changes in a short trial</div>
+          <div class="node-text">A randomised trial shows the compound changes a measurable variable — a blood marker, a physiological score, an imaging result — in the expected direction. This is the most common type of evidence in supplement research.</div>
+        </div>
+      </div>
+
+      <div class="chain-arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-label">often assumed to predict clinical outcome</div>
+      </div>
+
+      <div class="chain-node">
+        <div class="node-circle outcome">3</div>
+        <div class="node-body">
+          <div class="node-label outcome">Step 3 — Clinical outcome</div>
+          <div class="node-title">The outcome that actually matters</div>
+          <div class="node-text">Reduced disease incidence, improved symptoms, better function, avoided hospitalisation, longer survival. These are what the person taking the supplement is hoping for. This step is rarely tested directly in supplement research.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gap-callout">
+      <div class="gap-callout-head">Where the logic breaks</div>
+      <div class="gap-callout-body">The arrows between each step are assumptions, not established facts. A mechanism that works in cells may not operate the same way at supplemental doses in people. A biomarker that is associated with disease risk in observational data may not reliably predict what happens when an intervention changes it. The history of clinical medicine contains numerous examples of interventions that moved a biomarker in the right direction without producing the expected clinical benefit — and in some cases while causing harm.</div>
+    </div>
+
+  </div>
+
+  <!-- PANEL 2: Validation spectrum -->
+  <div class="panel" id="panel-1">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:20px;">The reliability of a surrogate marker exists on a spectrum. The critical question is always the same: has the relationship between this biomarker and this clinical outcome been rigorously tested in large intervention trials? Most biomarkers used in supplement research have not been through this process.</p>
+
+    <div class="spectrum">
+      <div style="position:relative;">
+        <div class="spectrum-track">
+          <!-- Markers on the track -->
+          <div class="spectrum-marker" style="left:12%;">
+            <div class="spectrum-tag" style="background:var(--red-light); color:var(--red);">Homocysteine</div>
+            <div class="spectrum-dot" style="color:var(--red); background:var(--red);"></div>
+          </div>
+          <div class="spectrum-marker" style="left:28%;">
+            <div class="spectrum-tag" style="background:var(--red-light); color:var(--red);">Antioxidant markers</div>
+            <div class="spectrum-dot" style="color:var(--red); background:var(--red);"></div>
+          </div>
+          <div class="spectrum-marker" style="left:52%;">
+            <div class="spectrum-tag" style="background:var(--amber-light); color:var(--amber);">CRP / inflammation</div>
+            <div class="spectrum-dot" style="color:var(--amber); background:var(--amber);"></div>
+          </div>
+          <div class="spectrum-marker" style="left:72%;">
+            <div class="spectrum-tag" style="background:var(--amber-light); color:var(--amber);">LDL (statins)</div>
+            <div class="spectrum-dot" style="color:var(--amber); background:var(--amber);"></div>
+          </div>
+          <div class="spectrum-marker" style="left:90%;">
+            <div class="spectrum-tag" style="background:var(--green-light); color:var(--green);">Blood pressure → stroke</div>
+            <div class="spectrum-dot" style="color:var(--green); background:var(--green);"></div>
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Not validated — association only</span>
+          <span>Well-validated surrogate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="examples-grid">
+      <div class="example-card">
+        <div class="example-card-head">
+          <div class="valid-dot" style="background:var(--green);"></div>
+          <div class="example-card-title">Systolic blood pressure</div>
+        </div>
+        <div class="example-card-body">Decades of randomised trials across multiple drug classes have established that reducing systolic blood pressure reduces stroke risk, with a reasonably consistent dose-response relationship.</div>
+        <div class="valid-badge badge-validated">Well-validated for stroke</div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-card-head">
+          <div class="valid-dot" style="background:var(--amber);"></div>
+          <div class="example-card-title">LDL cholesterol</div>
+        </div>
+        <div class="example-card-body">Multiple statin trials support LDL as a surrogate for cardiovascular events in that drug class. Whether the same relationship holds for other mechanisms of LDL reduction is more contested.</div>
+        <div class="valid-badge badge-partial">Partial — class-specific</div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-card-head">
+          <div class="valid-dot" style="background:var(--red);"></div>
+          <div class="example-card-title">Homocysteine</div>
+        </div>
+        <div class="example-card-body">Strongly associated with cardiovascular risk in observational data. B vitamins reliably lower it. Large randomised trials consistently show no reduction in cardiovascular events.</div>
+        <div class="valid-badge badge-unvalidated">Not validated — failed in RCTs</div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-card-head">
+          <div class="valid-dot" style="background:var(--red);"></div>
+          <div class="example-card-title">Antioxidant markers</div>
+        </div>
+        <div class="example-card-body">Many supplements raise measures of antioxidant activity. The relationship between antioxidant marker changes and clinical disease outcomes has not been established and in some cases has been reversed.</div>
+        <div class="valid-badge badge-unvalidated">Not validated</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PANEL 3: Case studies -->
+  <div class="panel" id="panel-2">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:20px;">These cases illustrate how the assumption that changing a biomarker translates to clinical benefit has been tested — and what happened when large trials measured actual outcomes.</p>
+
+    <div class="case-list">
+
+      <div class="case-item" onclick="toggleCase(this)">
+        <div class="case-header">
+          <div class="case-icon fail">✗</div>
+          <div class="case-main">
+            <div class="case-title">Homocysteine and B vitamins</div>
+            <div class="case-short">Cardiovascular prevention — surrogate lowered, outcome unchanged</div>
+          </div>
+          <div class="case-chevron">▾</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row">
+            <div class="case-row-label">The claim</div>
+            <div class="case-row-value">Elevated homocysteine is associated with cardiovascular risk. B vitamins lower homocysteine. Therefore B vitamins reduce cardiovascular events.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The biomarker</div>
+            <div class="case-row-value">Plasma homocysteine — reduced by 25–30% with folic acid supplementation.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The trial</div>
+            <div class="case-row-value">HOPE-2 (Lonn et al., NEJM 2006): 5,522 patients with vascular disease, five-year follow-up, independent funding. Homocysteine reduced significantly. No effect on cardiovascular death, MI, or stroke.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The meta-analysis</div>
+            <div class="case-row-value">Clarke et al. (Archives of Internal Medicine, 2010): 8 trials, 37,485 individuals. No reduction in cardiovascular events, cancer, or cause-specific mortality.</div>
+          </div>
+          <div class="verdict-box fail">Lowering homocysteine through this intervention did not improve clinical outcomes. Whether homocysteine is causal, contributory, or a marker of other processes remains unresolved — what is clear is that changing it via B vitamins did not help in this population and context.</div>
+        </div>
+      </div>
+
+      <div class="case-item" onclick="toggleCase(this)">
+        <div class="case-header">
+          <div class="case-icon fail">✗</div>
+          <div class="case-main">
+            <div class="case-title">Antioxidant vitamins and cardiovascular disease</div>
+            <div class="case-short">Oxidative stress markers improved, clinical outcomes unchanged or worse</div>
+          </div>
+          <div class="case-chevron">▾</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row">
+            <div class="case-row-label">The claim</div>
+            <div class="case-row-value">Oxidative stress contributes to atherosclerosis. Antioxidant vitamins reduce markers of oxidative stress. Therefore antioxidant supplementation reduces cardiovascular risk.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The biomarker</div>
+            <div class="case-row-value">Measures of oxidative stress and lipid peroxidation — improved by vitamin E and beta-carotene in laboratory and small clinical studies.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The trials</div>
+            <div class="case-row-value">Multiple large RCTs including HOPE (vitamin E, n=9,541) and the ATBC and CARET trials (beta-carotene) found no cardiovascular benefit and in some cases increased risk of adverse outcomes in specific populations.</div>
+          </div>
+          <div class="verdict-box fail">Improving a marker of oxidative stress did not translate to clinical cardiovascular protection. The biological plausibility was strong; the clinical translation was not.</div>
+        </div>
+      </div>
+
+      <div class="case-item" onclick="toggleCase(this)">
+        <div class="case-header">
+          <div class="case-icon partial">~</div>
+          <div class="case-main">
+            <div class="case-title">Omega-3 and triglycerides</div>
+            <div class="case-short">A validated biomarker effect — with important scope limits</div>
+          </div>
+          <div class="case-chevron">▾</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row">
+            <div class="case-row-label">The biomarker</div>
+            <div class="case-row-value">Plasma triglycerides — reliably reduced by EPA and DHA at doses of 2–4 g daily. This effect is dose-dependent and well-replicated.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The complexity</div>
+            <div class="case-row-value">Triglycerides are a cardiovascular risk marker, but their relationship to clinical outcomes is less well-validated than blood pressure or LDL. The cardiovascular event reduction seen in REDUCE-IT (pure EPA, 4 g daily, high-risk population) has not been replicated by STRENGTH (EPA+DHA, similar dose, similar population), raising questions about whether the benefit is from EPA specifically, from the dose, or from the study design.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The scope limit</div>
+            <div class="case-row-value">Standard supplement doses (1 g EPA+DHA) do not reliably produce clinically meaningful triglyceride reductions in most people at baseline triglyceride levels within the normal range.</div>
+          </div>
+          <div class="verdict-box partial">The biomarker effect is real at therapeutic doses. Clinical outcome translation is more complex and dose-dependent. Standard supplement doses may not achieve either.</div>
+        </div>
+      </div>
+
+      <div class="case-item" onclick="toggleCase(this)">
+        <div class="case-header">
+          <div class="case-icon validated">✓</div>
+          <div class="case-main">
+            <div class="case-title">Blood pressure and stroke</div>
+            <div class="case-short">A well-validated surrogate relationship</div>
+          </div>
+          <div class="case-chevron">▾</div>
+        </div>
+        <div class="case-body">
+          <div class="case-row">
+            <div class="case-row-label">The biomarker</div>
+            <div class="case-row-value">Systolic blood pressure — a consistently validated surrogate for stroke risk across multiple drug classes and populations.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The evidence base</div>
+            <div class="case-row-value">Decades of randomised trials demonstrated a consistent, quantifiable relationship between the magnitude of blood pressure reduction and the reduction in stroke incidence. The FDA accepts blood pressure as a surrogate endpoint for stroke in this context.</div>
+          </div>
+          <div class="case-row">
+            <div class="case-row-label">The caveat</div>
+            <div class="case-row-value">The validation is strongest for stroke and less robust for heart failure, myocardial infarction, and overall mortality. The relationship was established through specific drug class trials, not supplements.</div>
+          </div>
+          <div class="verdict-box validated">This is what surrogate validation looks like: a quantified, replicated, mechanism-coherent relationship between biomarker change and clinical outcome across multiple independent trials.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PANEL 4: Self-reported outcomes -->
+  <div class="panel" id="panel-3">
+
+    <p class="selfreport-intro">Self-reported outcomes — questionnaires, rating scales, and subjective assessments — are a specific category of outcome that deserves separate consideration. They are not surrogates in the strict sense, but they carry their own interpretation challenges, particularly for supplements marketed around energy, mood, cognition, stress, and sleep.</p>
+
+    <div class="sr-compare">
+      <div class="sr-card weak">
+        <h3>Lower confidence</h3>
+        <div class="sr-factor"><div class="sr-dot"></div>Open-label or inadequately blinded trial</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Participants aware of product marketing claims</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Short duration with attention-focused participants</div>
+        <div class="sr-factor"><div class="sr-dot"></div>No blinding integrity check reported</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Small sample, single trial, no replication</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Outcome scale with poor validated properties</div>
+      </div>
+      <div class="sr-card strong">
+        <h3>Higher confidence</h3>
+        <div class="sr-factor"><div class="sr-dot"></div>Double-blind with blinding integrity confirmed</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Validated, well-characterised outcome scale</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Adequate sample size with pre-specified power</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Effect size large enough to be clinically meaningful</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Replicated across independent trials</div>
+        <div class="sr-factor"><div class="sr-dot"></div>Pre-registered with outcomes matching registration</div>
+      </div>
+    </div>
+
+    <div class="sr-note">
+      Self-reported outcomes are not inherently unreliable. For conditions like pain, fatigue, and mood, they are often the most direct available measure of patient experience. The question is always whether the trial design was rigorous enough to isolate the intervention effect from expectation, attention, and placebo. A small, unblinded trial showing improved self-reported energy scores tells us almost nothing. A well-blinded, adequately powered trial showing the same effect, replicated by independent groups, is a different kind of evidence entirely.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showPanel(index) {
+  document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === index));
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === index));
+}
+
+function toggleCase(el) {
+  el.classList.toggle('expanded');
+}
+</script>
+</body>
+</html>
