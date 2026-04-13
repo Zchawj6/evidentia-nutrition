@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Studies Conflict: Sources of Heterogeneity</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #4a4a6a;
+    --ink-muted: #8888aa;
+    --cream: #faf8f4;
+    --teal: #0d7377;
+    --teal-light: #e8f5f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e3;
+    --red: #b5342a;
+    --red-light: #fcecea;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --rule: #e2ddd8;
+    --stage-bg: #f5f3ef;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .wrapper { max-width: 760px; margin: 0 auto; padding: 32px 24px 48px; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .header p { color: var(--ink-soft); font-size: 13px; font-weight: 300; }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .tab:hover { color: var(--ink-soft); background: rgba(255,255,255,0.5); }
+  .tab.active { background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  .tab .tab-num {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--teal);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- PANEL 1: Sources of variability ---- */
+  .source-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .source-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 15px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .source-card:hover { border-color: var(--teal); }
+  .source-card.expanded { border-color: var(--teal); }
+
+  .source-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .source-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .source-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .source-short {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  .source-expand {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .source-card.expanded .source-expand { display: block; }
+
+  .source-example {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: var(--teal-light);
+    border-radius: 5px;
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ---- PANEL 2: Vitamin D worked example ---- */
+  .vd-intro {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .trial-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .trial-item {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .trial-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    cursor: pointer;
+  }
+
+  .trial-header:hover { background: var(--stage-bg); }
+
+  .trial-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .trial-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .trial-pop {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .trial-result-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .trial-chevron { color: var(--ink-muted); font-size: 11px; transition: transform 0.2s; }
+  .trial-item.expanded .trial-chevron { transform: rotate(180deg); }
+
+  .trial-body {
+    display: none;
+    padding: 0 15px 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .trial-item.expanded .trial-body { display: block; }
+
+  .trial-detail {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px 10px;
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .td-label {
+    font-weight: 500;
+    color: var(--ink-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding-top: 1px;
+  }
+
+  .td-value {
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .why-box {
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .why-box.null { background: var(--red-light); color: var(--red); }
+  .why-box.positive { background: var(--green-light); color: var(--green); }
+  .why-box.mixed { background: var(--amber-light); color: var(--amber); }
+
+  .vd-summary {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--teal-light);
+    border: 1px solid #b0d8d8;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ---- PANEL 3: Subgroup analysis ---- */
+  .subgroup-intro {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .sg-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .sg-card {
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid var(--rule);
+  }
+
+  .sg-card.weak { border-left: 3px solid var(--red); }
+  .sg-card.strong { border-left: 3px solid var(--green); }
+
+  .sg-card h3 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .sg-card.weak h3 { color: var(--red); }
+  .sg-card.strong h3 { color: var(--green); }
+
+  .sg-factor {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+
+  .sg-factor:last-child { border-bottom: none; }
+
+  .sg-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .sg-card.weak .sg-dot { background: var(--red); }
+  .sg-card.strong .sg-dot { background: var(--green); }
+
+  .sg-stat-note {
+    background: var(--amber-light);
+    border: 1px solid #f0cfa0;
+    border-radius: 8px;
+    padding: 13px 15px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ---- PANEL 4: Reading conflicting literature ---- */
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 13px 15px;
+  }
+
+  .check-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-main { flex: 1; }
+
+  .check-q {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .check-why {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .resolve-note {
+    margin-top: 16px;
+    padding: 13px 15px;
+    background: var(--green-light);
+    border: 1px solid #b0d9bf;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    .source-grid { grid-template-columns: 1fr; }
+    .sg-compare { grid-template-columns: 1fr; }
+    .trial-detail { grid-template-columns: 80px 1fr; }
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: none; width: calc(50% - 2px); }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>Why studies conflict and what it means</h1>
+    <p>Understanding heterogeneity of treatment effects in supplement research</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel(0)">
+      <span class="tab-num">Part 1</span>
+      Sources of variability
+    </button>
+    <button class="tab" onclick="showPanel(1)">
+      <span class="tab-num">Part 2</span>
+      Vitamin D case study
+    </button>
+    <button class="tab" onclick="showPanel(2)">
+      <span class="tab-num">Part 3</span>
+      Subgroup analysis
+    </button>
+    <button class="tab" onclick="showPanel(3)">
+      <span class="tab-num">Part 4</span>
+      Reading conflict
+    </button>
+  </div>
+
+  <!-- PANEL 1: Sources of variability -->
+  <div class="panel active" id="panel-0">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:20px;">When trials on the same supplement produce different results, the disagreement usually has a source. Some sources reflect genuine biological differences in who benefits; others reflect distortions introduced by study design and measurement. Click each card to explore the detail.</p>
+
+    <p style="font-size:11px; font-weight:500; color:var(--teal); text-transform:uppercase; letter-spacing:0.6px; margin-bottom:8px;">Biological differences — real variation in who benefits</p>
+
+    <div class="source-grid" style="margin-bottom:16px;">
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--amber-light); color:var(--amber);">◎</div>
+          <div>
+            <div class="source-title">Baseline status</div>
+            <div class="source-short">Deficient vs replete populations</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          One of the most consistent predictors of whether a nutritional supplement produces benefit is whether the person taking it actually needs it. Trials enrolling people with a genuine deficiency are measuring a fundamentally different situation from trials enrolling people with adequate status. Pooling these two groups, or comparing one trial in each type of population, will produce different results — neither trial is wrong.
+          <div class="source-example">Vitamin D in deficient adults vs vitamin D in replete adults. Iron in deficient women vs iron in replete adults. Folate in low-intake populations vs folate in well-nourished ones.</div>
+        </div>
+      </div>
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--green-light); color:var(--green);">♟</div>
+          <div>
+            <div class="source-title">Population characteristics</div>
+            <div class="source-short">Age, sex, genetics, comorbidities</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          Beyond baseline nutritional status, genuine biological differences between populations modify how interventions work. Age affects absorption and metabolism. Sex affects hormonal context. Genetic variants in metabolic pathways create real variation in response — for example, MTHFR variants affect folate metabolism, and CYP2R1 variants affect vitamin D hydroxylation. Comorbidities change the context in which an intervention operates.
+          <div class="source-example">Creatine supplementation producing larger lean mass gains in older adults with sarcopenia than in young athletes. Magnesium supplementation showing stronger sleep effects in people with low dietary intake.</div>
+        </div>
+      </div>
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--red-light); color:var(--red);">⏱</div>
+          <div>
+            <div class="source-title">Duration and timing</div>
+            <div class="source-short">Too short to see the outcome</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          Many supplement trials run for weeks or months while the outcomes they purport to address develop over years. For outcomes that develop over long timeframes, a short trial may simply be too brief to detect a real effect in either direction. Short trials may also not allow sufficient time for tissue saturation or physiological adaptation.
+          <div class="source-example">Vitamin D and bone density outcomes requiring years of follow-up to detect meaningful changes. Omega-3 and cognitive outcomes in ageing populations requiring decade-scale observation.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:11px; font-weight:500; color:var(--ink-muted); text-transform:uppercase; letter-spacing:0.6px; margin-bottom:8px;">Study design and measurement — distortions that produce apparent conflict</p>
+
+    <div class="source-grid">
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--teal-light); color:var(--teal);">⚗</div>
+          <div>
+            <div class="source-title">Dose and formulation</div>
+            <div class="source-short">Different amounts, different forms</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          Trials using different doses may be testing fundamentally different interventions. A dose that produces a measurable physiological effect may differ substantially from what a standard supplement provides. Formulation differences — different salt forms, different bioavailability, different delivery vehicles — can produce different results even at nominally similar doses.
+          <div class="source-example">Omega-3 cardiovascular trials at 4 g EPA daily vs 1 g EPA+DHA. Magnesium bioavailability varying across glycinate, citrate, and oxide forms.</div>
+        </div>
+      </div>
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--amber-light); color:var(--amber);">⊡</div>
+          <div>
+            <div class="source-title">Outcome selection</div>
+            <div class="source-short">Different endpoints, different answers</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          Trials measuring different outcomes from the same intervention are not directly comparable. A trial measuring a biomarker and one measuring a clinical endpoint may produce different conclusions even if both are well-conducted. A trial measuring self-reported fatigue and one measuring performance on a cognitive task are measuring different things. Treating them as replications of the same question produces apparent contradictions that are not real conflicts.
+          <div class="source-example">Omega-3 trials measuring triglyceride levels vs measuring cardiovascular events. Magnesium trials measuring serum magnesium vs measuring sleep quality.</div>
+        </div>
+      </div>
+
+      <div class="source-card" onclick="toggleSource(this)">
+        <div class="source-head">
+          <div class="source-icon" style="background:var(--teal-light); color:var(--teal);">⚖</div>
+          <div>
+            <div class="source-title">Trial quality differences</div>
+            <div class="source-short">Not all trials carry equal weight</div>
+          </div>
+        </div>
+        <div class="source-expand">
+          Trials differ in randomisation quality, blinding, sample size, pre-registration, and funding independence. When a small, industry-funded, unblinded trial and a large, independent, double-blind trial reach different conclusions, this is not symmetric evidence on both sides. The quality difference matters and should be reflected in how much weight each trial receives.
+          <div class="source-example">A 30-person industry-funded trial showing a positive result vs a 500-person independently funded trial showing null — these are not equivalent evidence in both directions.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PANEL 2: Vitamin D case study -->
+  <div class="panel" id="panel-1">
+
+    <p class="vd-intro">Vitamin D is the most extensively studied example of how baseline status drives apparent contradictions between trials. The same supplement, the same dose range, consistently different results — because the trials enrolled fundamentally different populations. Click each trial to see the detail.</p>
+
+    <div class="trial-list">
+
+      <div class="trial-item" onclick="toggleTrial(this)">
+        <div class="trial-header">
+          <div class="trial-status" style="background:var(--red);"></div>
+          <div class="trial-name">VITAL (Manson et al., 2019)</div>
+          <div class="trial-pop">Mostly replete adults</div>
+          <div class="trial-result-badge" style="background:var(--red-light); color:var(--red);">No skeletal benefit</div>
+          <div class="trial-chevron">▾</div>
+        </div>
+        <div class="trial-body">
+          <div class="trial-detail">
+            <div class="td-label">Population</div>
+            <div class="td-value">25,871 healthy US adults, mean age 67. Not selected for vitamin D deficiency. Mean baseline 25(OH)D adequate.</div>
+            <div class="td-label">Dose</div>
+            <div class="td-value">2,000 IU vitamin D3 daily for median 5.3 years.</div>
+            <div class="td-label">Primary outcome</div>
+            <div class="td-value">Cancer and cardiovascular events. No significant reduction in fractures, falls, or cardiovascular outcomes.</div>
+          </div>
+          <div class="why-box null">No benefit seen because participants were largely replete at baseline. Supplementation in people who are not deficient cannot correct a deficiency that does not exist.</div>
+        </div>
+      </div>
+
+      <div class="trial-item" onclick="toggleTrial(this)">
+        <div class="trial-header">
+          <div class="trial-status" style="background:var(--red);"></div>
+          <div class="trial-name">ViDA (Scragg et al., 2017)</div>
+          <div class="trial-pop">Mostly replete New Zealand adults</div>
+          <div class="trial-result-badge" style="background:var(--red-light); color:var(--red);">No fracture benefit</div>
+          <div class="trial-chevron">▾</div>
+        </div>
+        <div class="trial-body">
+          <div class="trial-detail">
+            <div class="td-label">Population</div>
+            <div class="td-value">5,110 New Zealand adults aged 50–84. Mean baseline 25(OH)D 63 nmol/L — within adequate range.</div>
+            <div class="td-label">Dose</div>
+            <div class="td-value">100,000 IU monthly (bolus dosing). Follow-up 3.3 years.</div>
+            <div class="td-label">Primary outcome</div>
+            <div class="td-value">Cardiovascular disease, cancer, falls, fractures. No significant benefit on any primary outcome. Subgroup analysis in deficient participants suggested possible fracture benefit.</div>
+          </div>
+          <div class="why-box null">Bolus monthly dosing may produce different tissue effects than daily dosing. Population again largely replete at baseline.</div>
+        </div>
+      </div>
+
+      <div class="trial-item" onclick="toggleTrial(this)">
+        <div class="trial-header">
+          <div class="trial-status" style="background:var(--amber);"></div>
+          <div class="trial-name">D-Health (Neale et al., 2022)</div>
+          <div class="trial-pop">Australian adults, largely replete</div>
+          <div class="trial-result-badge" style="background:var(--amber-light); color:var(--amber);">Mixed findings</div>
+          <div class="trial-chevron">▾</div>
+        </div>
+        <div class="trial-body">
+          <div class="trial-detail">
+            <div class="td-label">Population</div>
+            <div class="td-value">311 adults aged 60–84 in Queensland, Australia. Largely replete given high sun exposure in the region.</div>
+            <div class="td-label">Dose</div>
+            <div class="td-value">60,000 IU monthly bolus over 5 years.</div>
+            <div class="td-label">Primary outcome</div>
+            <div class="td-value">All-cause mortality — no significant difference. Some signals in cancer mortality subgroup analyses, not replicated definitively.</div>
+          </div>
+          <div class="why-box mixed">High baseline status limits the potential for supplementation to add further benefit. The geographical context (sun exposure) is a meaningful modifier rarely discussed in marketing of vitamin D products.</div>
+        </div>
+      </div>
+
+      <div class="trial-item" onclick="toggleTrial(this)">
+        <div class="trial-header">
+          <div class="trial-status" style="background:var(--green);"></div>
+          <div class="trial-name">Deficiency-targeted meta-analyses</div>
+          <div class="trial-pop">Trials in genuinely deficient populations</div>
+          <div class="trial-result-badge" style="background:var(--green-light); color:var(--green);">Consistent benefit</div>
+          <div class="trial-chevron">▾</div>
+        </div>
+        <div class="trial-body">
+          <div class="trial-detail">
+            <div class="td-label">Evidence</div>
+            <div class="td-value">Meta-analyses stratifying by baseline 25(OH)D consistently find larger and more significant effects in participants who were deficient at baseline, particularly for falls in older adults, bone density, and respiratory infection risk.</div>
+            <div class="td-label">Key finding</div>
+            <div class="td-value">A 2021 Nature Reviews Endocrinology consensus concluded that supplementation in vitamin D-replete adults does not provide measurable benefit, while correction of genuine deficiency is clinically warranted.</div>
+          </div>
+          <div class="why-box positive">The evidence is not contradictory — it is coherent once baseline status is accounted for. Trials show benefit where deficiency exists; they show little benefit where it does not.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="vd-summary">
+      The vitamin D literature looks contradictory only if you treat all trials as measuring the same thing. Stratified by baseline status, the picture becomes largely coherent: supplementation addresses deficiency where it exists, and adds little where it does not. Some heterogeneity remains even within strata, reflecting dosing strategy, adherence, and outcome definition — but the main driver of apparent conflict is population mismatch, not fundamental disagreement about the compound's effects.
+    </div>
+
+  </div>
+
+  <!-- PANEL 3: Subgroup analysis -->
+  <div class="panel" id="panel-2">
+
+    <p class="subgroup-intro">Subgroup analysis — examining whether an intervention works differently in different groups of participants — is a legitimate and important tool when done correctly. It is also one of the most misused tools in supplement research. The difference is in how the analysis was planned and what it requires to be credible.</p>
+
+    <div class="sg-compare">
+      <div class="sg-card weak">
+        <h3>Lower credibility</h3>
+        <div class="sg-factor"><div class="sg-dot"></div>Analysis conducted after data was collected (post-hoc)</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Subgroup not pre-specified in trial registration</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Many subgroups tested without correction</div>
+        <div class="sg-factor"><div class="sg-dot"></div>No formal test of interaction — only within-group p-values compared</div>
+        <div class="sg-factor"><div class="sg-dot"></div>No biological rationale for why this subgroup should differ</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Not replicated in any subsequent trial</div>
+      </div>
+      <div class="sg-card strong">
+        <h3>Higher credibility</h3>
+        <div class="sg-factor"><div class="sg-dot"></div>Pre-specified in trial registration before recruitment</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Clear biological rationale for the subgroup hypothesis</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Formal interaction test conducted and significant</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Subgroup analysis was primary, not exploratory</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Sample size sufficient within the subgroup</div>
+        <div class="sg-factor"><div class="sg-dot"></div>Finding replicated in independent trials</div>
+      </div>
+    </div>
+
+    <div class="sg-stat-note">
+      <strong style="font-weight:500;">The interaction test matters.</strong> Finding a significant effect in one subgroup and a non-significant effect in another does not establish that the treatment works differently across those groups. The correct test is whether the effect sizes are significantly different from each other — the test of interaction. This is a harder statistical hurdle and is far less often reported. A review published in JAMA Internal Medicine in 2017 found that 61% of trials claiming subgroup heterogeneity in their abstracts were not supported by formal interaction testing.
+    </div>
+
+  </div>
+
+  <!-- PANEL 4: Reading conflicting literature -->
+  <div class="panel" id="panel-3">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:20px;">When you encounter a supplement with a mixed evidence base, these questions help determine whether the conflict is apparent or genuine.</p>
+
+    <div class="checklist">
+
+      <div class="check-item">
+        <div class="check-num">1</div>
+        <div class="check-main">
+          <div class="check-q">Are the conflicting trials testing the same population?</div>
+          <div class="check-why">Trials in deficient populations and replete populations are not measuring the same thing. Neither is a trial in elderly clinical patients equivalent to one in healthy middle-aged adults. Population mismatch is the most common source of apparent contradiction.</div>
+        </div>
+      </div>
+
+      <div class="check-item">
+        <div class="check-num">2</div>
+        <div class="check-main">
+          <div class="check-q">Are they using the same dose and formulation?</div>
+          <div class="check-why">A null result at 1 g EPA+DHA does not contradict a positive result at 4 g pure EPA. A negative result with magnesium oxide does not contradict a positive result with magnesium glycinate. Dose and formulation differences are real differences, not noise to be averaged away.</div>
+        </div>
+      </div>
+
+      <div class="check-item">
+        <div class="check-num">3</div>
+        <div class="check-main">
+          <div class="check-q">Are they measuring the same outcome?</div>
+          <div class="check-why">A biomarker trial and a clinical outcome trial are not replications of the same question. A self-reported questionnaire and an objective performance measure are different things. Ensure the conflicting trials are actually in conflict, not just addressing adjacent questions.</div>
+        </div>
+      </div>
+
+      <div class="check-item">
+        <div class="check-num">4</div>
+        <div class="check-main">
+          <div class="check-q">Are they of comparable quality?</div>
+          <div class="check-why">A large, independent, pre-registered, double-blind trial does not carry the same weight as a small, industry-funded, open-label one. When trials of unequal quality conflict, the higher-quality trial should generally be weighted more heavily, not treated as one vote against one vote.</div>
+        </div>
+      </div>
+
+      <div class="check-item">
+        <div class="check-num">5</div>
+        <div class="check-main">
+          <div class="check-q">Were they long enough to measure the outcome?</div>
+          <div class="check-why">A short trial failing to detect a long-latency effect is not evidence that the effect does not exist. Duration mismatch is particularly common in nutrition research, where meaningful outcomes may take years to develop and most trials run for weeks or months.</div>
+        </div>
+      </div>
+
+      <div class="check-item">
+        <div class="check-num">6</div>
+        <div class="check-main">
+          <div class="check-q">After accounting for these factors, is genuine uncertainty what remains?</div>
+          <div class="check-why">If after working through these questions genuine uncertainty remains — well-matched trials in comparable populations reaching different conclusions — that is the honest epistemic position. It means the evidence is uncertain, and that should be stated rather than resolved by picking a side.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resolve-note">
+      Working through these questions resolves more apparent contradictions than it leaves unresolved. Trials that look contradictory at the surface often turn out to be measuring related but distinct questions. Genuine uncertainty — where this process still leaves conflicting signals — warrants explicit acknowledgement rather than false resolution in either direction.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showPanel(index) {
+  document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === index));
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === index));
+}
+
+function toggleSource(el) { el.classList.toggle('expanded'); }
+function toggleTrial(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
