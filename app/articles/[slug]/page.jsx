@@ -46,21 +46,22 @@ export default async function ArticlePage({ params }) {
         </div>
 
         {/* Article header */}
-        {/* Article header */}
+        
          <div style={{ marginBottom: 32 }}>
           {hasSeries && (
             <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', color: '#1A6B72', marginBottom: 10 }}>
-      {article.series}
-    </div>
-  )}
-  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-    <span style={{ background: catStyle.bg, color: catStyle.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px',
+              {article.series}
+            </div>
+          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+            <span style={{ background: catStyle.bg, color: catStyle.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>
               {article.category}
             </span>
             <span style={{ fontSize: 12, color: '#aaa' }}>
               {new Date(article.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
             </span>
           </div>
+        </div>
 
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 30, color: '#1A1A2E', lineHeight: 1.25, marginBottom: 16 }}>
             {article.title}
