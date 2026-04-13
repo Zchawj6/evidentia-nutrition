@@ -3,8 +3,8 @@ title: "Supplements and medications: the interactions that matter"
 slug: supplements-and-medications-interactions
 date: 2026-04-05
 category: "Safety"
-author: "Evidentia Nutrition"
-authorCredentials: ""
+author: "Professor Jatin Joshi"
+authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Many supplements interact with prescription and over-the-counter medications in ways that are clinically meaningful. This article explains how those interactions happen, which combinations carry real risk, and what to do if you are taking both."
 tags: ["drug interactions", "safety", "medications", "supplements", "St John's Wort", "warfarin", "omega-3", "magnesium"]
 featured: false
