@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read a Forest Plot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #4a4a6a;
+    --ink-muted: #8888aa;
+    --cream: #faf8f4;
+    --teal: #0d7377;
+    --teal-light: #e8f5f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e3;
+    --red: #b5342a;
+    --red-light: #fcecea;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --rule: #e2ddd8;
+    --stage-bg: #f5f3ef;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .wrapper { max-width: 760px; margin: 0 auto; padding: 32px 24px 48px; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .header p { color: var(--ink-soft); font-size: 13px; font-weight: 300; }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .tab:hover { color: var(--ink-soft); background: rgba(255,255,255,0.5); }
+  .tab.active { background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  .tab .tab-num {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--teal);
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- FOREST PLOT COMPONENT ---- */
+  .fp-container {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .fp-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+  }
+
+  .fp-header {
+    display: grid;
+    grid-template-columns: 130px 1fr 80px 70px;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 10px;
+  }
+
+  .fp-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 80px 70px;
+    gap: 8px;
+    align-items: center;
+    padding: 5px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+
+  .fp-row:hover { background: var(--stage-bg); }
+  .fp-row.active-row { background: var(--teal-light); }
+
+  .fp-study-name {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .fp-track {
+    position: relative;
+    height: 20px;
+  }
+
+  .fp-zero {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .fp-ci-line {
+    position: absolute;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 1px;
+  }
+
+  .fp-square {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  .fp-weight {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    text-align: right;
+  }
+
+  .fp-est {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    text-align: right;
+  }
+
+  /* Diamond for pooled */
+  .fp-diamond-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 80px 70px;
+    gap: 8px;
+    align-items: center;
+    padding: 6px 0 2px;
+    border-top: 1px solid var(--rule);
+    margin-top: 4px;
+  }
+
+  .fp-diamond-label {
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .fp-diamond-track {
+    position: relative;
+    height: 22px;
+  }
+
+  /* Tooltip */
+  .fp-tooltip {
+    margin-top: 10px;
+    padding: 10px 13px;
+    background: var(--teal-light);
+    border: 1px solid #b0d8d8;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.6;
+    display: none;
+  }
+
+  .fp-tooltip.visible { display: block; }
+
+  /* Stats row */
+  .fp-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .fp-stat {
+    background: var(--stage-bg);
+    border-radius: 6px;
+    padding: 7px 11px;
+  }
+
+  .fp-stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .fp-stat-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ---- PANEL 2: Heterogeneity scenarios ---- */
+  .scenario-toggle {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .scenario-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .scenario-btn.active { background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  .scenario-panel { display: none; }
+  .scenario-panel.active { display: block; }
+
+  /* ---- PANEL 3: Publication bias ---- */
+  .funnel-container {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .funnel-toggle {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    background: var(--stage-bg);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .funnel-btn {
+    flex: 1;
+    padding: 7px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .funnel-btn.active { background: white; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  /* ---- PANEL 4: Calibrated conclusions ---- */
+  .calibration-scale {
+    margin: 20px 0;
+  }
+
+  .cal-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    margin-bottom: 10px;
+    align-items: start;
+  }
+
+  .cal-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 8px;
+  }
+
+  .cal-bar-wrap {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 13px;
+  }
+
+  .cal-rating {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .cal-desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .cal-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 560px) {
+    .fp-header { grid-template-columns: 90px 1fr 60px 55px; }
+    .fp-row { grid-template-columns: 90px 1fr 60px 55px; }
+    .fp-diamond-row { grid-template-columns: 90px 1fr 60px 55px; }
+    .fp-study-name { font-size: 11px; }
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: none; width: calc(50% - 2px); }
+    .cal-row { grid-template-columns: 80px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>Reading a body of evidence</h1>
+    <p>Forest plots, publication bias, and calibrated conclusions</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel(0)">
+      <span class="tab-num">Part 1</span>
+      Forest plot anatomy
+    </button>
+    <button class="tab" onclick="showPanel(1)">
+      <span class="tab-num">Part 2</span>
+      Heterogeneity scenarios
+    </button>
+    <button class="tab" onclick="showPanel(2)">
+      <span class="tab-num">Part 3</span>
+      Publication bias
+    </button>
+    <button class="tab" onclick="showPanel(3)">
+      <span class="tab-num">Part 4</span>
+      Calibrated conclusions
+    </button>
+  </div>
+
+  <!-- PANEL 1: Forest plot anatomy -->
+  <div class="panel active" id="panel-0">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:16px;">Click any row to learn what each element of a forest plot means. The diamond at the bottom represents the pooled estimate across all trials.</p>
+
+    <div class="fp-container">
+      <div class="fp-title">Example meta-analysis — five trials, low heterogeneity (I² = 18%)</div>
+
+      <div class="fp-header">
+        <div>Study</div>
+        <div style="text-align:center;">Effect (favours intervention →)</div>
+        <div style="text-align:right;">Weight</div>
+        <div style="text-align:right;">ES [95% CI]</div>
+      </div>
+
+      <!-- Studies -->
+      <div class="fp-row" onclick="showTip(0)">
+        <div class="fp-study-name">Smith 2019<br><span style="font-size:10px; color:var(--ink-muted);">n=120, RCT</span></div>
+        <div class="fp-track">
+          <div class="fp-zero" style="left:50%;"></div>
+          <div class="fp-ci-line" style="left:56%; right:25%; background:var(--teal); opacity:0.4;"></div>
+          <div class="fp-square" style="left:68%; width:12px; height:12px; background:var(--teal);"></div>
+        </div>
+        <div class="fp-weight">18.4%</div>
+        <div class="fp-est">0.42 [0.18, 0.66]</div>
+      </div>
+
+      <div class="fp-row" onclick="showTip(1)">
+        <div class="fp-study-name">Chen 2020<br><span style="font-size:10px; color:var(--ink-muted);">n=84, RCT</span></div>
+        <div class="fp-track">
+          <div class="fp-zero" style="left:50%;"></div>
+          <div class="fp-ci-line" style="left:52%; right:22%; background:var(--teal); opacity:0.4;"></div>
+          <div class="fp-square" style="left:64%; width:10px; height:10px; background:var(--teal);"></div>
+        </div>
+        <div class="fp-weight">14.2%</div>
+        <div class="fp-est">0.38 [0.12, 0.64]</div>
+      </div>
+
+      <div class="fp-row" onclick="showTip(2)">
+        <div class="fp-study-name">Patel 2021<br><span style="font-size:10px; color:var(--ink-muted);">n=210, RCT</span></div>
+        <div class="fp-track">
+          <div class="fp-zero" style="left:50%;"></div>
+          <div class="fp-ci-line" style="left:57%; right:30%; background:var(--teal); opacity:0.4;"></div>
+          <div class="fp-square" style="left:66%; width:16px; height:16px; background:var(--teal);"></div>
+        </div>
+        <div class="fp-weight">32.1%</div>
+        <div class="fp-est">0.35 [0.18, 0.52]</div>
+      </div>
+
+      <div class="fp-row" onclick="showTip(3)">
+        <div class="fp-study-name">Rossi 2022<br><span style="font-size:10px; color:var(--ink-muted);">n=66, RCT</span></div>
+        <div class="fp-track">
+          <div class="fp-zero" style="left:50%;"></div>
+          <div class="fp-ci-line" style="left:39%; right:20%; background:var(--amber); opacity:0.4;"></div>
+          <div class="fp-square" style="left:55%; width:9px; height:9px; background:var(--amber);"></div>
+        </div>
+        <div class="fp-weight">11.8%</div>
+        <div class="fp-est">0.12 [−0.26, 0.50]</div>
+      </div>
+
+      <div class="fp-row" onclick="showTip(4)">
+        <div class="fp-study-name">Kim 2023<br><span style="font-size:10px; color:var(--ink-muted);">n=180, RCT</span></div>
+        <div class="fp-track">
+          <div class="fp-zero" style="left:50%;"></div>
+          <div class="fp-ci-line" style="left:55%; right:24%; background:var(--teal); opacity:0.4;"></div>
+          <div class="fp-square" style="left:67%; width:14px; height:14px; background:var(--teal);"></div>
+        </div>
+        <div class="fp-weight">23.5%</div>
+        <div class="fp-est">0.40 [0.18, 0.62]</div>
+      </div>
+
+      <!-- Diamond -->
+      <div class="fp-diamond-row">
+        <div class="fp-diamond-label">Pooled effect</div>
+        <div class="fp-diamond-track">
+          <div class="fp-zero" style="left:50%; position:absolute; top:0; bottom:0; width:1px; background:var(--rule);"></div>
+          <svg width="100%" height="22" style="position:absolute; top:0; left:0;">
+            <polygon points="52%,2 68%,11 52%,20 36%,11" fill="#0d7377" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="fp-weight" style="font-weight:500; color:var(--ink);">100%</div>
+        <div class="fp-est" style="font-weight:500; color:var(--ink);">0.37 [0.24, 0.50]</div>
+      </div>
+
+      <div class="fp-stats">
+        <div class="fp-stat">
+          <div class="fp-stat-label">I² (heterogeneity)</div>
+          <div class="fp-stat-value" style="color:var(--green);">18%</div>
+        </div>
+        <div class="fp-stat">
+          <div class="fp-stat-label">Pooled p-value</div>
+          <div class="fp-stat-value">p = 0.001</div>
+        </div>
+        <div class="fp-stat">
+          <div class="fp-stat-label">No. of trials</div>
+          <div class="fp-stat-value">5</div>
+        </div>
+        <div class="fp-stat">
+          <div class="fp-stat-label">Total N</div>
+          <div class="fp-stat-value">660</div>
+        </div>
+      </div>
+
+      <div class="fp-tooltip" id="fp-tip">Click a row above to learn what each element means.</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <div style="background:white; border:1px solid var(--rule); border-radius:8px; padding:13px 14px;">
+        <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:4px;">Box size = weight</div>
+        <div style="font-size:12px; color:var(--ink-soft); font-weight:300; line-height:1.5;">Larger boxes represent trials that contributed more to the pooled estimate — usually because they enrolled more participants or had lower variance.</div>
+      </div>
+      <div style="background:white; border:1px solid var(--rule); border-radius:8px; padding:13px 14px;">
+        <div style="font-size:12px; font-weight:500; color:var(--ink); margin-bottom:4px;">Diamond = pooled result</div>
+        <div style="font-size:12px; color:var(--ink-soft); font-weight:300; line-height:1.5;">The diamond's centre is the pooled point estimate. Its width is the confidence interval. A diamond that crosses the zero line means the pooled result is not statistically significant.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PANEL 2: Heterogeneity scenarios -->
+  <div class="panel" id="panel-1">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:16px;">The I² statistic quantifies the proportion of variability that reflects genuine between-study differences rather than chance. Compare these two scenarios to see what low and high heterogeneity look like in practice.</p>
+
+    <div class="scenario-toggle">
+      <button class="scenario-btn active" onclick="showScenario(0)">Low heterogeneity (I² = 12%) — consistent literature</button>
+      <button class="scenario-btn" onclick="showScenario(1)">High heterogeneity (I² = 84%) — inconsistent literature</button>
+    </div>
+
+    <div class="scenario-panel active" id="scenario-0">
+      <div class="fp-container">
+        <div class="fp-title">Consistent findings — trials tell a similar story</div>
+        <div class="fp-header">
+          <div>Study</div>
+          <div style="text-align:center;">Effect</div>
+          <div style="text-align:right;">Weight</div>
+          <div style="text-align:right;">ES [95% CI]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial A</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:57%; right:28%; background:var(--green); opacity:0.4;"></div><div class="fp-square" style="left:66%; width:13px; height:13px; background:var(--green);"></div></div>
+          <div class="fp-weight">28%</div><div class="fp-est">0.38 [0.20, 0.56]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial B</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:58%; right:26%; background:var(--green); opacity:0.4;"></div><div class="fp-square" style="left:67%; width:11px; height:11px; background:var(--green);"></div></div>
+          <div class="fp-weight">22%</div><div class="fp-est">0.42 [0.22, 0.62]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial C</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:55%; right:30%; background:var(--green); opacity:0.4;"></div><div class="fp-square" style="left:64%; width:15px; height:15px; background:var(--green);"></div></div>
+          <div class="fp-weight">35%</div><div class="fp-est">0.33 [0.18, 0.48]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial D</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:56%; right:29%; background:var(--green); opacity:0.4;"></div><div class="fp-square" style="left:65%; width:9px; height:9px; background:var(--green);"></div></div>
+          <div class="fp-weight">15%</div><div class="fp-est">0.36 [0.14, 0.58]</div>
+        </div>
+        <div class="fp-diamond-row">
+          <div class="fp-diamond-label">Pooled</div>
+          <div class="fp-diamond-track"><div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--rule);"></div><svg width="100%" height="22" style="position:absolute;"><polygon points="55%,2 67%,11 55%,20 43%,11" fill="#2a7a4b" opacity="0.85"/></svg></div>
+          <div class="fp-weight" style="font-weight:500;">100%</div>
+          <div class="fp-est" style="font-weight:500;">0.37 [0.28, 0.46]</div>
+        </div>
+        <div class="fp-stats">
+          <div class="fp-stat"><div class="fp-stat-label">I²</div><div class="fp-stat-value" style="color:var(--green);">12%</div></div>
+          <div class="fp-stat"><div class="fp-stat-label">Interpretation</div><div class="fp-stat-value" style="font-size:11px; color:var(--green);">Low unexplained variability</div></div>
+        </div>
+      </div>
+      <div style="padding:12px 14px; background:var(--green-light); border:1px solid #b0d9bf; border-radius:8px; font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.6;">The trials are telling a consistent story. The squares cluster in the same region, their intervals largely overlap, and the pooled diamond is narrow. An I² of 12% means most of the variability is attributable to chance rather than genuine between-study differences. The pooled estimate is a reasonable summary.</div>
+    </div>
+
+    <div class="scenario-panel" id="scenario-1">
+      <div class="fp-container">
+        <div class="fp-title">Inconsistent findings — trials tell conflicting stories</div>
+        <div class="fp-header">
+          <div>Study</div>
+          <div style="text-align:center;">Effect</div>
+          <div style="text-align:right;">Weight</div>
+          <div style="text-align:right;">ES [95% CI]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial A</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:62%; right:10%; background:var(--green); opacity:0.4;"></div><div class="fp-square" style="left:80%; width:11px; height:11px; background:var(--green);"></div></div>
+          <div class="fp-weight">22%</div><div class="fp-est">0.82 [0.44, 1.20]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial B</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:35%; right:38%; background:var(--red); opacity:0.4;"></div><div class="fp-square" style="left:44%; width:10px; height:10px; background:var(--red);"></div></div>
+          <div class="fp-weight">20%</div><div class="fp-est">−0.18 [−0.46, 0.10]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial C</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:57%; right:18%; background:var(--amber); opacity:0.4;"></div><div class="fp-square" style="left:69%; width:14px; height:14px; background:var(--amber);"></div></div>
+          <div class="fp-weight">30%</div><div class="fp-est">0.54 [0.22, 0.86]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial D</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:30%; right:35%; background:var(--red); opacity:0.4;"></div><div class="fp-square" style="left:40%; width:9px; height:9px; background:var(--red);"></div></div>
+          <div class="fp-weight">18%</div><div class="fp-est">−0.32 [−0.62, −0.02]</div>
+        </div>
+        <div class="fp-row">
+          <div class="fp-study-name">Trial E</div>
+          <div class="fp-track"><div class="fp-zero" style="left:50%;"></div><div class="fp-ci-line" style="left:55%; right:22%; background:var(--amber); opacity:0.4;"></div><div class="fp-square" style="left:67%; width:8px; height:8px; background:var(--amber);"></div></div>
+          <div class="fp-weight">10%</div><div class="fp-est">0.44 [0.08, 0.80]</div>
+        </div>
+        <div class="fp-diamond-row">
+          <div class="fp-diamond-label">Pooled</div>
+          <div class="fp-diamond-track"><div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--rule);"></div><svg width="100%" height="22" style="position:absolute;"><polygon points="42%,2 62%,11 42%,20 22%,11" fill="#c97b2a" opacity="0.75"/></svg></div>
+          <div class="fp-weight" style="font-weight:500;">100%</div>
+          <div class="fp-est" style="font-weight:500;">0.28 [−0.14, 0.70]</div>
+        </div>
+        <div class="fp-stats">
+          <div class="fp-stat"><div class="fp-stat-label">I²</div><div class="fp-stat-value" style="color:var(--red);">84%</div></div>
+          <div class="fp-stat"><div class="fp-stat-label">Interpretation</div><div class="fp-stat-value" style="font-size:11px; color:var(--red);">High — investigate cause</div></div>
+        </div>
+      </div>
+      <div style="padding:12px 14px; background:var(--amber-light); border:1px solid #f0cfa0; border-radius:8px; font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.6;">The trials are not telling a consistent story. The squares are spread across a wide range, some showing benefit and others showing harm. The I² of 84% means most of the variability is not explained by chance — though whether that reflects true biological differences across populations, bias, or measurement differences requires investigation. The pooled diamond crosses zero and is wide. Accepting it as a reliable summary would be misleading; the appropriate response is to investigate what is driving the spread.</div>
+    </div>
+
+  </div>
+
+  <!-- PANEL 3: Publication bias -->
+  <div class="panel" id="panel-2">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:16px;">A funnel plot shows each study's effect size against its precision. In a symmetric, unbiased literature, studies form an inverted funnel. When small null studies are missing — the pattern publication bias predicts — the funnel develops a gap.</p>
+
+    <div class="funnel-container">
+      <div class="funnel-toggle">
+        <button class="funnel-btn active" onclick="showFunnel(0)">Symmetric funnel — no bias suspected</button>
+        <button class="funnel-btn" onclick="showFunnel(1)">Asymmetric funnel — bias suspected</button>
+      </div>
+
+      <div id="funnel-0">
+        <svg viewBox="0 0 500 320" style="width:100%; max-height:280px;">
+          <!-- Axes -->
+          <line x1="60" y1="20" x2="60" y2="280" stroke="#e2ddd8" stroke-width="1.5"/>
+          <line x1="60" y1="280" x2="460" y2="280" stroke="#e2ddd8" stroke-width="1.5"/>
+          <!-- Centre line -->
+          <line x1="260" y1="20" x2="260" y2="280" stroke="#e2ddd8" stroke-width="1" stroke-dasharray="4,3"/>
+          <!-- Funnel lines -->
+          <line x1="160" y1="20" x2="360" y2="20" stroke="#b0d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="60" y1="280" x2="460" y2="280" stroke="#b0d8d8" stroke-width="1" stroke-dasharray="3,3"/>
+          <!-- Axis labels -->
+          <text x="260" y="300" text-anchor="middle" font-size="11" fill="#8888aa" font-family="DM Sans">Effect size →</text>
+          <text x="30" y="150" text-anchor="middle" font-size="11" fill="#8888aa" font-family="DM Sans" transform="rotate(-90 30 150)">Precision (larger = more precise)</text>
+          <!-- Studies — symmetric -->
+          <!-- High precision (top, near centre) -->
+          <circle cx="255" cy="35" r="5" fill="#0d7377" opacity="0.7"/>
+          <circle cx="268" cy="42" r="5" fill="#0d7377" opacity="0.7"/>
+          <circle cx="248" cy="55" r="5" fill="#0d7377" opacity="0.7"/>
+          <circle cx="272" cy="60" r="5" fill="#0d7377" opacity="0.7"/>
+          <!-- Medium precision -->
+          <circle cx="230" cy="100" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="290" cy="110" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="240" cy="120" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="280" cy="125" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="220" cy="130" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="300" cy="135" r="5" fill="#0d7377" opacity="0.6"/>
+          <!-- Low precision (bottom, spread wide) -->
+          <circle cx="190" cy="190" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="330" cy="195" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="170" cy="210" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="350" cy="215" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="210" cy="220" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="310" cy="225" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="150" cy="245" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="370" cy="248" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="130" cy="260" r="5" fill="#0d7377" opacity="0.4"/>
+          <circle cx="390" cy="262" r="5" fill="#0d7377" opacity="0.4"/>
+          <!-- Label -->
+          <text x="260" y="16" text-anchor="middle" font-size="10" fill="#2a7a4b" font-family="DM Sans" font-weight="500">Symmetric — no bias suspected</text>
+        </svg>
+        <p style="font-size:12px; color:var(--ink-soft); font-weight:300; line-height:1.6; margin-top:10px;">Studies are distributed symmetrically around the centre line. Large precise studies cluster at the top; smaller studies scatter evenly on both sides at the bottom. No systematic absence of studies in any quadrant.</p>
+      </div>
+
+      <div id="funnel-1" style="display:none;">
+        <svg viewBox="0 0 500 320" style="width:100%; max-height:280px;">
+          <!-- Axes -->
+          <line x1="60" y1="20" x2="60" y2="280" stroke="#e2ddd8" stroke-width="1.5"/>
+          <line x1="60" y1="280" x2="460" y2="280" stroke="#e2ddd8" stroke-width="1.5"/>
+          <!-- Centre line -->
+          <line x1="260" y1="20" x2="260" y2="280" stroke="#e2ddd8" stroke-width="1" stroke-dasharray="4,3"/>
+          <!-- Axis labels -->
+          <text x="260" y="300" text-anchor="middle" font-size="11" fill="#8888aa" font-family="DM Sans">Effect size →</text>
+          <text x="30" y="150" text-anchor="middle" font-size="11" fill="#8888aa" font-family="DM Sans" transform="rotate(-90 30 150)">Precision (larger = more precise)</text>
+          <!-- Missing region indicator -->
+          <rect x="80" y="180" width="140" height="90" fill="#fcecea" opacity="0.5" rx="4"/>
+          <text x="150" y="232" text-anchor="middle" font-size="10" fill="#b5342a" font-family="DM Sans">Missing studies</text>
+          <text x="150" y="244" text-anchor="middle" font-size="10" fill="#b5342a" font-family="DM Sans">(null results)</text>
+          <!-- Studies — asymmetric, gap bottom left -->
+          <!-- High precision (top) -->
+          <circle cx="262" cy="35" r="5" fill="#0d7377" opacity="0.7"/>
+          <circle cx="275" cy="42" r="5" fill="#0d7377" opacity="0.7"/>
+          <circle cx="252" cy="55" r="5" fill="#0d7377" opacity="0.7"/>
+          <!-- Medium precision -->
+          <circle cx="285" cy="100" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="295" cy="115" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="270" cy="125" r="5" fill="#0d7377" opacity="0.6"/>
+          <circle cx="240" cy="130" r="5" fill="#0d7377" opacity="0.6"/>
+          <!-- Low precision — present on right, absent on left -->
+          <circle cx="320" cy="195" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="355" cy="210" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="340" cy="225" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="380" cy="240" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="300" cy="250" r="5" fill="#0d7377" opacity="0.5"/>
+          <circle cx="360" cy="258" r="5" fill="#0d7377" opacity="0.4"/>
+          <circle cx="395" cy="262" r="5" fill="#0d7377" opacity="0.4"/>
+          <!-- Label -->
+          <text x="260" y="16" text-anchor="middle" font-size="10" fill="#b5342a" font-family="DM Sans" font-weight="500">Asymmetric — publication bias suspected</text>
+        </svg>
+        <p style="font-size:12px; color:var(--ink-soft); font-weight:300; line-height:1.6; margin-top:10px;">Small studies with null or negative results are absent from the lower-left region. Only positive small studies appear. This asymmetry suggests that unpublished null results may exist, and that the pooled estimate from published literature is likely inflated. Asymmetry should be investigated, not ignored.</p>
+      </div>
+    </div>
+
+    <div style="padding:13px 15px; background:var(--amber-light); border:1px solid #f0cfa0; border-radius:8px; font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.6;">
+      <strong style="font-weight:500; color:var(--amber);">Important caveat.</strong> Funnel plot asymmetry does not prove publication bias — it can also arise from genuine heterogeneity, small-study effects unrelated to bias, or chance when the number of studies is small (generally fewer than 10). It is a signal to investigate further, not a definitive finding. Formal tests such as Egger's test provide a quantitative complement to visual inspection but are not definitive either.
+    </div>
+
+  </div>
+
+  <!-- PANEL 4: Calibrated conclusions -->
+  <div class="panel" id="panel-3">
+
+    <p style="font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.7; margin-bottom:20px;">Drawing a conclusion from a body of evidence requires specifying what it supports, at what level of confidence, for which outcome, in which population. These examples show how the same evidence can support very different statements depending on scope.</p>
+
+    <div class="calibration-scale">
+
+      <div class="cal-row">
+        <div class="cal-label" style="color:var(--green);">Strong</div>
+        <div class="cal-bar-wrap" style="border-left:3px solid var(--green);">
+          <div class="cal-rating"><span class="cal-dot" style="background:var(--green);"></span>Strong (Clinical)</div>
+          <div class="cal-desc">Replicated across multiple large, independent, pre-registered trials measuring patient-relevant outcomes. Results are consistent, effect sizes are clinically meaningful, confidence intervals are narrow. Example: creatine for strength and lean mass in resistance training contexts.</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-label" style="color:var(--teal);">Moderate</div>
+        <div class="cal-bar-wrap" style="border-left:3px solid var(--teal);">
+          <div class="cal-rating"><span class="cal-dot" style="background:var(--teal);"></span>Moderate (Clinical)</div>
+          <div class="cal-desc">Meaningful evidence base with some limitations — smaller trials, less independent replication, or modest effect sizes. Supports a considered position but not high confidence. Example: magnesium for sleep quality in people with low dietary intake.</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-label" style="color:var(--amber);">Moderate (Biomarker)</div>
+        <div class="cal-bar-wrap" style="border-left:3px solid var(--amber);">
+          <div class="cal-rating"><span class="cal-dot" style="background:var(--amber);"></span>Moderate (Biomarker)</div>
+          <div class="cal-desc">Consistent evidence for a biomarker change, but the relationship to clinical outcomes has not been established. The evidence supports the biomarker effect, not the clinical implication marketing may attach to it. Example: berberine reducing fasting glucose — consistent, but clinical outcome translation is less certain.</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-label" style="color:var(--amber);">Emerging</div>
+        <div class="cal-bar-wrap" style="border-left:3px solid var(--amber);">
+          <div class="cal-rating"><span class="cal-dot" style="background:var(--amber);"></span>Emerging</div>
+          <div class="cal-desc">Early signals from limited or preliminary evidence. Insufficient for confident claims but worth monitoring. Mechanistic rationale may be strong; human trial evidence is thin or inconsistent. Example: many newer longevity-focused compounds with small early trials.</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-label" style="color:var(--red);">Insufficient</div>
+        <div class="cal-bar-wrap" style="border-left:3px solid var(--red);">
+          <div class="cal-rating"><span class="cal-dot" style="background:var(--red);"></span>Insufficient</div>
+          <div class="cal-desc">The honest position when no meaningful conclusion can be drawn. This is not a failure — it is accurate representation of where the evidence currently sits. It protects readers from overconfident claims in either direction.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding:13px 15px; background:var(--teal-light); border:1px solid #b0d8d8; border-radius:8px; font-size:13px; color:var(--ink-soft); font-weight:300; line-height:1.6;">
+      Calibrated uncertainty is not the same as saying nothing. A statement that distinguishes what is supported from what is not — that names the population, the outcome, the dose, and the confidence level — is far more useful than either "this works" or "we can't know." The goal is honesty about the current state of the evidence, not false resolution in either direction.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showPanel(index) {
+  document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === index));
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === index));
+}
+
+const tips = [
+  "Smith 2019 (n=120): The square sits to the right of the zero line and its confidence interval does not cross it — a statistically significant positive result. The moderate box size reflects a mid-sized trial contributing about 18% of the pooled weight.",
+  "Chen 2020 (n=84): A smaller trial (narrower box) with a similar positive result. The wider confidence interval reflects the smaller sample — there is more uncertainty about the true effect size in this study.",
+  "Patel 2021 (n=210): The largest trial in this analysis. Its bigger square and narrower confidence interval reflect the greater precision a larger sample provides. It contributes 32% of the pooled weight.",
+  "Rossi 2022 (n=66): The only trial whose confidence interval crosses the zero line. This trial cannot rule out no difference between intervention and control. It contributes the least weight. Its inclusion is why I² is not zero.",
+  "Kim 2023 (n=180): A large trial showing a consistent positive result, contributing 23.5% of the pooled weight. Its interval does not cross zero."
+];
+
+function showTip(index) {
+  document.querySelectorAll('.fp-row').forEach((r, i) => r.classList.toggle('active-row', i === index));
+  const tip = document.getElementById('fp-tip');
+  tip.textContent = tips[index];
+  tip.classList.add('visible');
+}
+
+function showScenario(index) {
+  document.querySelectorAll('.scenario-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+  document.querySelectorAll('.scenario-btn').forEach((b, i) => b.classList.toggle('active', i === index));
+}
+
+function showFunnel(index) {
+  document.getElementById('funnel-0').style.display = index === 0 ? 'block' : 'none';
+  document.getElementById('funnel-1').style.display = index === 1 ? 'block' : 'none';
+  document.querySelectorAll('.funnel-btn').forEach((b, i) => b.classList.toggle('active', i === index));
+}
+</script>
+</body>
+</html>
