@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evidence hierarchy pyramid</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: #1A1A2E;
+    padding: 0;
+  }
+
+  .pyramid-wrap {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tier {
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .tier:hover {
+    opacity: 0.82;
+  }
+
+  .info-panel {
+    margin: 12px 0 0;
+    background: #F8FAFA;
+    border: 1px solid #E2E8E8;
+    border-radius: 10px;
+    padding: 18px 22px;
+    min-height: 90px;
+    transition: all 0.2s;
+  }
+
+  .info-prompt {
+    font-size: 14px;
+    color: #888;
+    font-style: italic;
+  }
+
+  .info-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .info-title {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1A1A2E;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .info-body {
+    font-size: 14px;
+    color: #4A4A6A;
+    line-height: 1.7;
+  }
+
+  .caption {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+<div class="pyramid-wrap">
+
+  <svg viewBox="0 0 680 520" role="img" xmlns="http://www.w3.org/2000/svg">
+    <title>Evidence hierarchy pyramid</title>
+    <desc>Interactive pyramid showing five levels of evidence quality from weakest at the base to strongest at the apex. Click each tier to learn more.</desc>
+
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#1A6B72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <!--
+      Apex: 340, 20
+      Base: 80, 500  and  600, 500
+      Slope: 260/480 = 0.5417
+
+      Equal tier height: 96px each
+      y boundaries: 20, 116, 212, 308, 404, 500
+
+      Left x  = 340 - (y - 20) * 0.5417
+      Right x = 340 + (y - 20) * 0.5417
+
+      y=20:  340, 340
+      y=116: 340-52=288,  392
+      y=212: 340-104=236, 444
+      y=308: 340-156=184, 496
+      y=404: 340-208=132, 548 → use 132, 548
+      y=500: 80, 600
+    -->
+
+    <!-- Tier 5: Systematic reviews -->
+    <polygon class="tier" id="t5"
+      points="340,20 288,116 392,116"
+      fill="#0F6E56" stroke="#0F6E56" stroke-width="0.5"
+      onclick="show(5)"/>
+
+    <!-- Tier 4: RCTs -->
+    <polygon class="tier" id="t4"
+      points="288,116 392,116 444,212 236,212"
+      fill="#1D9E75" stroke="#1D9E75" stroke-width="0.5"
+      onclick="show(4)"/>
+
+    <!-- Tier 3: Cohort studies -->
+    <polygon class="tier" id="t3"
+      points="236,212 444,212 496,308 184,308"
+      fill="#5DCAA5" stroke="#5DCAA5" stroke-width="0.5"
+      onclick="show(3)"/>
+
+    <!-- Tier 2: Mechanistic -->
+    <polygon class="tier" id="t2"
+      points="184,308 496,308 548,404 132,404"
+      fill="#9FE1CB" stroke="#9FE1CB" stroke-width="0.5"
+      onclick="show(2)"/>
+
+    <!-- Tier 1: Expert opinion -->
+    <polygon class="tier" id="t1"
+      points="132,404 548,404 600,500 80,500"
+      fill="#E1F5EE" stroke="#C8EAE0" stroke-width="0.5"
+      onclick="show(1)"/>
+
+    <!-- Outer outline: single clean triangle -->
+    <polygon points="340,20 600,500 80,500"
+      fill="none" stroke="#085041" stroke-width="1.5"
+      pointer-events="none"/>
+
+    <!-- Right side labels with leader lines -->
+
+    <!-- Tier 5 label: midpoint of right edge at y=68 -->
+    <line x1="392" y1="68" x2="428" y2="68"
+      stroke="#085041" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <text x="434" y="63" font-size="12" font-weight="500"
+      font-family="-apple-system, sans-serif" fill="#085041">Systematic reviews</text>
+    <text x="434" y="78" font-size="11"
+      font-family="-apple-system, sans-serif" fill="#0F6E56">and meta-analyses</text>
+
+    <!-- Tier 4 label: midpoint right edge y=164 -->
+    <line x1="444" y1="164" x2="468" y2="164"
+      stroke="#085041" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <text x="474" y="169" font-size="12" font-weight="500"
+      font-family="-apple-system, sans-serif" fill="#085041">Randomised controlled trials</text>
+
+    <!-- Tier 3 label: midpoint right edge y=260 -->
+    <line x1="496" y1="260" x2="514" y2="260"
+      stroke="#085041" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <text x="520" y="256" font-size="12" font-weight="500"
+      font-family="-apple-system, sans-serif" fill="#085041">Cohort and</text>
+    <text x="520" y="271" font-size="12"
+      font-family="-apple-system, sans-serif" fill="#0F6E56">case-control studies</text>
+
+    <!-- Tier 2 label: midpoint right edge y=356 -->
+    <line x1="548" y1="356" x2="560" y2="356"
+      stroke="#085041" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <text x="566" y="351" font-size="11" font-weight="500"
+      font-family="-apple-system, sans-serif" fill="#085041">Mechanistic and</text>
+    <text x="566" y="366" font-size="11"
+      font-family="-apple-system, sans-serif" fill="#0F6E56">preclinical evidence</text>
+
+    <!-- Tier 1 label: midpoint right edge y=452 -->
+    <line x1="574" y1="452" x2="586" y2="452"
+      stroke="#085041" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <text x="592" y="447" font-size="11" font-weight="500"
+      font-family="-apple-system, sans-serif" fill="#085041">Expert opinion</text>
+    <text x="592" y="462" font-size="11"
+      font-family="-apple-system, sans-serif" fill="#0F6E56">and anecdote</text>
+
+    <!-- Strength axis -->
+    <line x1="44" y1="485" x2="44" y2="44"
+      stroke="#1A6B72" stroke-width="1"
+      marker-end="url(#arr)"/>
+    <text font-size="11" font-family="Georgia, serif" fill="#1A6B72"
+      transform="rotate(-90, 28, 262)" x="28" y="262"
+      text-anchor="middle">Stronger evidence</text>
+
+  </svg>
+
+  <p class="caption">Click any tier to learn more</p>
+
+  <div class="info-panel" id="panel">
+    <p class="info-prompt">Select a tier above to see what that type of evidence means and how Evidentia uses it.</p>
+  </div>
+
+</div>
+
+<script>
+var data = {
+  5: {
+    tag: "Highest quality",
+    tagColor: "#0F6E56",
+    tagBg: "#E1F5EE",
+    title: "Systematic reviews and meta-analyses",
+    body: "A systematic review uses a pre-specified, reproducible method to identify and synthesise all available research on a question. A meta-analysis goes further by pooling numerical data from multiple studies to produce a single overall effect estimate. These sit at the top of the hierarchy because they reduce the influence of any single trial's limitations or chance findings. A meta-analysis is only as good as the trials it includes, however — pooling weak or heterogeneous studies mathematically does not produce strong evidence, and when results differ substantially between studies the pooled estimate may not represent any real-world population well."
+  },
+  4: {
+    tag: "Strong design",
+    tagColor: "#085041",
+    tagBg: "#9FE1CB",
+    title: "Randomised controlled trials (RCTs)",
+    body: "An RCT randomly assigns participants to intervention or control groups, which distributes both known and unknown confounding factors between them. For most intervention questions, a well-conducted RCT often provides the most reliable available evidence of causal effect in humans. Quality matters considerably: a well-designed trial is pre-registered, adequately powered, blinded where possible, and conducted independently of commercial interests. Outcome selection matters equally — a trial measuring a surrogate biomarker rather than a patient-relevant outcome may be formally well-conducted but still provide weak evidence for real-world benefit."
+  },
+  3: {
+    tag: "Observational",
+    tagColor: "#085041",
+    tagBg: "#9FE1CB",
+    title: "Cohort and case-control studies",
+    body: "Observational studies examine associations between exposures and outcomes in real populations without intervening. They are valuable for studying long-latency outcomes, questions that cannot ethically be randomised, and for generating hypotheses. The central limitation is confounding: people who take a supplement tend to differ from those who do not in many unmeasured ways, and those differences may explain observed associations. For intervention questions, observational studies usually cannot establish causality on their own, though they can strengthen or weaken a case when combined with other lines of evidence."
+  },
+  2: {
+    tag: "Indirect evidence",
+    tagColor: "#0F6E56",
+    tagBg: "#E1F5EE",
+    title: "Mechanistic and preclinical evidence",
+    body: "Mechanistic research examines how a compound interacts with biological systems at the molecular or cellular level. Preclinical research tests effects in cell cultures or animal models. This tier answers the question of how something might work and is important for generating hypotheses. The gap between this tier and clinical evidence is larger than supplement marketing typically acknowledges. A compound that activates a pathway in isolated cells may not reach the relevant tissue at supplemental doses in humans, and effects seen in animal models frequently do not translate to people. A mechanistic rationale is the beginning of an evidence case, not its conclusion."
+  },
+  1: {
+    tag: "Lowest quality",
+    tagColor: "#5F5E5A",
+    tagBg: "#F1EFE8",
+    title: "Expert opinion and anecdote",
+    body: "Individual clinical observation and case reports are where signals often first emerge and they matter as hypothesis-generators. Expert interpretation plays a real role in synthesising ambiguous evidence and recognising when different lines of evidence cohere. The issue is not that these contributions are worthless, but that they are highly susceptible to bias, placebo effects, and selective recall, and should be anchored in the evidence base rather than substituting for it. Anecdote is also the primary currency of supplement marketing — testimonials and influencer endorsements operate at this level, and a compelling individual story is not evidence of a general effect."
+  }
+};
+
+function show(n) {
+  var d = data[n];
+  document.getElementById('panel').innerHTML =
+    '<span class="info-tag" style="color:' + d.tagColor + ';background:' + d.tagBg + '">' + d.tag + '</span>' +
+    '<div class="info-title">' + d.title + '</div>' +
+    '<div class="info-body">' + d.body + '</div>';
+}
+</script>
+</body>
+</html>
