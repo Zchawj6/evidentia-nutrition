@@ -31,6 +31,7 @@ export default async function ArticlePage({ params }) {
 
   const catStyle = categoryColors[article.category] || { bg: '#F3F4F6', color: '#374151' }
   const isGuest = article.author && article.author !== 'Evidentia Nutrition'
+  const hasSeries = article.series && article.series.trim() !== ''
   const initials = isGuest ? article.author.split(' ').slice(-2).map(n => n[0]).join('') : 'EN'
   return (
     <>
@@ -45,9 +46,15 @@ export default async function ArticlePage({ params }) {
         </div>
 
         {/* Article header */}
-        <div style={{ marginBottom: 32 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-            <span style={{ background: catStyle.bg, color: catStyle.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.8px', padding: '3px 8px', borderRadius: 4 }}>
+        {/* Article header */}
+         <div style={{ marginBottom: 32 }}>
+          {hasSeries && (
+            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', color: '#1A6B72', marginBottom: 10 }}>
+      {article.series}
+    </div>
+  )}
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+    <span style={{ background: catStyle.bg, color: catStyle.color, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px',
               {article.category}
             </span>
             <span style={{ fontSize: 12, color: '#aaa' }}>
