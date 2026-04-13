@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Professor Jatin Joshi',
-  description: 'Contributor profile for Professor Jatin Joshi, MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London.',
+  description: 'Contributor profile for Professor Jatin Joshi, BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London.',
 }
 
 const S = {
@@ -23,7 +23,7 @@ export default function JatinJoshi() {
         <div style={{ marginBottom: 36 }}>
           <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', color: '#1A6B72', marginBottom: 12 }}>Contributor</div>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 30, color: '#1A1A2E', marginBottom: 8, lineHeight: 1.25 }}>Professor Jatin Joshi</h1>
-          <p style={{ fontSize: 15, color: '#4A4A6A', lineHeight: 1.5, marginBottom: 4 }}>MBBS MSc(Oxon) MFDS FRCS(Plast)</p>
+          <p style={{ fontSize: 15, color: '#4A4A6A', lineHeight: 1.5, marginBottom: 4 }}>BDS MBBS MSc(Oxon) MFDS FRCS(Plast)</p>
           <p style={{ fontSize: 15, color: '#4A4A6A', lineHeight: 1.5 }}>Hon. Professor of Surgery (Translational Research), University College London</p>
         </div>
 
