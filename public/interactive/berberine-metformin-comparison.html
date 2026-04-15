@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berberine vs Metformin: Evidence Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0d7377;
+    --teal-light: #e8f4f4;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f4ed;
+    --red: #b5342a;
+    --red-light: #faeaea;
+    --mid: #6b7280;
+    --cream: #faf8f4;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --border: #e2ddd6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  .wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 24px 40px;
+  }
+
+  .header {
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 10px 18px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--mid);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: color 0.18s, border-color 0.18s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  .tab:hover { color: var(--teal); }
+
+  .tab.active {
+    color: var(--teal);
+    border-bottom-color: var(--teal);
+    font-weight: 600;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Comparison grid */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .compare-col {
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .compare-col.berberine { background: var(--amber-light); border-color: #e8c896; }
+  .compare-col.metformin { background: var(--teal-light); border-color: #a8d4d5; }
+
+  .compare-col h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .compare-col.berberine h3 { color: var(--amber); }
+  .compare-col.metformin h3 { color: var(--teal); }
+
+  .metric-row {
+    margin-bottom: 10px;
+  }
+
+  .metric-label {
+    font-size: 0.77rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+  }
+
+  .metric-value {
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .metric-value.strong { color: var(--green); font-weight: 600; }
+  .metric-value.moderate { color: var(--amber); font-weight: 600; }
+  .metric-value.limited { color: var(--red); font-weight: 600; }
+  .metric-value.none { color: var(--mid); }
+
+  /* Bar chart for effect sizes */
+  .bar-section { margin-bottom: 24px; }
+
+  .bar-section h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .bar-section .subtitle {
+    font-size: 0.8rem;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .bar-item {
+    margin-bottom: 14px;
+  }
+
+  .bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+  }
+
+  .bar-name {
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  .bar-value {
+    font-size: 0.8rem;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  .bar-track {
+    height: 10px;
+    background: var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    gap: 2px;
+  }
+
+  .bar-fill-b {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--amber);
+    transition: width 0.5s ease;
+  }
+
+  .bar-fill-m {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--teal);
+    transition: width 0.5s ease;
+  }
+
+  .bar-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Evidence depth table */
+  .evidence-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+
+  .evidence-table thead tr {
+    border-bottom: 2px solid var(--border);
+  }
+
+  .evidence-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.77rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--mid);
+  }
+
+  .evidence-table th:nth-child(2) { color: var(--amber); }
+  .evidence-table th:nth-child(3) { color: var(--teal); }
+
+  .evidence-table td {
+    padding: 10px 12px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .evidence-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.82rem;
+    width: 30%;
+  }
+
+  .evidence-table tr:last-child td { border-bottom: none; }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .tag-strong { background: var(--green-light); color: var(--green); }
+  .tag-moderate { background: var(--amber-light); color: var(--amber); }
+  .tag-limited { background: var(--red-light); color: var(--red); }
+  .tag-none { background: #f0f0f0; color: var(--mid); }
+
+  /* Safety cards */
+  .safety-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .safety-card {
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid var(--border);
+  }
+
+  .safety-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .safety-card.berberine h4 { color: var(--amber); }
+  .safety-card.metformin h4 { color: var(--teal); }
+
+  .safety-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .safety-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .dot-green { background: var(--green); }
+  .dot-amber { background: var(--amber); }
+  .dot-red { background: var(--red); }
+  .dot-grey { background: var(--mid); }
+
+  .callout {
+    border-left: 3px solid var(--teal);
+    background: var(--teal-light);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 20px;
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .callout strong { color: var(--teal); }
+
+  .callout-amber {
+    border-left-color: var(--amber);
+    background: var(--amber-light);
+  }
+  .callout-amber strong { color: var(--amber); }
+
+  @media (max-width: 560px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .safety-grid { grid-template-columns: 1fr; }
+    .tab { padding: 9px 13px; font-size: 0.79rem; }
+    .wrapper { padding: 24px 16px 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <h1>Berberine vs Metformin: Evidence Comparison</h1>
+    <p>Select a dimension below to explore how the evidence bases differ across glycaemia, trial quality, safety, and PCOS.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('glycaemia', this)">Glycaemic effects</button>
+    <button class="tab" onclick="show('evidence', this)">Evidence depth</button>
+    <button class="tab" onclick="show('safety', this)">Safety profile</button>
+    <button class="tab" onclick="show('pcos', this)">PCOS</button>
+  </div>
+
+  <!-- PANEL 1: GLYCAEMIA -->
+  <div id="glycaemia" class="panel active">
+    <div class="bar-section">
+      <h3>Effect sizes on glycaemic markers</h3>
+      <p class="subtitle">From meta-analytic data. Berberine values from Wang et al., 2024 (monotherapy arm). Comparison is directional; individual trial variation is substantial.</p>
+
+      <div class="bar-item">
+        <div class="bar-header">
+          <span class="bar-name">Fasting plasma glucose reduction</span>
+          <span class="bar-value">BBR -0.59 mmol/L &nbsp;|&nbsp; MET -0.80 mmol/L (approx.)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill-b" style="width:44%"></div>
+          <div class="bar-fill-m" style="width:52%"></div>
+        </div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-header">
+          <span class="bar-name">HbA1c reduction</span>
+          <span class="bar-value">BBR -0.57% &nbsp;|&nbsp; MET -0.6 to -1.0% (range across trials)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill-b" style="width:42%"></div>
+          <div class="bar-fill-m" style="width:50%"></div>
+        </div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-header">
+          <span class="bar-name">2-hour postprandial glucose</span>
+          <span class="bar-value">BBR -1.57 mmol/L &nbsp;|&nbsp; MET effect weaker in comparisons</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill-b" style="width:58%"></div>
+          <div class="bar-fill-m" style="width:40%"></div>
+        </div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-header">
+          <span class="bar-name">LDL-cholesterol reduction</span>
+          <span class="bar-value">BBR -0.30 mmol/L &nbsp;|&nbsp; MET: modest, not primary effect</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill-b" style="width:52%"></div>
+          <div class="bar-fill-m" style="width:18%"></div>
+        </div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-header">
+          <span class="bar-name">Triglyceride reduction</span>
+          <span class="bar-value">BBR -0.35 mmol/L &nbsp;|&nbsp; MET: modest effect reported</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill-b" style="width:50%"></div>
+          <div class="bar-fill-m" style="width:22%"></div>
+        </div>
+      </div>
+
+      <div class="bar-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div> Berberine (low-certainty estimate)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div> Metformin (higher-certainty estimate)</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Important context:</strong> These are short-term biomarker effects from trials of three to six months, predominantly in Chinese populations, with frequently poor blinding and allocation concealment. Given evidence of publication bias in this literature, the pooled berberine effect sizes are likely to overstate the true effect. They do not represent equivalent evidence of clinical benefit. Berberine's lipid effects are more pronounced and consistent than metformin's; glycaemic effects are broadly directionally similar in trials but cannot be equated with the long-term outcome data that exists for metformin.
+    </div>
+  </div>
+
+  <!-- PANEL 2: EVIDENCE DEPTH -->
+  <div id="evidence" class="panel">
+    <table class="evidence-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Berberine</th>
+          <th>Metformin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trials available</td>
+          <td>~50 RCTs on glycaemia; most under 6 months</td>
+          <td>Thousands of RCTs across 60+ years of use</td>
+        </tr>
+        <tr>
+          <td>Trial quality</td>
+          <td><span class="tag tag-moderate">Moderate</span> Allocation concealment and blinding frequently poor</td>
+          <td><span class="tag tag-strong">Strong</span> Large, well-conducted trials including long-term follow-up</td>
+        </tr>
+        <tr>
+          <td>Long-term outcome data</td>
+          <td><span class="tag tag-none">None</span> No cardiovascular outcomes trials; no mortality data</td>
+          <td><span class="tag tag-strong">Exists</span> UKPDS: 10.7-year follow-up; mortality and CV endpoint data</td>
+        </tr>
+        <tr>
+          <td>Population breadth</td>
+          <td><span class="tag tag-limited">Limited</span> Predominantly Chinese populations; limited Western data</td>
+          <td><span class="tag tag-strong">Broad</span> Multi-ethnic, multinational, multiple health systems</td>
+        </tr>
+        <tr>
+          <td>Regulatory status</td>
+          <td><span class="tag tag-none">Unregulated</span> Sold as supplement; no manufacturing or dosing standard</td>
+          <td><span class="tag tag-strong">Licensed</span> Pharmaceutical regulation; defined manufacturing standard</td>
+        </tr>
+        <tr>
+          <td>Publication bias risk</td>
+          <td><span class="tag tag-limited">High</span> Egger's test shows significant bias in glucose meta-analyses</td>
+          <td><span class="tag tag-moderate">Moderate</span> Large trials reduce but do not eliminate publication bias</td>
+        </tr>
+        <tr>
+          <td>Bioavailability</td>
+          <td><span class="tag tag-limited">Poor</span> Under 5% for standard HCl; phytosome forms improve this</td>
+          <td><span class="tag tag-strong">Defined</span> Well-characterised pharmacokinetics; extended-release available</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top:20px;">
+      <strong>The key asymmetry:</strong> Comparable biomarker effects in short-term trials are not the same as a comparable evidence base. The trial count, quality, duration, population diversity, and outcome depth differ substantially. This does not negate berberine's effects; it means they should be represented on their own terms rather than as equivalence with a regulated medicine.
+    </div>
+  </div>
+
+  <!-- PANEL 3: SAFETY -->
+  <div id="safety" class="panel">
+    <div class="safety-grid">
+      <div class="safety-card berberine">
+        <h4>Berberine</h4>
+        <div class="safety-item"><div class="safety-dot dot-amber"></div> Gastrointestinal effects (constipation, nausea, cramping) in a minority of users; generally less frequent than metformin in comparative trials</div>
+        <div class="safety-item"><div class="safety-dot dot-red"></div> CYP3A4 and CYP2D6 inhibition: drug interaction risk with statins, antiarrhythmics, antidepressants, and others</div>
+        <div class="safety-item"><div class="safety-dot dot-red"></div> Avoid in pregnancy and lactation: crosses placenta; present in breast milk in animal studies</div>
+        <div class="safety-item"><div class="safety-dot dot-red"></div> Long-term human safety data: absent. All trials under 6 months.</div>
+        <div class="safety-item"><div class="safety-dot dot-amber"></div> Product quality variable: dose, purity, and bioavailability of commercial supplements not standardised</div>
+        <div class="safety-item"><div class="safety-dot dot-grey"></div> No reported lactic acidosis risk</div>
+      </div>
+
+      <div class="safety-card metformin">
+        <h4>Metformin</h4>
+        <div class="safety-item"><div class="safety-dot dot-amber"></div> Gastrointestinal effects are the most common reason for discontinuation; extended-release formulation reduces these substantially</div>
+        <div class="safety-item"><div class="safety-dot dot-red"></div> Lactic acidosis: rare but potentially serious in patients with renal impairment, heart failure, or liver disease</div>
+        <div class="safety-item"><div class="safety-dot dot-red"></div> Contraindicated in significant renal impairment (eGFR &lt;30); dose reduction at eGFR 30–45</div>
+        <div class="safety-item"><div class="safety-dot dot-amber"></div> Vitamin B12 depletion with long-term use; monitoring recommended</div>
+        <div class="safety-item"><div class="safety-dot dot-green"></div> 60+ years of post-market pharmacovigilance; long-term safety profile well characterised</div>
+        <div class="safety-item"><div class="safety-dot dot-green"></div> Safety in pregnancy (gestational diabetes context): substantial data</div>
+      </div>
+    </div>
+
+    <div class="callout callout-amber" style="margin-top:20px;">
+      <strong>Important:</strong> Berberine's apparently favourable short-term tolerability profile compared with metformin should not be extrapolated to long-term safety. The absence of evidence for long-term harm is not evidence of long-term safety when follow-up periods are under six months across virtually all available trials.
+    </div>
+  </div>
+
+  <!-- PANEL 4: PCOS -->
+  <div id="pcos" class="panel">
+    <div class="compare-grid">
+      <div class="compare-col berberine">
+        <h3>Berberine in PCOS</h3>
+        <div class="metric-row">
+          <div class="metric-label">Insulin resistance</div>
+          <div class="metric-value moderate">Directionally similar to metformin in meta-analyses; HOMA-IR reduction documented but heterogeneous across trials</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Menstrual regularity</div>
+          <div class="metric-value moderate">Some improvement reported; less data than metformin; inferior to inositol combinations in network meta-analyses</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Androgen markers</div>
+          <div class="metric-value moderate">Modest reductions in testosterone reported in some trials; inconsistent</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Lipid profile</div>
+          <div class="metric-value strong">Consistent LDL-C and TG reductions; stronger effect than metformin in this population</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Regulatory status</div>
+          <div class="metric-value none">Not licensed for PCOS; used as supplement</div>
+        </div>
+      </div>
+
+      <div class="compare-col metformin">
+        <h3>Metformin in PCOS</h3>
+        <div class="metric-row">
+          <div class="metric-label">Insulin resistance</div>
+          <div class="metric-value strong">Well-established; first-line insulin sensitiser in PCOS management</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Menstrual regularity</div>
+          <div class="metric-value moderate">Improvements documented; network meta-analyses show inositol combinations superior for this outcome</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Androgen markers</div>
+          <div class="metric-value moderate">Some testosterone reduction; not primarily androgenic in mechanism</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Lipid profile</div>
+          <div class="metric-value none">Modest effects; not its primary indication</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">Regulatory status</div>
+          <div class="metric-value none">Off-label use in PCOS; neither metformin nor berberine is licensed specifically for PCOS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:4px;">
+      <strong>Context for PCOS:</strong> Neither metformin nor berberine is licensed for PCOS. Both are used off-label as insulin sensitisers. In this context, berberine's evidence base is somewhat less disadvantaged by comparison with metformin, because metformin itself is being used outside its licensed indication. The PCOS trial data for berberine are heterogeneous and of modest quality; effects shown above are directional, not precisely established. For women who cannot tolerate metformin's gastrointestinal effects, berberine is a plausible alternative with supporting trial evidence. It is not, however, equivalent to the general framing of the two compounds as interchangeable metabolic agents.
+    </div>
+  </div>
+
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
