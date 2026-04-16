@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognitive Supplements Evidence Comparison</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --teal: #0d7377;
+    --teal-light: #e8f4f4;
+    --teal-mid: #c2e0e1;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f4ed;
+    --red: #b5342a;
+    --red-light: #faeaea;
+    --cream: #faf8f4;
+    --sand: #f0ece4;
+    --ink: #1a1a1a;
+    --ink-mid: #3d3d3d;
+    --ink-light: #6b6b6b;
+    --border: #ddd8cf;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 24px 20px 32px;
+    min-height: 100vh;
+  }
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.45rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .header p {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-mid);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .tab:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .tab.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  /* Overview panel */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .ingredient-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .ingredient-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(13,115,119,0.08);
+  }
+
+  .ingredient-card.selected {
+    border-color: var(--teal);
+    background: var(--teal-light);
+  }
+
+  .card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .rating-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .rating-moderate { background: var(--teal-light); color: var(--teal); }
+  .rating-emerging { background: var(--amber-light); color: var(--amber); }
+  .rating-insufficient { background: var(--red-light); color: var(--red); }
+
+  .mini-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+
+  .mini-bar-label {
+    font-size: 0.72rem;
+    color: var(--ink-light);
+    width: 68px;
+    flex-shrink: 0;
+  }
+
+  .mini-bar-track {
+    flex: 1;
+    height: 5px;
+    background: var(--sand);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .fill-teal { background: var(--teal); }
+  .fill-amber { background: var(--amber); }
+  .fill-red { background: var(--red); }
+  .fill-green { background: var(--green); }
+
+  /* Detail panel */
+  .detail-panel {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    display: none;
+  }
+
+  .detail-panel.visible { display: block; }
+
+  .detail-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .detail-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--ink);
+  }
+
+  .detail-tagline {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    margin-top: 4px;
+  }
+
+  .axes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .axis-box {
+    background: var(--sand);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  .axis-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 4px;
+  }
+
+  .axis-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .axis-sub {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    margin-top: 2px;
+  }
+
+  .evidence-bars {
+    margin-bottom: 20px;
+  }
+
+  .bar-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+
+  .bar-label {
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    width: 130px;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--sand);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .bar-score {
+    display: none;
+  }
+
+  .key-point {
+    background: var(--cream);
+    border-left: 3px solid var(--teal);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  .key-point.amber { border-left-color: var(--amber); }
+  .key-point.red { border-left-color: var(--red); }
+  .key-point.green { border-left-color: var(--green); }
+
+  .population-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .pop-tag {
+    padding: 4px 10px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border-radius: 4px;
+    font-size: 0.74rem;
+    font-weight: 500;
+  }
+
+  .pop-tag.amber { background: var(--amber-light); color: var(--amber); }
+  .pop-tag.neutral { background: var(--sand); color: var(--ink-light); }
+
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  .summary-text {
+    font-size: 0.83rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  /* Compare panel */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+
+  .compare-table th {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--sand);
+    color: var(--ink);
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .compare-table th:first-child {
+    border-radius: 8px 0 0 0;
+    width: 130px;
+  }
+
+  .compare-table th:last-child {
+    border-radius: 0 8px 0 0;
+  }
+
+  .compare-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.4;
+    color: var(--ink-mid);
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table td:first-child {
+    font-weight: 500;
+    color: var(--ink-light);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--cream);
+  }
+
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .dot-teal { background: var(--teal); }
+  .dot-amber { background: var(--amber); }
+  .dot-red { background: var(--red); }
+  .dot-green { background: var(--green); }
+
+  .note {
+    font-size: 0.74rem;
+    color: var(--ink-light);
+    margin-top: 20px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  @media (max-width: 520px) {
+    .axes-grid { grid-template-columns: 1fr; }
+    .bar-label { width: 100px; font-size: 0.75rem; }
+    .compare-table { font-size: 0.73rem; }
+    .compare-table th, .compare-table td { padding: 8px; }
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Cognitive supplements: evidence at a glance</h1>
+  <p>Tap an ingredient for detail, or use the Compare tab to see all five side by side. Ratings reflect the current human clinical trial evidence, not preclinical or mechanistic plausibility. Bar lengths are qualitative indicators of relative evidence weight, not scores derived from a validated scale. Comparisons are approximate and context-dependent; similar bar lengths do not imply equivalent clinical utility.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showPanel('overview')">Overview</button>
+  <button class="tab" onclick="showPanel('citicoline')">Citicoline</button>
+  <button class="tab" onclick="showPanel('ps')">Phosphatidylserine</button>
+  <button class="tab" onclick="showPanel('lm')">Lion's Mane</button>
+  <button class="tab" onclick="showPanel('bacopa')">Bacopa</button>
+  <button class="tab" onclick="showPanel('ginkgo')">Ginkgo</button>
+  <button class="tab" onclick="showPanel('compare')">Compare all</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="panel-overview" class="overview-grid">
+
+  <div class="ingredient-card" onclick="showPanel('citicoline')">
+    <div class="card-name">Citicoline</div>
+    <span class="rating-badge rating-moderate">Moderate</span>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Trial quality</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:68%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Consistency</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:62%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Effect size</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:40%"></div></div>
+    </div>
+    <div style="font-size:0.75rem;color:var(--ink-light);margin-top:10px;line-height:1.4">Best evidence in adults 40+ with attentional decline</div>
+  </div>
+
+  <div class="ingredient-card" onclick="showPanel('ps')">
+    <div class="card-name">Phosphatidylserine</div>
+    <span class="rating-badge rating-moderate">Moderate</span>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Trial quality</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:58%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Consistency</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:55%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Effect size</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:35%"></div></div>
+    </div>
+    <div style="font-size:0.75rem;color:var(--ink-light);margin-top:10px;line-height:1.4">Evidence mostly from bovine-derived form; soy-form trials smaller</div>
+  </div>
+
+  <div class="ingredient-card" onclick="showPanel('bacopa')">
+    <div class="card-name">Bacopa monnieri</div>
+    <span class="rating-badge rating-moderate">Moderate</span>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Trial quality</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:55%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Consistency</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:65%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Effect size</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:38%"></div></div>
+    </div>
+    <div style="font-size:0.75rem;color:var(--ink-light);margin-top:10px;line-height:1.4">Repeated directional findings across small trials; requires 8–12 weeks; memory consolidation</div>
+  </div>
+
+  <div class="ingredient-card" onclick="showPanel('lm')">
+    <div class="card-name">Lion's Mane</div>
+    <span class="rating-badge rating-emerging">Emerging</span>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Trial quality</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:28%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Consistency</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:32%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Effect size</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width:35%"></div></div>
+    </div>
+    <div style="font-size:0.75rem;color:var(--ink-light);margin-top:10px;line-height:1.4">Promising preclinical biology; human trials small and unreplicated</div>
+  </div>
+
+  <div class="ingredient-card" onclick="showPanel('ginkgo')">
+    <div class="card-name">Ginkgo biloba</div>
+    <span class="rating-badge rating-insufficient">Insufficient</span>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Trial quality</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-teal" style="width:75%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Consistency</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-red" style="width:25%"></div></div>
+    </div>
+    <div class="mini-bar-row">
+      <span class="mini-bar-label">Effect size</span>
+      <div class="mini-bar-track"><div class="mini-bar-fill fill-red" style="width:15%"></div></div>
+    </div>
+    <div style="font-size:0.75rem;color:var(--ink-light);margin-top:10px;line-height:1.4">Two large prevention trials (n=5,000+) found no benefit</div>
+  </div>
+
+</div>
+
+<!-- CITICOLINE DETAIL -->
+<div id="panel-citicoline" class="detail-panel">
+  <div class="detail-header">
+    <div>
+      <div class="detail-name">Citicoline</div>
+      <div class="detail-tagline">Cytidine diphosphocholine — membrane support and cholinergic pathway</div>
+    </div>
+    <span class="rating-badge rating-moderate">Moderate evidence</span>
+  </div>
+
+  <div class="axes-grid">
+    <div class="axis-box">
+      <div class="axis-label">Evidence strength</div>
+      <div class="axis-value">Moderate</div>
+      <div class="axis-sub">Multiple RCTs, meta-analysis available</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Evidence type</div>
+      <div class="axis-value">Clinical + Biomarker</div>
+      <div class="axis-sub">Measured cognitive outcomes and neuroimaging</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Studied dose</div>
+      <div class="axis-value">250–500 mg/day</div>
+      <div class="axis-sub">Most trials used 500 mg</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Time to effect</div>
+      <div class="axis-value">4–12 weeks</div>
+      <div class="axis-sub">Trials typically 12 weeks duration</div>
+    </div>
+  </div>
+
+  <div class="evidence-bars">
+    <div class="bar-section-title">Evidence dimensions</div>
+    <div class="bar-row">
+      <span class="bar-label">Trial quality</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:68%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Replication</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:65%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect size</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:40%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Population breadth</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:45%"></div></div>
+      
+    </div>
+  </div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Who the evidence applies to</div>
+  <div class="population-tags">
+    <span class="pop-tag">Adults 40+ with attentional decline</span>
+    <span class="pop-tag">Mild vascular cognitive impairment</span>
+    <span class="pop-tag amber">Healthy younger adults (weak signal)</span>
+    <span class="pop-tag neutral">Dementia prevention (not established)</span>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Key points</div>
+  <div class="key-point">Meta-analysis (Jasielski et al., 2020; 14 trials, ~1,000 participants) found repeated directional findings for attention and memory across small trials, with substantial heterogeneity across populations.</div>
+  <div class="key-point amber">Effect sizes in healthy younger adults are small and clinical significance is uncertain. Marketing to this group as a performance enhancer goes beyond the evidence.</div>
+  <div class="key-point">Well tolerated in trials up to 12 months. No major safety concerns identified at studied doses.</div>
+</div>
+
+<!-- PHOSPHATIDYLSERINE DETAIL -->
+<div id="panel-ps" class="detail-panel">
+  <div class="detail-header">
+    <div>
+      <div class="detail-name">Phosphatidylserine</div>
+      <div class="detail-tagline">Neuronal membrane phospholipid — cell signalling and membrane fluidity</div>
+    </div>
+    <span class="rating-badge rating-moderate">Moderate evidence</span>
+  </div>
+
+  <div class="axes-grid">
+    <div class="axis-box">
+      <div class="axis-label">Evidence strength</div>
+      <div class="axis-value">Moderate</div>
+      <div class="axis-sub">Multiple RCTs; form-specific caveat</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Evidence type</div>
+      <div class="axis-value">Clinical</div>
+      <div class="axis-sub">Cognitive composite and memory outcomes</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Studied dose</div>
+      <div class="axis-value">200–400 mg/day</div>
+      <div class="axis-sub">Usually split into 2–3 doses</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Critical caveat</div>
+      <div class="axis-value">Form matters</div>
+      <div class="axis-sub">Bovine evidence stronger than soy-derived</div>
+    </div>
+  </div>
+
+  <div class="evidence-bars">
+    <div class="bar-section-title">Evidence dimensions</div>
+    <div class="bar-row">
+      <span class="bar-label">Trial quality</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:58%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Replication</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:55%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect size</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:35%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Form consistency</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:30%"></div></div>
+      
+    </div>
+  </div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Who the evidence applies to</div>
+  <div class="population-tags">
+    <span class="pop-tag">Older adults with age-associated memory impairment</span>
+    <span class="pop-tag amber">Children with attention difficulties (limited evidence)</span>
+    <span class="pop-tag neutral">Healthy younger adults (not established)</span>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Key points</div>
+  <div class="key-point">The only cognitive supplement with a qualified FDA health claim — though the qualification explicitly limits it to "very limited and preliminary" evidence for dementia risk in the elderly.</div>
+  <div class="key-point amber">Most supplements now use soy-derived phosphatidylserine. The strongest evidence base used bovine-derived form, which has a different structural profile. This limits direct extrapolation.</div>
+  <div class="key-point red">No strong evidence for use in healthy adults without baseline cognitive concerns. Purchasing it as a general performance enhancer is not supported by current trials.</div>
+</div>
+
+<!-- LION'S MANE DETAIL -->
+<div id="panel-lm" class="detail-panel">
+  <div class="detail-header">
+    <div>
+      <div class="detail-name">Lion's Mane</div>
+      <div class="detail-tagline">Hericium erinaceus — NGF-stimulating hericenones and erinacines</div>
+    </div>
+    <span class="rating-badge rating-emerging">Emerging evidence</span>
+  </div>
+
+  <div class="axes-grid">
+    <div class="axis-box">
+      <div class="axis-label">Evidence strength</div>
+      <div class="axis-value">Emerging</div>
+      <div class="axis-sub">Small trials; no large replication</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Evidence type</div>
+      <div class="axis-value">Mechanistic + early Clinical</div>
+      <div class="axis-sub">Strong preclinical; limited human RCTs</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Studied dose</div>
+      <div class="axis-value">1,000–3,000 mg/day</div>
+      <div class="axis-sub">Variable across trials; standardisation unclear</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Largest trial</div>
+      <div class="axis-value">n=41</div>
+      <div class="axis-sub">Docherty et al., 2023 (crossover)</div>
+    </div>
+  </div>
+
+  <div class="evidence-bars">
+    <div class="bar-section-title">Evidence dimensions</div>
+    <div class="bar-row">
+      <span class="bar-label">Trial quality</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:28%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Replication</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:25%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Preclinical biology</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:80%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect size</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:35%"></div></div>
+      
+    </div>
+  </div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Who the evidence applies to</div>
+  <div class="population-tags">
+    <span class="pop-tag amber">Mild cognitive impairment (small trial signal)</span>
+    <span class="pop-tag amber">Healthy older adults (single small trial)</span>
+    <span class="pop-tag neutral">Healthy younger adults (early signal only)</span>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Key points</div>
+  <div class="key-point">Has strong preclinical NGF-related biology. The mechanistic rationale for investigation is well established. Human clinical translation has not yet been confirmed.</div>
+  <div class="key-point amber">The most widely cited trial (Mori et al., 2009) had only 30 participants and used an outcome scale (Hasegawa Dementia Scale) not commonly used in contemporary cognitive research.</div>
+  <div class="key-point red">Marketing language for lion's mane has substantially outrun the evidence. The ingredient warrants further investigation; confident recommendations are premature.</div>
+</div>
+
+<!-- BACOPA DETAIL -->
+<div id="panel-bacopa" class="detail-panel">
+  <div class="detail-header">
+    <div>
+      <div class="detail-name">Bacopa monnieri</div>
+      <div class="detail-tagline">Ayurvedic herb — bacosides modulating synaptic transmission and oxidative stress</div>
+    </div>
+    <span class="rating-badge rating-moderate">Moderate evidence</span>
+  </div>
+
+  <div class="axes-grid">
+    <div class="axis-box">
+      <div class="axis-label">Evidence strength</div>
+      <div class="axis-value">Moderate</div>
+      <div class="axis-sub">Multiple RCTs; meta-analysis available</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Evidence type</div>
+      <div class="axis-value">Clinical</div>
+      <div class="axis-sub">Memory consolidation and verbal learning</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Studied dose</div>
+      <div class="axis-value">300–450 mg/day</div>
+      <div class="axis-sub">Standardised extract (CDRI 08 / KeenMind)</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Time to effect</div>
+      <div class="axis-value">8–12 weeks minimum</div>
+      <div class="axis-sub">Acute dosing does not produce the same benefit</div>
+    </div>
+  </div>
+
+  <div class="evidence-bars">
+    <div class="bar-section-title">Evidence dimensions</div>
+    <div class="bar-row">
+      <span class="bar-label">Trial quality</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:55%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Replication</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:68%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect size</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:38%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Independence of trials</span>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:45%"></div></div>
+      
+    </div>
+  </div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Who the evidence applies to</div>
+  <div class="population-tags">
+    <span class="pop-tag">Adults with memory consolidation concerns</span>
+    <span class="pop-tag">Older adults with age-related memory decline</span>
+    <span class="pop-tag amber">Younger adults (positive trials exist; effect size modest)</span>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Key points</div>
+  <div class="key-point">Meta-analysis (Pase et al., 2012; 9 RCTs) found generally similar directional findings for delayed recall memory across small trials. Effect most pronounced for memory consolidation rather than immediate or working memory.</div>
+  <div class="key-point amber">Most positive trials used a standardised extract (CDRI 08). Evidence does not straightforwardly transfer to products of unknown bacosides content.</div>
+  <div class="key-point amber">Publication bias is plausible and likely inflates the observed effect sizes: most positive trials have connections to commercial suppliers. Independent large-scale replication is limited.</div>
+</div>
+
+<!-- GINKGO DETAIL -->
+<div id="panel-ginkgo" class="detail-panel">
+  <div class="detail-header">
+    <div>
+      <div class="detail-name">Ginkgo biloba</div>
+      <div class="detail-tagline">Most extensively studied herbal cognitive intervention — and the most instructive failure</div>
+    </div>
+    <span class="rating-badge rating-insufficient">Insufficient evidence</span>
+  </div>
+
+  <div class="axes-grid">
+    <div class="axis-box">
+      <div class="axis-label">Evidence strength</div>
+      <div class="axis-value">Insufficient</div>
+      <div class="axis-sub">Large trials found no benefit</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Evidence type</div>
+      <div class="axis-value">Clinical</div>
+      <div class="axis-sub">Dementia incidence; cognitive composites</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Largest trial</div>
+      <div class="axis-value">n=3,069</div>
+      <div class="axis-sub">GEM trial (DeKosky et al., 2008); 6 year follow-up</div>
+    </div>
+    <div class="axis-box">
+      <div class="axis-label">Second large trial</div>
+      <div class="axis-value">n=2,854</div>
+      <div class="axis-sub">GuidAge (Vellas et al., 2012); 5 year follow-up</div>
+    </div>
+  </div>
+
+  <div class="evidence-bars">
+    <div class="bar-section-title">Evidence dimensions</div>
+    <div class="bar-row">
+      <span class="bar-label">Trial quality</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:82%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Replication</span>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:75%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect on dementia</span>
+      <div class="bar-track"><div class="bar-fill fill-red" style="width:5%"></div></div>
+      
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Effect (performance)</span>
+      <div class="bar-track"><div class="bar-fill fill-red" style="width:18%"></div></div>
+      
+    </div>
+  </div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Who the evidence applies to</div>
+  <div class="population-tags">
+    <span class="pop-tag neutral">Dementia prevention (not supported by large trials)</span>
+    <span class="pop-tag neutral">Cognitive performance (inconsistent; not established)</span>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="bar-section-title" style="margin-bottom:10px">Key points</div>
+  <div class="key-point red">The GEM trial (n=3,069, 6 years, 240 mg/day EGb 761) found no reduction in dementia incidence. The GuidAge trial (n=2,854, 5 years) reached the same conclusion. These are well-designed, adequately powered trials.</div>
+  <div class="key-point red">Earlier smaller positive trials were likely inflated by small-study effects. This is the normal pattern when a literature moves from small exploratory trials to large definitive ones.</div>
+  <div class="key-point amber">Some acute effects on attention have been reported in younger adults, but these are inconsistent across studies and have no meaningful large-trial confirmation.</div>
+</div>
+
+<!-- COMPARE ALL -->
+<div id="panel-compare" class="detail-panel">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th><span class="dot dot-teal"></span>Citicoline</th>
+        <th><span class="dot dot-teal"></span>PS</th>
+        <th><span class="dot dot-teal"></span>Bacopa</th>
+        <th><span class="dot dot-amber"></span>Lion's Mane</th>
+        <th><span class="dot dot-red"></span>Ginkgo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Rating</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+        <td>Emerging</td>
+        <td>Insufficient</td>
+      </tr>
+      <tr>
+        <td>RCT count</td>
+        <td>~14 (meta)</td>
+        <td>~8</td>
+        <td>~9 (meta)</td>
+        <td>3–4</td>
+        <td>Many; 2 large</td>
+      </tr>
+      <tr>
+        <td>Largest trial</td>
+        <td>~n=100</td>
+        <td>~n=120</td>
+        <td>~n=100</td>
+        <td>n=41</td>
+        <td>n=3,069</td>
+      </tr>
+      <tr>
+        <td>Primary outcome</td>
+        <td>Attention, processing speed</td>
+        <td>Memory, verbal learning</td>
+        <td>Delayed recall, memory consolidation</td>
+        <td>Cognitive composites, processing speed</td>
+        <td>Dementia incidence (null)</td>
+      </tr>
+      <tr>
+        <td>Best population</td>
+        <td>Adults 40+ with attentional decline</td>
+        <td>Older adults with memory impairment</td>
+        <td>Memory concerns, any age</td>
+        <td>Mild cognitive impairment (tentative)</td>
+        <td>None established</td>
+      </tr>
+      <tr>
+        <td>Healthy young adults</td>
+        <td>Weak signal</td>
+        <td>Not established</td>
+        <td>Modest signal</td>
+        <td>Very early signal</td>
+        <td>Inconsistent; not supported</td>
+      </tr>
+      <tr>
+        <td>Time to effect</td>
+        <td>4–12 weeks</td>
+        <td>4–8 weeks</td>
+        <td>8–12 weeks minimum</td>
+        <td>8–16 weeks (trial data)</td>
+        <td>Not applicable</td>
+      </tr>
+      <tr>
+        <td>Evidence context</td>
+        <td>Mechanistic + clinical + some biomarker data</td>
+        <td>Form-dependent; bovine evidence stronger than soy</td>
+        <td>Behavioural outcomes; smaller trials; commercial bias risk</td>
+        <td>Preclinical biology strong; clinical trials all small and unreplicated</td>
+        <td>Large-scale clinical trials dominant; consistently negative for primary outcomes</td>
+      </tr>
+      <tr>
+        <td>Key limitation</td>
+        <td>Effect size modest; heterogeneous populations</td>
+        <td>Form difference (bovine vs soy) limits extrapolation</td>
+        <td>Commercial ties in most trials; publication bias plausible</td>
+        <td>All trials small; no independent replication</td>
+        <td>Two large trials null; earlier positive trials likely inflated</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">PS = Phosphatidylserine. Ratings reflect human clinical trial evidence only. Preclinical and mechanistic evidence is not included in the rating. Where effect sizes are described as small to moderate, these typically correspond to standardised mean differences in the range of d=0.2 to 0.5. Effect sizes in this range are statistically detectable but may not translate into meaningful real-world cognitive improvement, and clinical significance remains uncertain. Bar lengths are qualitative and heuristic; they reflect overall evidence balance rather than a formal weighted model.</p>
+</div>
+
+<script>
+  function showPanel(id) {
+    // Hide all panels
+    document.querySelectorAll('.overview-grid, .detail-panel').forEach(el => {
+      el.style.display = 'none';
+      if (el.classList) el.classList.remove('visible');
+    });
+
+    // Update tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+    // Show selected
+    if (id === 'overview') {
+      document.getElementById('panel-overview').style.display = 'grid';
+      document.querySelectorAll('.tab')[0].classList.add('active');
+    } else if (id === 'compare') {
+      const panel = document.getElementById('panel-compare');
+      panel.style.display = 'block';
+      panel.classList.add('visible');
+      document.querySelectorAll('.tab')[6].classList.add('active');
+    } else {
+      const panel = document.getElementById('panel-' + id);
+      panel.style.display = 'block';
+      panel.classList.add('visible');
+      const tabMap = { citicoline: 1, ps: 2, lm: 3, bacopa: 4, ginkgo: 5 };
+      document.querySelectorAll('.tab')[tabMap[id]].classList.add('active');
+    }
+  }
+
+  // Init
+  document.getElementById('panel-overview').style.display = 'grid';
+</script>
+
+</body>
+</html>
