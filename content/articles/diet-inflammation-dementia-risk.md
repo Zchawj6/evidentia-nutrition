@@ -47,6 +47,8 @@ The relevance to diet is direct. The same dietary patterns that drive systemic i
 
 Periodontal disease is modifiable. A prospective 12-year cohort study found that participants who received periodontal treatment were associated with a 38% lower observed incidence of dementia (hazard ratio 0.62; 95% CI: 0.41 to 0.93). This is an association within treatment patterns in an observational cohort, not a proven treatment effect, and healthy-user bias cannot be excluded. The first randomised controlled trial of periodontal treatment as a dementia intervention, the PETAL trial (NCT04120831), is ongoing.
 
+<iframe src="/interactive/diet-inflammation-dementia-pathway.html" width="100%" height="740" style="border:none;border-radius:10px;display:block;margin:24px 0;" title="Diet, inflammation and dementia risk — proposed pathway and evidence landscape"></iframe>
+
 ## Specific nutrients with mechanistic and clinical relevance
 
 Beyond dietary patterns, several individual nutrients have both plausible mechanisms and at least moderate human evidence relevant to cognitive outcomes.
