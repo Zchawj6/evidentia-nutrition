@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLP-1 Nutritional Risk: Evidence Matrix</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0d7377;
+    --teal-light: #e8f4f4;
+    --teal-mid: #b8d9db;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --red: #b5342a;
+    --red-light: #fdecea;
+    --cream: #faf8f4;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: #e2ddd6;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    padding: 26px 18px 40px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--teal);
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.79rem;
+    margin-bottom: 18px;
+    line-height: 1.55;
+    max-width: 700px;
+  }
+
+  /* Legend */
+  .legend-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 520px) { .legend-wrap { grid-template-columns: 1fr; } }
+
+  .legend-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 13px;
+  }
+
+  .legend-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .legend-items { display: flex; flex-direction: column; gap: 5px; }
+
+  .legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 0.74rem;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .legend-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .legend-item small {
+    display: block;
+    font-size: 0.67rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  /* Table */
+  .matrix-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    margin-bottom: 14px;
+  }
+
+  table { width: 100%; border-collapse: collapse; min-width: 740px; }
+
+  thead th {
+    background: var(--teal);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 9px 12px;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  thead th .th-main { display: block; }
+
+  thead th .th-sub {
+    display: block;
+    font-weight: 400;
+    font-size: 0.6rem;
+    opacity: 0.78;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  /* Split header for supp column */
+  .supp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .supp-sub-header {
+    display: flex;
+    gap: 0;
+    margin-top: 5px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 4px;
+  }
+
+  .supp-sub-label {
+    flex: 1;
+    font-size: 0.58rem;
+    font-weight: 500;
+    opacity: 0.85;
+    padding: 0 3px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .supp-sub-label:first-child { border-right: 1px solid rgba(255,255,255,0.2); padding-right: 6px; }
+  .supp-sub-label:last-child  { padding-left: 6px; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f5f2ed; }
+  tbody tr.expanded { background: #f0ede8; }
+
+  td {
+    padding: 9px 12px;
+    vertical-align: middle;
+    font-size: 0.79rem;
+    line-height: 1.4;
+  }
+
+  td:first-child { font-weight: 600; font-size: 0.82rem; min-width: 105px; }
+
+  /* Split supp cell */
+  .supp-cell {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  /* Badges */
+  .basis {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.67rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .basis-direct    { background: var(--green-light); color: var(--green); }
+  .basis-bariatric { background: var(--teal-light);  color: var(--teal); }
+  .basis-mech      { background: #ede9e3;            color: #6b5e50; }
+  .basis-safety    { background: var(--red-light);   color: var(--red); }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 0.67rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .r-strong   { background: var(--green-light); color: var(--green); }
+  .r-moderate { background: var(--teal-light);  color: var(--teal); }
+  .r-emerging { background: var(--amber-light); color: var(--amber); }
+  .r-insuff   { background: #ede9e3;            color: #6b5e50; }
+  .r-safety   { background: var(--red-light);   color: var(--red); }
+  .r-na       { background: #f0ede8;            color: #aaa; font-style: italic; font-weight: 400; font-size: 0.63rem; }
+
+  /* Expand */
+  .expand-row td { padding: 0; background: #f0ede8; }
+  .expand-inner  { display: none; padding: 13px 15px 17px; border-top: 2px solid var(--teal); }
+  .expand-inner.open { display: block; }
+
+  .expand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 500px) { .expand-grid { grid-template-columns: 1fr; } }
+
+  .expand-block h4 {
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .expand-block p {
+    font-size: 0.77rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .expand-caveat {
+    margin-top: 9px;
+    padding: 9px 12px;
+    background: var(--amber-light);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .chevron {
+    float: right;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.18s;
+    margin-top: 2px;
+  }
+  tr.expanded .chevron { transform: rotate(180deg); }
+
+  .intake-note {
+    font-size: 0.7rem;
+    color: var(--amber);
+    font-style: italic;
+    margin-top: 10px;
+    padding: 7px 10px;
+    background: var(--amber-light);
+    border-radius: 5px;
+    margin-bottom: 4px;
+  }
+
+  .source-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<h1>Nutritional risk in GLP-1 users: evidence matrix</h1>
+<p class="subtitle">Three dimensions are assessed separately for each nutrient. The evidence basis column distinguishes direct GLP-1 trial data from bariatric extrapolation and mechanistic reasoning. Deficiency risk and supplementation evidence are rated independently. Tap any row to expand clinical detail.</p>
+
+<div class="legend-wrap">
+  <div class="legend-box">
+    <div class="legend-title">Evidence basis</div>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><div>Direct GLP-1 data<small>Evidence from GLP-1 trial populations</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div><div>Bariatric extrapolation<small>Direction informative; magnitude likely overestimated</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#9e9488"></div><div>Mechanistic only<small>No human deficiency data in any comparable population</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div><div>Safety signal<small>Case report level; rare but serious</small></div></div>
+    </div>
+  </div>
+  <div class="legend-box">
+    <div class="legend-title">Deficiency risk and supplementation evidence grades</div>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><div>Strong<small>Multiple consistent RCTs or robust longitudinal data</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div><div>Moderate<small>Consistent indirect evidence or single strong dataset</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div><div>Emerging<small>Plausible + at least indirect human evidence; not yet established</small></div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#9e9488"></div><div>Insufficient<small>Mechanistic plausibility only; no supporting human evidence</small></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="intake-note">Note on deficiency risk column: reduced dietary intake does not imply clinical deficiency without biomarker confirmation. These are separate constructs rated independently.</div>
+
+<div class="matrix-wrap">
+<table>
+  <thead>
+    <tr>
+      <th><span class="th-main">Nutrient</span></th>
+      <th><span class="th-main">Evidence basis</span><span class="th-sub">Source of the concern</span></th>
+      <th><span class="th-main">Intake risk</span><span class="th-sub">Reduced adequacy from dietary intake</span></th>
+      <th><span class="th-main">Deficiency risk</span><span class="th-sub">Evidence of actual deficiency in GLP-1 users</span></th>
+      <th>
+        <div class="supp-header">
+          <span class="th-main">Supplementation evidence</span>
+          <div class="supp-sub-header">
+            <span class="supp-sub-label">General population</span>
+            <span class="supp-sub-label">GLP-1-specific</span>
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+</div>
+
+<p class="source-note">Bariatric extrapolation entries draw on post-bariatric surgery cohorts. This literature establishes direction of risk but likely overestimates absolute deficiency magnitude in GLP-1 users whose gastrointestinal anatomy is intact. All ratings reflect the best available evidence and state their basis explicitly where direct GLP-1 data are absent.</p>
+
+<script>
+const nutrients = [
+  {
+    name: "Protein",
+    basis:      { label: "Direct GLP-1 data", cls: "basis-direct" },
+    intakeRisk: { label: "Strong", cls: "r-strong" },
+    defRisk:    { label: "Strong", cls: "r-strong" },
+    suppGen:    { label: "Strong", cls: "r-strong" },
+    suppGlp:    { label: "Emerging", cls: "r-emerging" },
+    detail: {
+      basis: "STEP 1 (Wilding et al., 2021) and SURMOUNT-1 (Jastreboff et al., 2022) body composition analyses directly document lean mass loss in GLP-1 users. This is the strongest direct evidence base of any nutrient reviewed here.",
+      intakeRisk: "Appetite suppression and GLP-1-related nausea reduce total food intake substantially. Protein-rich foods are often poorly tolerated, meaning protein intake falls disproportionately relative to total calorie reduction.",
+      defRisk: "Trial data confirm lean mass loss of 25–40% of total weight lost. Subgroup data by protein intake within these trials are not available. The figure establishes that lean mass loss is substantial and nutritionally relevant.",
+      suppGen: "Evidence from sarcopenia, ageing, and bariatric populations supports 1.2–1.5g/kg/day targets to attenuate lean mass loss. The evidence base in these populations is strong.",
+      suppGlp: "No GLP-1-specific intervention trials testing protein supplementation as a primary outcome exist. Targets are extrapolated from ageing and bariatric literature — reasonable inference, not validated GLP-1 thresholds.",
+      caveat: "Protein is the highest-priority nutritional consideration and the only nutrient with a direct GLP-1 trial evidence basis. Protein targets are extrapolated, not GLP-1-validated. Supplementation is practically necessary for many users given satiety constraints."
+    }
+  },
+  {
+    name: "Vitamin B12",
+    basis:      { label: "Metformin: direct data; GLP-1: mechanistic", cls: "basis-bariatric" },
+    intakeRisk: { label: "Emerging", cls: "r-emerging" },
+    defRisk:    { label: "Moderate (metformin users); Insufficient (others)", cls: "r-moderate" },
+    suppGen:    { label: "Moderate", cls: "r-moderate" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "Metformin impairs B12 absorption via inhibition of calcium-dependent membrane action in the terminal ileum; this is well evidenced by Aroda et al. (2016, JCEM) across the DPPOS cohort. The GLP-1-specific contribution (gastric emptying delay impairing food-bound B12 release) is mechanistically plausible but lacks direct evidence. Metformin is the dominant driver in co-users; GLP-1 effects are a theoretical additive factor whose relative magnitude is unquantified.",
+      intakeRisk: "Reduced total food intake reduces dietary B12 sources. This is a secondary concern relative to the absorption mechanism in metformin users, and the primary dietary concern in non-metformin users.",
+      defRisk: "In metformin co-users: moderate evidence of progressive deficiency based on DPPOS longitudinal data. In GLP-1 users without metformin: deficiency risk is mechanistically plausible but lacks direct evidence in this population. No incidence data from GLP-1 user cohorts exist for either group.",
+      suppGen: "Oral cyanocobalamin or methylcobalamin at 1000mcg daily corrects deficiency in metformin-treated populations even with impaired gastric acid. Evidence is moderate.",
+      suppGlp: "No GLP-1-specific trials of B12 supplementation exist. The supplementation approach is extrapolated from the metformin literature.",
+      caveat: "The combined GLP-1 + metformin risk is additive in direction but the relative contribution of each mechanism has not been quantified. Monitoring is warranted in metformin co-users; it is reasonable but less urgently supported in others."
+    }
+  },
+  {
+    name: "Iron",
+    basis:      { label: "Bariatric extrapolation", cls: "basis-bariatric" },
+    intakeRisk: { label: "Moderate (premenopausal women)", cls: "r-moderate" },
+    defRisk:    { label: "Emerging — no GLP-1 incidence data", cls: "r-emerging" },
+    suppGen:    { label: "Moderate (confirmed deficiency)", cls: "r-moderate" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "No prospective incidence data in GLP-1 users. Concern is directionally extrapolated from post-bariatric cohorts where iron deficiency affects 30–50% of patients (Mechanick et al., 2020). This figure almost certainly overestimates risk in GLP-1 users given intact GI anatomy and less extreme caloric restriction. No reliable indirect estimate for GLP-1 users can be derived from this data.",
+      intakeRisk: "Gastric acid converts ferric to ferrous iron for non-haem absorption. Reduced acid and reduced intake both directionally reduce adequacy. Menstrual losses in premenopausal women continue regardless of dietary intake reduction.",
+      defRisk: "No incidence data in GLP-1 users. Direction of risk is plausible; magnitude is unknown and cannot be inferred from bariatric data.",
+      suppGen: "Iron supplementation corrects documented deficiency. Evidence is well established for deficiency-confirmed populations.",
+      suppGlp: "No GLP-1-specific trials. Supplementation without testing is not supported given GI side effects that compound GLP-1-related nausea.",
+      caveat: "Testing (serum ferritin) must precede supplementation. The bariatric deficiency figures should not be used as a risk estimate for GLP-1 users."
+    }
+  },
+  {
+    name: "Vitamin D",
+    basis:      { label: "Pre-existing insufficiency + mechanistic", cls: "basis-mech" },
+    intakeRisk: { label: "Moderate", cls: "r-moderate" },
+    defRisk:    { label: "Emerging — pre-existing, not GLP-1-caused", cls: "r-emerging" },
+    suppGen:    { label: "Strong (deficiency correction)", cls: "r-strong" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "The concern is primarily pre-existing insufficiency, endemic in northern populations, compounded by reduced dietary intake. Weight loss may transiently raise circulating 25(OH)D as adipose tissue (which stores vitamin D) is lost — this is redistribution, not depletion. Labelling this as GLP-1-induced depletion misrepresents the mechanism.",
+      intakeRisk: "Dietary vitamin D from oily fish and fortified foods may be reduced by appetite suppression. This narrows an already limited dietary contribution in most northern-latitude users.",
+      defRisk: "No prospective GLP-1-specific depletion data. The concern is that pre-existing insufficiency is harder to correct during treatment. This is distinct from GLP-1 medications causing vitamin D deficiency.",
+      suppGen: "Strong evidence for vitamin D supplementation correcting insufficiency in the general population and supporting bone health in older adults and postmenopausal women.",
+      suppGlp: "No GLP-1-specific supplementation trials. Evidence is extrapolated from general population data. Testing baseline status and supplementing accordingly is appropriate.",
+      caveat: "Framing vitamin D as a GLP-1 depletion risk overstates the medication's causal role. The recommendation is to test at baseline and supplement if insufficient — this would apply to many of these individuals regardless of GLP-1 use."
+    }
+  },
+  {
+    name: "Calcium",
+    basis:      { label: "Bariatric extrapolation + mechanistic", cls: "basis-bariatric" },
+    intakeRisk: { label: "Moderate", cls: "r-moderate" },
+    defRisk:    { label: "Emerging — magnitude unknown", cls: "r-emerging" },
+    suppGen:    { label: "Moderate (general population, bone health)", cls: "r-moderate" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "Post-bariatric bone density loss is documented and calcium insufficiency is a contributing factor (Mechanick et al., 2020). Mechanism in GLP-1 users (reduced dietary calcium, gastric effects) is plausible but less extreme than in anatomically altered GI anatomy. Risk magnitude in GLP-1 users is unknown.",
+      intakeRisk: "Dairy and fortified foods may be poorly tolerated during GLP-1 treatment. This reduces a primary dietary calcium source in a population potentially at elevated bone risk.",
+      defRisk: "No incidence data in GLP-1 users. Risk is plausible, particularly in postmenopausal women or those with rapid weight loss, but magnitude cannot be quantified.",
+      suppGen: "Evidence for calcium supplementation in bone health is moderate in postmenopausal women and older adults from general population trials. Calcium citrate is preferable to carbonate as it does not require gastric acid for absorption.",
+      suppGlp: "No GLP-1-specific trials. Supplementation guidance is extrapolated from general population bone health evidence and is not GLP-1-validated.",
+      caveat: "Supplementation targets (e.g. 1000–1200mg/day total intake) are reference points derived from general population bone health guidelines, not GLP-1-specific thresholds. Priority is higher in postmenopausal women and older adults."
+    }
+  },
+  {
+    name: "Zinc",
+    basis:      { label: "Mechanistic only", cls: "basis-mech" },
+    intakeRisk: { label: "Emerging", cls: "r-emerging" },
+    defRisk:    { label: "Insufficient — no incidence data", cls: "r-insuff" },
+    suppGen:    { label: "Moderate (confirmed deficiency)", cls: "r-moderate" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "No prospective data in GLP-1 users or in any comparable population. Concern is mechanistic: zinc is concentrated in animal proteins; reduced intake and shift toward softer, more processed foods may reduce zinc adequacy. Plant-source zinc has lower bioavailability due to phytate binding.",
+      intakeRisk: "Plausible reduction in zinc intake given GLP-1-related food selectivity. This is inferred from dietary pattern changes, not directly measured in GLP-1 users.",
+      defRisk: "No incidence data in GLP-1 users. No indirect estimate from any comparable population. Risk magnitude is genuinely unknown.",
+      suppGen: "Zinc supplementation corrects documented deficiency. The association between zinc inadequacy and telogen effluvium is reported in small, uncontrolled case series (Karashima et al., 2012) subject to selection bias; this evidence likely overestimates the frequency and strength of the association in the broader population.",
+      suppGlp: "No GLP-1-specific trials. Supplementation without testing is not supported. Intake above approximately 40mg/day suppresses copper absorption.",
+      caveat: "Hair loss in GLP-1 users is multifactorial; rapid weight loss itself is the probable primary driver. Zinc adequacy is one modifiable secondary factor. Supplementing for hair loss without documented deficiency is not evidence-based."
+    }
+  },
+  {
+    name: "Folate",
+    basis:      { label: "Mechanistic — pregnancy-specific context", cls: "basis-mech" },
+    intakeRisk: { label: "Emerging (reproductive-age women)", cls: "r-emerging" },
+    defRisk:    { label: "Emerging — subgroup-specific, no GLP-1 data", cls: "r-emerging" },
+    suppGen:    { label: "Strong (pre-conception NTD prevention)", cls: "r-strong" },
+    suppGlp:    { label: "Emerging (reinforced by dietary restriction)", cls: "r-emerging" },
+    detail: {
+      basis: "GLP-1 medications are contraindicated in pregnancy, but unplanned pregnancies occur in users of reproductive age. Sustained dietary restriction may reduce folate stores at conception. No direct GLP-1-specific folate data exist; the concern is a targeted application of well-established pre-conception evidence.",
+      intakeRisk: "Green leafy vegetables and fortified foods, primary dietary folate sources, may be reduced by appetite suppression and food selectivity.",
+      defRisk: "No incidence data. The concern is specific: a woman who has been eating substantially less for months may have suboptimal folate stores if pregnancy occurs. This is not a general GLP-1 deficiency claim.",
+      suppGen: "400mcg folic acid daily pre-conception has strong evidence for neural tube defect prevention. This is one of the most robust preventive nutrition interventions.",
+      suppGlp: "The GLP-1-specific concern reinforces an already well-evidenced recommendation for women of reproductive age. The medication context is relevant to ensuring this group does not have compromised folate stores at conception.",
+      caveat: "This is a pregnancy-specific recommendation for a clearly defined subgroup, not a general GLP-1 supplementation claim. Applies to any woman of reproductive age not actively avoiding pregnancy, regardless of GLP-1 use."
+    }
+  },
+  {
+    name: "Magnesium",
+    basis:      { label: "Mechanistic only", cls: "basis-mech" },
+    intakeRisk: { label: "Emerging", cls: "r-emerging" },
+    defRisk:    { label: "Insufficient — no GLP-1 data", cls: "r-insuff" },
+    suppGen:    { label: "Insufficient (non-deficient individuals)", cls: "r-insuff" },
+    suppGlp:    { label: "Insufficient", cls: "r-insuff" },
+    detail: {
+      basis: "Background magnesium insufficiency is common in Western populations before GLP-1 use. The claim is that reduced intake of magnesium-rich foods (nuts, seeds, whole grains, legumes) may narrow an already limited margin. No prospective data attribute magnesium deficiency to GLP-1 use in any population.",
+      intakeRisk: "Magnesium-rich foods may be poorly tolerated during GLP-1 treatment. Reduced intake is plausible but not directly measured in GLP-1 users.",
+      defRisk: "No incidence data in GLP-1 users. No comparable population data. The concern is that background insufficiency is prevalent and dietary restriction may worsen it. This is mechanistic extrapolation, not evidence of GLP-1-specific depletion.",
+      suppGen: "Magnesium supplementation corrects documented deficiency. Evidence for clinical benefit in non-deficient individuals is modest across multiple outcome domains.",
+      suppGlp: "No GLP-1-specific data. Supplementation at standard doses (200–400mg/day as glycinate or malate) is low-risk, but the rationale is precautionary rather than evidence-based.",
+      caveat: "The claim here is about pre-existing background insufficiency prevalence, not GLP-1-specific depletion. Supplementation is a reasonable low-risk consideration; it is not an evidence-based recommendation."
+    }
+  },
+  {
+    name: "Thiamine (B1)",
+    basis:      { label: "Safety signal — case reports", cls: "basis-safety" },
+    intakeRisk: { label: "Safety concern (persistent vomiting only)", cls: "r-safety" },
+    defRisk:    { label: "Case report level — no incidence data", cls: "r-safety" },
+    suppGen:    { label: "Strong (Wernicke's prevention/treatment)", cls: "r-strong" },
+    suppGlp:    { label: "Insufficient (routine use); strong (clinical indication)", cls: "r-safety" },
+    detail: {
+      basis: "Case reports of Wernicke's encephalopathy in GLP-1 users with prolonged GI side effects are documented. No incidence data exist. Mechanism is well established from hyperemesis gravidarum and post-bariatric contexts: thiamine stores are depleted within weeks by severe persistent vomiting.",
+      intakeRisk: "Thiamine depletion from reduced dietary intake alone is unlikely at the timescales relevant to GLP-1 use. Risk is specifically associated with severe and prolonged vomiting, an adverse effect in a subset of users around dose escalation.",
+      defRisk: "Case report level evidence only. This is a rare but potentially serious adverse outcome, not a common nutritional risk. No epidemiological incidence data in GLP-1 users.",
+      suppGen: "Thiamine replacement in confirmed or clinically suspected deficiency is urgent and well evidenced. Wernicke's encephalopathy is a medical emergency with established thiamine treatment protocols.",
+      suppGlp: "Prophylactic thiamine in users with persistent vomiting is clinically justified by analogy from hyperemesis and bariatric literature. Routine supplementation across all GLP-1 users is not indicated.",
+      caveat: "This is a clinical safety flag, not a routine supplementation recommendation. Persistent vomiting beyond a few days warrants clinical review. Clinicians managing this population should maintain awareness of thiamine depletion risk."
+    }
+  }
+];
+
+const tbody = document.getElementById('tableBody');
+
+nutrients.forEach((n, i) => {
+  const row = document.createElement('tr');
+  row.setAttribute('data-idx', i);
+  row.innerHTML = `
+    <td>${n.name} <span class="chevron">▼</span></td>
+    <td><span class="basis ${n.basis.cls}">${n.basis.label}</span></td>
+    <td><span class="rating ${n.intakeRisk.cls}">${n.intakeRisk.label}</span></td>
+    <td><span class="rating ${n.defRisk.cls}">${n.defRisk.label}</span></td>
+    <td>
+      <div class="supp-cell">
+        <span class="rating ${n.suppGen.cls}">${n.suppGen.label}</span>
+        <span class="rating ${n.suppGlp.cls}">${n.suppGlp.label}</span>
+      </div>
+    </td>
+  `;
+
+  const expRow = document.createElement('tr');
+  expRow.className = 'expand-row';
+  expRow.innerHTML = `
+    <td colspan="5">
+      <div class="expand-inner" id="exp-${i}">
+        <div class="expand-grid">
+          <div class="expand-block"><h4>Evidence basis</h4><p>${n.detail.basis}</p></div>
+          <div class="expand-block"><h4>Intake risk detail</h4><p>${n.detail.intakeRisk}</p></div>
+          <div class="expand-block"><h4>Deficiency risk detail</h4><p>${n.detail.defRisk}</p></div>
+          <div class="expand-block">
+            <h4>Supplementation evidence</h4>
+            <p><strong>General population:</strong> ${n.detail.suppGen}</p>
+            <p style="margin-top:6px"><strong>GLP-1-specific:</strong> ${n.detail.suppGlp}</p>
+          </div>
+        </div>
+        <div class="expand-caveat">${n.detail.caveat}</div>
+      </div>
+    </td>
+  `;
+
+  row.addEventListener('click', () => {
+    const el = document.getElementById(`exp-${i}`);
+    const wasOpen = el.classList.contains('open');
+    document.querySelectorAll('.expand-inner').forEach(e => e.classList.remove('open'));
+    document.querySelectorAll('tr[data-idx]').forEach(r => r.classList.remove('expanded'));
+    if (!wasOpen) { el.classList.add('open'); row.classList.add('expanded'); }
+  });
+
+  tbody.appendChild(row);
+  tbody.appendChild(expRow);
+});
+</script>
+</body>
+</html>

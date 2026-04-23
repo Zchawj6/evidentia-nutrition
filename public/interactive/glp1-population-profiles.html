@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLP-1 Nutritional Assessment Priorities by Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0d7377;
+    --teal-light: #e8f4f4;
+    --teal-mid: #b8d9db;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --red: #b5342a;
+    --red-light: #fdecea;
+    --cream: #faf8f4;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: #e2ddd6;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    padding: 26px 18px 40px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--teal);
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.79rem;
+    margin-bottom: 20px;
+    line-height: 1.55;
+    max-width: 700px;
+  }
+
+  .priority-key {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 520px) { .priority-key { grid-template-columns: 1fr; } }
+
+  .priority-key-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+  }
+
+  .priority-swatch {
+    width: 11px; height: 11px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .swatch-high     { background: var(--red); }
+  .swatch-moderate { background: var(--amber); }
+  .swatch-consider { background: var(--teal); }
+
+  .key-title { font-weight: 600; font-size: 0.78rem; color: var(--text); }
+  .key-desc  { font-size: 0.71rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+
+  /* Tabs */
+  .tab-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+
+  .tab {
+    padding: 7px 13px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.14s;
+  }
+
+  .tab:hover { border-color: var(--teal-mid); color: var(--teal); }
+  .tab.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+  /* Panel */
+  .profile-panel { display: none; animation: fadeUp 0.18s ease; }
+  .profile-panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .profile-header {
+    background: var(--teal);
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 16px 19px;
+  }
+
+  .profile-header h2 {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    margin-bottom: 5px;
+  }
+
+  .profile-header p {
+    font-size: 0.77rem;
+    opacity: 0.85;
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .profile-body {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 17px 19px 20px;
+  }
+
+  .section-label {
+    font-size: 0.67rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 9px;
+    margin-top: 16px;
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  .nutrient-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 8px; }
+
+  .nutrient-card {
+    border-radius: 7px;
+    padding: 10px 12px;
+    border-left: 3px solid transparent;
+  }
+
+  .nutrient-card.priority-high     { background: var(--red-light);   border-left-color: var(--red); }
+  .nutrient-card.priority-moderate { background: var(--amber-light); border-left-color: var(--amber); }
+  .nutrient-card.priority-consider { background: var(--teal-light);  border-left-color: var(--teal); }
+
+  .nut-name { font-weight: 600; font-size: 0.82rem; margin-bottom: 3px; }
+  .priority-high .nut-name     { color: var(--red); }
+  .priority-moderate .nut-name { color: var(--amber); }
+  .priority-consider .nut-name { color: var(--teal); }
+
+  .nut-reason { font-size: 0.73rem; line-height: 1.5; color: var(--text); }
+
+  /* Evidence level tag within card */
+  .nut-evidence-tag {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.63rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .evid-strong   { background: var(--green-light); color: var(--green); }
+  .evid-moderate { background: var(--teal-light);  color: var(--teal); }
+  .evid-emerging { background: var(--amber-light); color: var(--amber); }
+  .evid-insuff   { background: #ede9e3;            color: #6b5e50; }
+
+  /* Monitoring */
+  .monitoring-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .monitoring-item {
+    background: #f5f2ed;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.77rem;
+    line-height: 1.5;
+  }
+
+  .monitoring-item strong { color: var(--teal); font-weight: 600; }
+
+  /* Caveat */
+  .caveat {
+    margin-top: 16px;
+    padding: 10px 13px;
+    background: var(--amber-light);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .disclaimer {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<h1>Nutritional assessment priorities by user profile</h1>
+<p class="subtitle">Nutritional risk varies substantially between GLP-1 users. Select the profile that best matches your situation. Priority tiers indicate where assessment should focus first. Supplementation should follow individual assessment, not replace it.</p>
+
+<div class="priority-key">
+  <div class="priority-key-item">
+    <div class="priority-swatch swatch-high"></div>
+    <div>
+      <div class="key-title">Prioritise assessment</div>
+      <div class="key-desc">Strongest evidence basis or highest risk for this profile. Assess at baseline or early in treatment.</div>
+    </div>
+  </div>
+  <div class="priority-key-item">
+    <div class="priority-swatch swatch-moderate"></div>
+    <div>
+      <div class="key-title">Monitor and consider</div>
+      <div class="key-desc">Plausible risk with moderate indirect evidence. Monitor during treatment; supplement only if assessment confirms need.</div>
+    </div>
+  </div>
+  <div class="priority-key-item">
+    <div class="priority-swatch swatch-consider"></div>
+    <div>
+      <div class="key-title">Worth considering</div>
+      <div class="key-desc">Mechanistically plausible, lower urgency. Dietary review is appropriate; supplementation is low-risk at standard doses.</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-row" id="tabRow"></div>
+<div id="panels"></div>
+
+<p class="disclaimer">These profiles are educational frameworks based on mechanistic rationale and evidence from comparable populations. Prospective trial evidence in GLP-1 users is limited for most micronutrients. Priority tiers indicate where assessment should focus, not where supplementation should automatically begin. Individual review with a clinician or registered dietitian is recommended before starting any supplementation programme. Where evidence tags are shown on individual cards, they reflect evidence quality for that specific claim, which may differ from the general evidence base for that nutrient.</p>
+
+<script>
+const profiles = [
+  {
+    id: "general",
+    label: "General user",
+    title: "General GLP-1 user",
+    description: "Adult using a GLP-1 agonist for weight management, without significant comorbidities, no metformin, eating an omnivorous diet. No specific high-risk features.",
+    nutrients: [
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Reduced intake and GLP-1-related nausea increase lean mass loss risk. Target 1.2–1.5g/kg/day through food first; supplement where food intake falls short. These targets are extrapolated from ageing literature, not GLP-1-validated thresholds." },
+      { name: "Vitamin D", priority: "moderate", evidence: "insuff", reason: "Pre-existing insufficiency is common in this population regardless of GLP-1 use. Reduced dietary intake narrows the margin. Test baseline 25-hydroxyvitamin D; supplement if below adequate range." },
+      { name: "Magnesium", priority: "consider", evidence: "insuff", reason: "Background insufficiency is prevalent in Western populations. Dietary sources may be reduced. Supplementation at standard doses is low-risk; evidence of clinical benefit in non-deficient individuals is modest." }
+    ],
+    monitoring: [
+      { test: "Dietary protein review", timing: "At treatment start; 3-monthly", note: "Food diary or dietary recall. Supplement to meet target where food-based intake falls short." },
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "Supplement if below 50 nmol/L. 1000–2000 IU daily is appropriate. Insufficiency in this group usually predates GLP-1 use." }
+    ],
+    caveat: "For most otherwise healthy adults, protein adequacy is the primary nutritional priority. Broader micronutrient risk is real but often manageable through dietary attention without broad-spectrum supplementation."
+  },
+  {
+    id: "metformin",
+    label: "Type 2 diabetes + metformin",
+    title: "Type 2 diabetes user on metformin",
+    description: "Adult using a GLP-1 agonist alongside metformin for type 2 diabetes. Metformin independently impairs B12 absorption through a well-characterised mechanism; this is the dominant B12 risk factor in this group.",
+    nutrients: [
+      { name: "Vitamin B12", priority: "high", evidence: "moderate", reason: "Metformin inhibits B12 absorption in the terminal ileum. Aroda et al. (2016, JCEM) documented progressive depletion across the DPPOS cohort with rising deficiency rates over years. GLP-1 gastric effects may add theoretical additive risk; their relative contribution is unquantified. No incidence data specific to GLP-1 users exist." },
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Sarcopenia risk is elevated in type 2 diabetes and worsens with age. Protein adequacy is a clinical priority." },
+      { name: "Vitamin D", priority: "moderate", evidence: "insuff", reason: "Insufficiency is highly prevalent in people with type 2 diabetes. Test and supplement accordingly; evidence that GLP-1 use specifically depletes vitamin D is absent." },
+      { name: "Magnesium", priority: "consider", evidence: "insuff", reason: "Some studies suggest an association between metformin use and magnesium status; evidence is inconsistent. Dietary review is appropriate." }
+    ],
+    monitoring: [
+      { test: "Serum B12", timing: "Baseline; annually", note: "Holotranscobalamin (active B12) is a more sensitive functional marker than total B12 if available." },
+      { test: "Dietary protein review", timing: "At treatment start; 3-monthly", note: "Target 1.2–1.5g/kg/day. Supplement where food intake falls short." },
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "Supplement if insufficient." }
+    ],
+    caveat: "B12 monitoring is not optional in this group. The DPPOS data demonstrate progressive depletion with metformin duration. Metformin is the primary driver; GLP-1 effects are an unquantified additional factor. The combined risk is meaningful and warrants active monitoring."
+  },
+  {
+    id: "older-adult",
+    label: "Older adult (60+)",
+    title: "Older adult using GLP-1 medication",
+    description: "Adult aged 60 or above using a GLP-1 agonist. Older age compounds nutritional risk through pre-existing lower muscle mass, reduced gastric acid, higher vitamin D insufficiency prevalence, and greater functional consequence of lean mass loss.",
+    nutrients: [
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Pre-existing lower muscle mass means lean mass loss during weight loss carries greater functional consequence. Target 1.5g/kg/day — derived from sarcopenia and ageing literature, not GLP-1-validated. Supplementation is often necessary given satiety constraints." },
+      { name: "Vitamin D", priority: "high", evidence: "insuff", reason: "Insufficiency prevalence is high in older adults. Bone density consequences are clinically significant. Test and supplement to achieve adequate range. Note: evidence for supplementation in GLP-1 users specifically is absent; this recommendation extrapolates from general population data." },
+      { name: "Calcium", priority: "moderate", evidence: "insuff", reason: "Bone mineral density risk is real in this group during rapid weight loss. Reference intake of 1000–1200mg/day total (diet plus supplement) is derived from general bone health guidelines, not GLP-1-specific data. Calcium citrate preferred as it does not require gastric acid." },
+      { name: "Vitamin B12", priority: "moderate", evidence: "insuff", reason: "Gastric acid declines with age independently of GLP-1 effects, impairing food-bound B12 release. Annual monitoring is low-cost and warranted. No GLP-1-specific deficiency data exist in this age group." },
+      { name: "Magnesium", priority: "consider", evidence: "insuff", reason: "Supports muscle function and sleep quality. Background insufficiency common. Standard-dose supplementation is low-risk." }
+    ],
+    monitoring: [
+      { test: "Dietary protein review", timing: "At treatment start; 3-monthly", note: "Target 1.5g/kg/day. Supplementation is often necessary. Evidence base is from ageing/sarcopenia literature." },
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "2000 IU daily may be appropriate. Target above 50 nmol/L at minimum." },
+      { test: "Serum B12", timing: "Baseline; annually", note: "Oral B12 at 1000mcg daily is effective even with impaired gastric acid in most people." },
+      { test: "DEXA scan", timing: "Baseline if indicated", note: "Consider in postmenopausal women or those with prior fracture history before significant weight loss. Provides a reference point." }
+    ],
+    caveat: "Preventing lean mass loss is the highest-priority clinical concern in older GLP-1 users. Protein adequacy combined with resistance exercise is the evidence-based approach. All targets and thresholds cited are extrapolated from ageing literature, not derived from GLP-1-specific trials."
+  },
+  {
+    id: "premenopausal",
+    label: "Premenopausal woman",
+    title: "Premenopausal woman of reproductive age",
+    description: "Woman before menopause using a GLP-1 agonist. Ongoing menstrual losses, the possibility of pregnancy, and commonly marginal baseline iron stores create a distinct nutritional profile.",
+    nutrients: [
+      { name: "Iron", priority: "high", evidence: "emerging", reason: "Menstrual losses continue regardless of dietary intake reduction. Pre-existing borderline iron stores are common. Gastric effects may reduce non-haem absorption. Serum ferritin must be tested before supplementing — iron supplementation compounds GLP-1 nausea and should not be taken without a clear indication." },
+      { name: "Folate", priority: "high", evidence: "strong", reason: "400mcg folic acid daily is warranted for any woman not actively avoiding pregnancy. GLP-1 medications are contraindicated in pregnancy, but unplanned pregnancies occur. Sustained dietary restriction may reduce folate stores at conception, narrowing the protective margin." },
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Protein adequacy supports lean mass maintenance and is relevant to overall nutritional status in the context of reduced intake." },
+      { name: "Vitamin D", priority: "moderate", evidence: "insuff", reason: "Background insufficiency common. Test at baseline; supplement if below adequate range. No GLP-1-specific depletion evidence." },
+      { name: "Zinc", priority: "consider", evidence: "insuff", reason: "Hair loss is commonly reported. Zinc adequacy is one modifiable secondary factor among several. Test before supplementing. Evidence linking zinc to hair loss in GLP-1 users specifically is absent; existing zinc-hair loss data come from small uncontrolled studies." }
+    ],
+    monitoring: [
+      { test: "Serum ferritin", timing: "Baseline; 6-monthly during treatment", note: "Ferritin below 30 mcg/L indicates depleted stores even with normal haemoglobin. Supplement only with testing support." },
+      { test: "Folate", timing: "If pregnancy is possible, supplement without waiting for testing", note: "400mcg folic acid daily. 5mg if previous neural tube defect history or on certain anticonvulsants." },
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "Supplement if below 50 nmol/L." }
+    ],
+    caveat: "Iron supplementation must follow testing, not precede it — GI side effects are a real tolerability cost in this context. Hair loss is multifactorial and often transient; addressing protein, iron, and zinc adequacy is the evidence-informed approach, but hair loss alone is not a sufficient basis for supplementation without assessment."
+  },
+  {
+    id: "postmenopausal",
+    label: "Postmenopausal woman",
+    title: "Postmenopausal woman",
+    description: "Woman after menopause using a GLP-1 agonist. Oestrogen loss accelerates bone turnover; rapid weight loss in this context compounds bone mineral density risk.",
+    nutrients: [
+      { name: "Calcium", priority: "high", evidence: "insuff", reason: "Oestrogen loss and rapid weight loss both negatively affect bone mineral density. A total intake reference of 1000–1200mg/day (food plus supplement) is derived from general population bone health guidelines for postmenopausal women, not from GLP-1 trials. Calcium citrate is preferred as it does not require gastric acid for absorption." },
+      { name: "Vitamin D", priority: "high", evidence: "insuff", reason: "Critical for calcium absorption. General population evidence supports targeting above 75 nmol/L in postmenopausal women for bone health; this is a reference point, not a GLP-1-validated threshold. Test and supplement to achieve adequate range." },
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Muscle mass and bone health are linked. Protein adequacy attenuates lean mass loss during rapid weight loss. Target 1.2–1.5g/kg/day." },
+      { name: "Magnesium", priority: "moderate", evidence: "insuff", reason: "Supports bone mineralisation alongside calcium. Often included in bone health protocols. Evidence in GLP-1 users specifically is absent." },
+      { name: "Vitamin B12", priority: "consider", evidence: "insuff", reason: "Gastric acid declines with age. B12 monitoring is low-cost and reasonable. No GLP-1-specific deficiency data." }
+    ],
+    monitoring: [
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "Target above 75 nmol/L. 2000 IU daily may be needed." },
+      { test: "DEXA scan", timing: "Baseline if not done in past 2 years", note: "Establishes a reference before rapid weight loss. Particularly important with prior fracture history or family history of osteoporosis." },
+      { test: "Dietary protein review", timing: "At treatment start; 3-monthly", note: "Target 1.2–1.5g/kg/day. Supplement where food intake falls short." }
+    ],
+    caveat: "Bone mineral density loss during rapid weight loss is under-discussed in GLP-1 prescribing. The calcium and vitamin D targets cited are derived from general population bone health guidelines; no GLP-1-specific supplementation trials exist. DEXA before significant weight loss provides a meaningful baseline for monitoring."
+  },
+  {
+    id: "plant-based",
+    label: "Plant-based diet",
+    title: "Plant-based or vegan diet",
+    description: "Individual following a vegan or predominantly plant-based diet using a GLP-1 agonist. Pre-existing micronutrient risk from dietary restriction is compounded by reduced overall intake during treatment.",
+    nutrients: [
+      { name: "Vitamin B12", priority: "high", evidence: "strong", reason: "B12 is not reliably present in plant foods. A vegan GLP-1 user not supplementing is at high risk of deficiency. This is a guideline-level recommendation for all vegans, reinforced by the context of reduced overall intake. GLP-1-specific deficiency data in vegans are absent." },
+      { name: "Protein", priority: "high", evidence: "strong", reason: "Complete protein adequacy on a plant-based diet requires dietary planning. Appetite suppression makes this harder. Amino acid completeness (not just total grams) matters; pea or soy protein supplementation is practically useful." },
+      { name: "Iron", priority: "high", evidence: "emerging", reason: "Non-haem iron from plant sources is less bioavailable. Reduced intake compounds this. Risk is particularly significant in premenopausal women. Test serum ferritin before supplementing." },
+      { name: "Zinc", priority: "moderate", evidence: "insuff", reason: "Plant-source zinc has lower bioavailability due to phytate binding. Reduced overall intake narrows the margin. Evidence in GLP-1 users is absent; concern is mechanistic." },
+      { name: "Calcium", priority: "moderate", evidence: "insuff", reason: "No dairy; reduced fortified alternative intake. Reference intake of 1000–1200mg/day total is from general bone health guidelines. Test dietary adequacy before supplementing." },
+      { name: "Vitamin D", priority: "consider", evidence: "insuff", reason: "Dietary sources very limited in plant-based diets. Standard insufficiency risk applies. Lichen-derived D3 is available for vegan-appropriate supplementation." }
+    ],
+    monitoring: [
+      { test: "Serum B12", timing: "Baseline; 6-monthly", note: "Supplement at 1000mcg daily (sublingual methylcobalamin or oral cyanocobalamin) regardless of baseline if not already doing so — this is standard vegan nutritional management, reinforced by GLP-1 context." },
+      { test: "Serum ferritin", timing: "Baseline; 6-monthly", note: "Take iron with vitamin C to enhance non-haem absorption. Supplement only with testing support." },
+      { test: "25-hydroxyvitamin D", timing: "Baseline; annually", note: "Use lichen-derived D3 for vegan-appropriate supplementation." },
+      { test: "Dietary protein review", timing: "At treatment start; 3-monthly", note: "Assess amino acid completeness, not just total grams. Pea or soy supplementation is practically useful." }
+    ],
+    caveat: "A plant-based diet requires active nutritional management before GLP-1 treatment begins. GLP-1-related appetite suppression on top of an already restricted dietary pattern narrows the safety margin on multiple nutrients simultaneously. B12, iron, and protein are the non-negotiable assessment priorities. Evidence for most concerns in this specific combination (plant-based diet + GLP-1 use) is absent; the case rests on compounded pre-existing risk."
+  }
+];
+
+const tabRow = document.getElementById('tabRow');
+const panels = document.getElementById('panels');
+
+const evidClass = { strong: 'evid-strong', moderate: 'evid-moderate', emerging: 'evid-emerging', insuff: 'evid-insuff' };
+const evidLabel = { strong: 'Evidence: strong', moderate: 'Evidence: moderate', emerging: 'Evidence: emerging', insuff: 'Evidence: insufficient' };
+
+profiles.forEach((p, i) => {
+  const tab = document.createElement('button');
+  tab.className = 'tab' + (i === 0 ? ' active' : '');
+  tab.textContent = p.label;
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.profile-panel').forEach(pp => pp.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + p.id).classList.add('active');
+  });
+  tabRow.appendChild(tab);
+
+  const high = p.nutrients.filter(n => n.priority === 'high');
+  const mod  = p.nutrients.filter(n => n.priority === 'moderate');
+  const cons = p.nutrients.filter(n => n.priority === 'consider');
+
+  const cards = (arr, cls) => arr.map(n => `
+    <div class="nutrient-card priority-${cls}">
+      <div class="nut-name">${n.name}</div>
+      <div class="nut-reason">${n.reason}</div>
+      <span class="nut-evidence-tag ${evidClass[n.evidence]}">${evidLabel[n.evidence]}</span>
+    </div>`).join('');
+
+  const monitoring = p.monitoring.map(m => `
+    <div class="monitoring-item">
+      <strong>${m.test}</strong> — ${m.timing}. ${m.note}
+    </div>`).join('');
+
+  const panel = document.createElement('div');
+  panel.className = 'profile-panel' + (i === 0 ? ' active' : '');
+  panel.id = 'panel-' + p.id;
+  panel.innerHTML = `
+    <div class="profile-header">
+      <h2>${p.title}</h2>
+      <p>${p.description}</p>
+    </div>
+    <div class="profile-body">
+      ${high.length ? `<div class="section-label">Prioritise assessment</div><div class="nutrient-cards">${cards(high,'high')}</div>` : ''}
+      ${mod.length  ? `<div class="section-label">Monitor and consider</div><div class="nutrient-cards">${cards(mod,'moderate')}</div>` : ''}
+      ${cons.length ? `<div class="section-label">Worth considering</div><div class="nutrient-cards">${cards(cons,'consider')}</div>` : ''}
+      <div class="section-label">Suggested monitoring</div>
+      <div class="monitoring-list">${monitoring}</div>
+      <div class="caveat">${p.caveat}</div>
+    </div>
+  `;
+  panels.appendChild(panel);
+});
+</script>
+</body>
+</html>
