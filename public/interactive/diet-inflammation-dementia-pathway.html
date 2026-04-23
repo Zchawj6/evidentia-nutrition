@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diet, Inflammation and Dementia Risk — Evidence Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0d7377;
+    --teal-mid: #14a8ae;
+    --teal-light: #e8f4f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f4ee;
+    --red: #b5342a;
+    --red-light: #fcecea;
+    --cream: #faf8f4;
+    --ink: #1a1a1a;
+    --ink-mid: #444;
+    --ink-light: #777;
+    --rule: #e2ddd8;
+    --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    border-bottom: 2px solid var(--rule);
+    background: var(--white);
+    padding: 0 24px;
+  }
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-light);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .tab-btn:hover { color: var(--teal); }
+  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 600; }
+
+  .tab-panel { display: none; padding: 28px 24px 24px; }
+  .tab-panel.active { display: block; }
+
+  .panel-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .panel-subtitle {
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* ===================== TAB 1: PATHWAY ===================== */
+  .pathway-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pathway-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* UPSTREAM INPUTS */
+  .inputs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .input-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 14px;
+    position: relative;
+    cursor: default;
+    transition: box-shadow 0.15s;
+  }
+  .input-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .input-card .ic-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .input-card .ic-sub {
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+  .input-card .ic-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px; right: 10px;
+  }
+  .dot-modifiable { background: var(--green); }
+  .dot-partial { background: var(--amber); }
+
+  /* CONNECTOR ARROWS */
+  .arrow-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    flex-shrink: 0;
+    padding-top: 50px;
+  }
+  .arrow-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--rule), var(--teal-mid));
+    min-height: 40px;
+    position: relative;
+  }
+  .arrow-head {
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid var(--teal-mid);
+    margin-top: -1px;
+  }
+  .arrow-label {
+    font-size: 10px;
+    color: var(--ink-light);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 8px 0;
+  }
+
+  /* CENTRAL NODE */
+  .central-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .inflammation-node {
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .inflammation-node .n-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .inflammation-node .n-sub {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+
+  .mechanism-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .mech-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--teal-mid);
+    border-radius: 6px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .mech-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .mech-card.active { background: var(--teal-light); }
+  .mech-card .mc-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .mech-card .mc-sub { font-size: 11px; color: var(--ink-light); line-height: 1.4; }
+  /* Evidence strength variants — border thickness and opacity signal relative confidence */
+  .mech-strong  { border-left: 4px solid var(--teal); }
+  .mech-moderate { border-left: 3px solid var(--teal-mid); opacity: 0.9; }
+  .mech-emerging { border-left: 2px solid var(--amber); opacity: 0.75; }
+  .mech-preclinical { border-left: 2px dashed #bbb; opacity: 0.6; }
+  /* Dashed connector to outcomes */
+  .outcome-connector {
+    display: flex; align-items: center; gap: 8px; margin: 6px 0;
+  }
+  .outcome-connector .oc-line { flex:1; border-top: 2px dashed #c8c2bb; }
+  .outcome-connector .oc-label {
+    font-size: 10px; color: var(--ink-light); text-transform: uppercase;
+    letter-spacing: 0.06em; font-style: italic; white-space: nowrap;
+  }
+
+  /* OUTCOME NODE */
+  .outcome-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .outcome-node {
+    flex: 1;
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .outcome-ad { background: var(--red-light); border: 1px solid #e8b5b1; }
+  .outcome-vc { background: var(--amber-light); border: 1px solid #e8c99a; }
+  .outcome-node .on-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .outcome-node .on-sub { font-size: 11px; color: var(--ink-light); }
+
+  /* DETAIL PANEL */
+  .detail-panel {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 16px;
+    min-height: 80px;
+    transition: opacity 0.2s;
+  }
+  .detail-panel .dp-title { font-size: 13px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+  .detail-panel .dp-body { font-size: 12px; color: var(--ink-mid); line-height: 1.6; }
+  .detail-panel .dp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+  .badge-moderate { background: var(--teal-light); color: var(--teal); }
+  .badge-emerging { background: var(--amber-light); color: var(--amber); }
+  .badge-preclinical { background: #f0f0f0; color: #666; }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-light); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ===================== TAB 2: EVIDENCE LANDSCAPE ===================== */
+  .evidence-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ev-header {
+    display: grid;
+    grid-template-columns: 210px 0.8fr 0.8fr 1.4fr 0.9fr;
+    gap: 8px;
+    padding: 0 0 8px;
+    border-bottom: 2px solid var(--rule);
+  }
+  .ev-header .eh-cell {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    text-align: center;
+  }
+  .ev-header .eh-cell:first-child { text-align: left; }
+
+  .ev-row {
+    display: grid;
+    grid-template-columns: 210px 0.8fr 0.8fr 1.4fr 0.9fr;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 6px;
+    padding-left: 8px;
+  }
+  .ev-row:hover { background: var(--teal-light); }
+  .ev-row.expanded { background: var(--teal-light); }
+
+  .ev-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .ev-name .ev-type { font-size: 11px; font-weight: 400; color: var(--ink-light); display: block; margin-top: 2px; }
+
+  .ev-cell { display: flex; justify-content: center; align-items: center; }
+
+  .ev-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .pill-strong { background: var(--green-light); color: var(--green); }
+  .pill-moderate { background: var(--teal-light); color: var(--teal); }
+  .pill-emerging { background: var(--amber-light); color: var(--amber); }
+  .pill-insufficient { background: #f0f0f0; color: #888; }
+  .pill-negative { background: var(--red-light); color: var(--red); }
+  .pill-na { background: transparent; color: var(--ink-light); font-weight: 400; font-size: 11px; }
+
+  .ev-detail {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    border: 1px solid var(--rule);
+  }
+  .ev-detail.open { display: block; }
+  .ev-detail strong { color: var(--ink); font-weight: 600; }
+
+  .col-label {
+    font-size: 10px;
+    color: var(--ink-light);
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  /* BOTTOM NOTE */
+  .bottom-note {
+    font-size: 11px;
+    color: var(--ink-light);
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('pathway', this)">Inflammatory Pathway</button>
+  <button class="tab-btn" onclick="switchTab('evidence', this)">Evidence Landscape</button>
+</div>
+
+<!-- TAB 1: PATHWAY -->
+<div class="tab-panel active" id="tab-pathway">
+  <div class="panel-title">Proposed inflammatory pathway: diet and dementia risk</div>
+  <div class="panel-subtitle">This diagram shows proposed, not proven, connections. Multiple upstream inputs are associated with systemic inflammation, which in turn is associated with neuroinflammatory processes in Alzheimer's disease. The pathway is biologically plausible; causal relationships have not been established in humans. Click any mechanism node for evidence detail and confidence level.</div>
+  <div style="background:var(--amber-light);border:1px solid #e8c99a;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--ink-mid);line-height:1.55;">
+    <strong style="color:var(--amber);">Important:</strong> The connections shown are associations and proposed mechanisms from observational and preclinical research. Multiple converging mechanisms do not increase causal probability without corresponding human interventional evidence. No pathway shown has been confirmed as causal in living humans.
+  </div>
+
+  <div class="pathway-wrap">
+
+    <!-- ROW 1: INPUTS + INFLAMMATION NODE -->
+    <div style="display:flex; gap:0; align-items:stretch;">
+
+      <!-- INPUTS -->
+      <div class="inputs-col">
+        <div style="font-size:11px; font-weight:600; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:4px;">Upstream inputs</div>
+
+        <div class="input-card">
+          <span class="ic-dot dot-modifiable"></span>
+          <div class="ic-label">Dietary pattern</div>
+          <div class="ic-sub">Ultra-processed food, low fibre, antioxidant-poor diets promote systemic inflammation</div>
+        </div>
+
+        <div class="input-card">
+          <span class="ic-dot dot-modifiable"></span>
+          <div class="ic-label">Oral/gut microbiome</div>
+          <div class="ic-sub">Dysbiosis driven by diet; periodontal pathogens enter systemic circulation</div>
+        </div>
+
+        <div class="input-card">
+          <span class="ic-dot dot-modifiable"></span>
+          <div class="ic-label">Metabolic health</div>
+          <div class="ic-sub">Type 2 diabetes, obesity, and insulin resistance amplify inflammatory load</div>
+        </div>
+
+        <div class="input-card">
+          <span class="ic-dot dot-partial"></span>
+          <div class="ic-label">Micronutrient status</div>
+          <div class="ic-sub">Deficiencies in omega-3, folate, vitamin D influence inflammatory tone</div>
+        </div>
+
+        <div class="input-card" style="border-color:var(--red-light);">
+          <span class="ic-dot" style="background:var(--red);"></span>
+          <div class="ic-label">Age / genetics</div>
+          <div class="ic-sub">APOE e4, advancing age — non-modifiable; amplify inflammatory susceptibility</div>
+        </div>
+      </div>
+
+      <!-- ARROW -->
+      <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:44px; flex-shrink:0;">
+        <div style="font-size:10px; color:var(--ink-light); writing-mode:vertical-rl; transform:rotate(180deg); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:6px;">associated with</div>
+        <div style="width:2px; height:60px; background:linear-gradient(to bottom, var(--rule), var(--teal-mid));"></div>
+        <div style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--teal-mid);"></div>
+      </div>
+
+      <!-- CENTRAL + MECHANISMS -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+
+        <div class="inflammation-node">
+          <div class="n-title">Chronic systemic inflammation</div>
+          <div class="n-sub">Elevated TNF-&#945;, IL-1&#946;, IL-6 &nbsp;|&nbsp; Gut dysbiosis &nbsp;|&nbsp; Periodontal bacterial load</div>
+        </div>
+
+        <div style="font-size:11px; font-weight:600; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.07em;">Proposed neuroinflammatory mechanisms <span style="font-weight:400; text-transform:none; letter-spacing:0;">(click to explore)</span></div>
+
+        <div class="mechanism-grid">
+          <div class="mech-card mech-strong" onclick="showDetail('bbb')">
+            <div class="mc-title">Blood-brain barrier penetration</div>
+            <div class="mc-sub">Cytokines and bacterial products cross the BBB, activating microglia</div>
+          </div>
+          <div class="mech-card mech-strong" onclick="showDetail('pg')">
+            <div class="mc-title">P. gingivalis &amp; gingipains</div>
+            <div class="mc-sub">Periodontal pathogen detected in AD brain tissue; gingipains correlate with tau pathology</div>
+          </div>
+          <div class="mech-card mech-moderate" onclick="showDetail('amyloid')">
+            <div class="mc-title">Amyloid-beta accumulation</div>
+            <div class="mc-sub">Oral dysbiosis associated with elevated CSF A&#946;; animal models confirm Pg-induced accumulation</div>
+          </div>
+          <div class="mech-card mech-moderate" onclick="showDetail('vascular')">
+            <div class="mc-title">Cerebrovascular damage</div>
+            <div class="mc-sub">Atherosclerosis and endothelial damage impair cerebral blood flow</div>
+          </div>
+          <div class="mech-card mech-preclinical" onclick="showDetail('tau')">
+            <div class="mc-title">Tau hyperphosphorylation</div>
+            <div class="mc-sub">Inflammatory mediators and Pg products promote neurofibrillary tangle formation</div>
+          </div>
+          <div class="mech-card mech-emerging" onclick="showDetail('gutbrain')">
+            <div class="mc-title">Oral-gut-brain axis</div>
+            <div class="mc-sub">Periodontal pathogens translocate to gut; downstream CNS inflammatory effects</div>
+          </div>
+        </div>
+
+        <div class="detail-panel" id="detail-panel">
+          <div class="dp-title" id="dp-title">Select a mechanism above</div>
+          <div class="dp-body" id="dp-body">Click any mechanism card to see the evidence detail and confidence level for that pathway.</div>
+        </div>
+
+        <!-- HYPOTHESISED LINK NODE -->
+        <div style="background:var(--amber-light);border:1px dashed var(--amber);border-radius:8px;padding:10px 14px;text-align:center;margin-top:4px;">
+          <div style="font-size:12px;font-weight:600;color:var(--amber);">Hypothesised link (not causally established)</div>
+          <div style="font-size:11px;color:var(--ink-light);margin-top:3px;">Association observed in epidemiological data. No completed RCT has demonstrated that reducing inflammation through these pathways alters dementia incidence.</div>
+        </div>
+
+        <!-- DASHED CONNECTOR TO OUTCOMES -->
+        <div class="outcome-connector">
+          <div class="oc-line"></div>
+          <div class="oc-label">observational association only</div>
+          <div class="oc-line"></div>
+        </div>
+
+        <!-- OUTCOMES -->
+        <div style="font-size:11px; font-weight:600; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.07em;">Associated outcomes (observational data)</div>
+        <div class="outcome-row">
+          <div class="outcome-node outcome-ad">
+            <div class="on-title">Alzheimer's disease</div>
+            <div class="on-sub">Amyloid plaques &amp; tau tangles; neuronal death</div>
+          </div>
+          <div class="outcome-node outcome-vc">
+            <div class="on-title">Vascular dementia</div>
+            <div class="on-sub">Cerebrovascular insufficiency; white matter changes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div> Modifiable input</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber);"></div> Partially modifiable</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--red);"></div> Non-modifiable</div>
+    <div style="width:100%; border-top:1px solid var(--rule); margin:6px 0;"></div>
+    <div style="font-size:11px;font-weight:600;color:var(--ink-light);width:100%;margin-bottom:4px;">Mechanism card border = relative evidence confidence:</div>
+    <div class="legend-item"><div style="width:18px;height:4px;background:var(--teal);border-radius:2px;"></div> Moderate-to-strong (post-mortem + animal)</div>
+    <div class="legend-item"><div style="width:18px;height:3px;background:var(--teal-mid);border-radius:2px;opacity:0.9;"></div> Moderate (observational + mechanistic)</div>
+    <div class="legend-item"><div style="width:18px;height:2px;background:var(--amber);border-radius:2px;opacity:0.75;"></div> Emerging (limited human data)</div>
+    <div class="legend-item"><div style="width:18px;height:2px;border-top:2px dashed #bbb;"></div> Preclinical only (cell/animal models)</div>
+    <div class="legend-item" style="margin-left:auto; font-style:italic;">Causality not established in humans. Mechanisms are hypothesis-supporting.</div>
+  </div>
+</div>
+
+<!-- TAB 2: EVIDENCE LANDSCAPE -->
+<div class="tab-panel" id="tab-evidence">
+  <div class="panel-title">Evidence landscape: diet, inflammation, and cognitive outcomes</div>
+  <div class="panel-subtitle">Each row represents an exposure or intervention. Click any row to expand the evidence detail. Columns show the type of evidence available and its quality.</div>
+
+  <div class="evidence-grid">
+
+    <div class="ev-header">
+      <div class="eh-cell">Exposure / Intervention</div>
+      <div class="eh-cell" style="opacity:0.75;">Epidemiological</div>
+      <div class="eh-cell" style="opacity:0.75;">Mechanistic</div>
+      <div class="eh-cell" style="color:var(--teal);font-weight:700;background:var(--teal-light);border-radius:6px;padding:4px;">RCT evidence &#9650; primary</div>
+      <div class="eh-cell">Overall</div>
+    </div>
+    <div style="font-size:11px;color:var(--ink-light);font-style:italic;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule);">RCT evidence takes precedence over observational and mechanistic signals. Where RCT evidence is negative or absent, observational associations should not be interpreted as established clinical benefit. Biomarker changes shown in observational studies do not predict clinical dementia outcomes at the individual level. Relative risk estimates (OR, HR) should be interpreted alongside absolute baseline incidence, which is small and varies widely across cohorts.</div>
+
+    <!-- ROWS -->
+    <div class="ev-row" onclick="toggleRow('med')">
+      <div class="ev-name">Mediterranean diet<span class="ev-type">Dietary pattern</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Limited</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+    </div>
+    <div class="ev-detail" id="row-med">
+      <strong>Epidemiological:</strong> Systematic review and meta-analysis (Singh et al., 2014) found 33-40% reduced risk of cognitive impairment with higher Mediterranean diet adherence. Consistent across multiple cohorts but subject to residual confounding from socioeconomic and lifestyle factors.<br><br>
+      <strong>Mechanistic:</strong> Plausible anti-inflammatory effects via polyphenols, omega-3, and fibre. Gut microbiome diversification reduces dysbiosis and systemic LPS translocation.<br><br>
+      <strong>RCT evidence:</strong> The PREDIMED trial showed cardiovascular benefit; cognitive endpoints were secondary and not pre-specified. No large RCT has shown significant cognitive benefit as a primary outcome in the general population.<br><br>
+      <strong>Caveat:</strong> Observational benefit likely reflects healthy-user confounding in part. Cannot be recommended as a proven dementia prevention strategy on current evidence.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('mind')">
+      <div class="ev-name">MIND diet<span class="ev-type">Dietary pattern</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-negative">Negative RCT</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+    </div>
+    <div class="ev-detail" id="row-mind">
+      <strong>Epidemiological:</strong> Morris et al. (2015) found high MIND diet adherence associated with cognitive age approximately 7.5 years younger and 53% lower rate of AD over 4.7 years. Strong observational signal.<br><br>
+      <strong>RCT evidence:</strong> The MIND trial (Bhupathiraju et al., 2023) found that intensive MIND diet counselling did not significantly slow cognitive decline compared to a healthy diet control over 3 years in adults without dementia at baseline. This is the primary result and should temper confidence in the observational findings.<br><br>
+      <strong>Interpretation:</strong> The gap between observational and RCT evidence likely reflects residual confounding in cohort studies. The intervention benefit, if real, may require longer follow-up or higher-risk populations to be detectable.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('upf')">
+      <div class="ev-name">Ultra-processed food<span class="ev-type">Dietary exposure</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-na">—</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+    </div>
+    <div class="ev-detail" id="row-upf">
+      <strong>Epidemiological:</strong> Gonçalves et al. (2023; JAMA Neurology) found each 10% increase in ultra-processed food consumption associated with 16% higher rate of cognitive decline over 8 years (n=10,775). Consistent with other large cohort analyses.<br><br>
+      <strong>Mechanistic:</strong> Multiple plausible pathways: postprandial glucose/insulin dysregulation, advanced glycation end-products, gut barrier disruption via emulsifiers, systemic LPS translocation from dysbiosis.<br><br>
+      <strong>Limitation:</strong> No intervention trial; observational data vulnerable to reverse causation and confounding from overall dietary quality and socioeconomic factors.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('omega3')">
+      <div class="ev-name">Omega-3 (EPA/DHA)<span class="ev-type">Nutrient / supplement</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-strong">Strong</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Mixed</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+    </div>
+    <div class="ev-detail" id="row-omega3">
+      <strong>Epidemiological:</strong> Consistent prospective association between higher oily fish intake and reduced cognitive decline in older adults across multiple cohorts.<br><br>
+      <strong>Mechanistic:</strong> EPA and DHA are structural components of neuronal membranes; anti-inflammatory via resolution pathways (resolvins, protectins); reduce microglial activation.<br><br>
+      <strong>RCT evidence:</strong> Cochrane review found no significant effect of omega-3 supplementation on cognitive function in cognitively healthy older adults. Some trials in mild cognitive impairment show modest benefit on specific memory outcomes. Effect may be population-specific (those with low baseline DHA status).<br><br>
+      <strong>Conclusion:</strong> Dietary adequacy from oily fish is supported. Therapeutic supplementation as a dementia prevention strategy in the general population is not established.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('bvit')">
+      <div class="ev-name">B vitamins (folate, B12, B6)<span class="ev-type">Nutrient / supplement</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-strong">Strong</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+    </div>
+    <div class="ev-detail" id="row-bvit">
+      <strong>Mechanism:</strong> B vitamins are required for homocysteine methylation. Elevated homocysteine is an independent risk factor for cognitive decline and accelerated brain atrophy on neuroimaging.<br><br>
+      <strong>RCT evidence:</strong> Smith et al. (2010; PLOS ONE) found B vitamin supplementation in older adults with mild cognitive impairment significantly slowed brain atrophy rates on MRI versus placebo. This is a biomarker outcome, not a clinical dementia endpoint.<br><br>
+      <strong>Limitation:</strong> Benefit appears specific to those with elevated homocysteine at baseline and possibly to those with adequate omega-3 status. Clinical dementia endpoint data from longer trials are lacking.<br><br>
+      <strong>Population note:</strong> Deficiency is common in older adults, vegans, and those on metformin or PPIs. Testing homocysteine and B12 status is clinically justified.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('perio')">
+      <div class="ev-name">Periodontal treatment<span class="ev-type">Clinical intervention</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-na">Ongoing</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+    </div>
+    <div class="ev-detail" id="row-perio">
+      <strong>Epidemiological:</strong> Leira et al. meta-analysis (2017): pooled OR 1.67 for dementia in periodontitis. 12-year cohort: 38% lower observed dementia incidence with treatment (HR 0.62). Schwahn et al. (2022): reduced AD-related brain atrophy on MRI with treatment.<br><br>
+      <strong>Important caveat:</strong> All intervention data are observational. Healthy-user bias, differential healthcare access, and residual confounding cannot be excluded. These are associations within treatment patterns, not proven treatment effects.<br><br>
+      <strong>Mechanistic:</strong> Pg and gingipains detected in AD brain tissue (Dominy et al., 2019). Multiple plausible inflammatory pathways established in animal models.<br><br>
+      <strong>RCT status:</strong> PETAL trial (NCT04120831) ongoing. No completed RCT demonstrating cognitive benefit from periodontal treatment. GAIN trial (gingipain inhibitor) did not meet primary endpoints in ITT population.<br><br>
+      <strong>Clinical implication:</strong> Justified on established oral and systemic health grounds. Not yet evidence-based as a dementia prevention strategy.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('vitd')">
+      <div class="ev-name">Vitamin D<span class="ev-type">Nutrient / supplement</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Limited</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-emerging">Emerging</span></div>
+    </div>
+    <div class="ev-detail" id="row-vitd">
+      <strong>Epidemiological:</strong> Deficiency associated with higher rates of cognitive decline and dementia in prospective cohort studies. Association consistent but potentially confounded by reduced outdoor activity and dietary variety in those with early cognitive decline (reverse causation).<br><br>
+      <strong>Mechanistic:</strong> Vitamin D receptors expressed in microglia and neurons; modulates neuroinflammation and amyloid clearance in experimental models.<br><br>
+      <strong>RCT evidence:</strong> Limited. The VITAL trial found no significant cognitive benefit of vitamin D supplementation in the general population over 5 years. No large RCT in deficient populations with cognitive outcomes as a pre-specified primary endpoint.<br><br>
+      <strong>Conclusion:</strong> Deficiency correction is clinically justified on established musculoskeletal and immune grounds. Cognitive benefit of supplementation is not established.
+    </div>
+
+    <div class="ev-row" onclick="toggleRow('polyphenol')">
+      <div class="ev-name">Polyphenols (curcumin, resveratrol)<span class="ev-type">Nutrient / supplement</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Limited</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-moderate">Moderate</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Limited</span></div>
+      <div class="ev-cell"><span class="ev-pill pill-insufficient">Insufficient</span></div>
+    </div>
+    <div class="ev-detail" id="row-polyphenol">
+      <strong>Mechanistic:</strong> Anti-inflammatory and antioxidant properties relevant to neuroinflammation are well-characterised in cell and animal models. Curcumin inhibits NF-kB; resveratrol activates SIRT1 and may reduce amyloid aggregation in preclinical models.<br><br>
+      <strong>Human evidence:</strong> Most clinical trials are small, short in duration, and use biomarker rather than clinical endpoints. Bioavailability is a significant issue for both curcumin and resveratrol in standard formulations.<br><br>
+      <strong>Conclusion:</strong> Mechanistically plausible but human clinical evidence for cognitive benefit is insufficient to support supplementation recommendations. Dietary intake from food sources is reasonable; therapeutic supplementation is not established.
+    </div>
+
+  </div>
+
+  <div class="bottom-note">
+    Evidence quality ratings are approximate and reflect the best available human evidence. <strong>Moderate</strong> = consistent observational signal with plausible mechanism; confounding unresolved. <strong>Emerging</strong> = directional signal exists; insufficient for clinical recommendation. <strong>Insufficient</strong> = human evidence lacking or contradictory. A negative RCT result is noted explicitly where one exists.
+  </div>
+</div>
+
+<script>
+  const details = {
+    bbb: {
+      title: "Blood-brain barrier penetration",
+      body: "Pro-inflammatory cytokines (TNF-\u03b1, IL-1\u03b2, IL-6) generated by chronic systemic inflammation can cross the blood-brain barrier and activate microglial cells, initiating central neuroinflammatory cascades. Periodontal bacterial lipopolysaccharides (LPS) can also penetrate the BBB via Toll-like receptor 4 (TLR-4) signalling. This pathway is well-characterised mechanistically and supported by animal data; its specific contribution to human AD has not been directly quantified.",
+      badge: "Mechanistic + animal evidence", badgeClass: "badge-moderate"
+    },
+    pg: {
+      title: "Porphyromonas gingivalis and gingipains",
+      body: "Dominy et al. (2019; Science Advances) detected Pg DNA and gingipain proteases in post-mortem AD brain tissue in 96% of 53 samples. Higher gingipain levels correlated with tau and ubiquitin pathology. This is hypothesis-supporting evidence consistent with a role for Pg in AD pathology. Post-mortem detection does not establish causation in living patients. Animal models of oral Pg inoculation confirm brain colonisation and amyloid accumulation, with effects attenuated by gingipain inhibitors.",
+      badge: "Post-mortem + animal evidence", badgeClass: "badge-moderate"
+    },
+    amyloid: {
+      title: "Amyloid-beta accumulation",
+      body: "Oral dysbiosis is associated with elevated amyloid-beta in cerebrospinal fluid (prospective NYU cohort). Plasma A\u03b2 concentrations are higher in severe periodontal disease and increase over time in periodontitis patients (Carballo et al., 2023; under verification). Animal studies confirm that Pg LPS inoculation induces A\u03b2 accumulation in hippocampus and cerebral cortex. It has been proposed that A\u03b2 may partly function as an antimicrobial host defence mechanism, adding interpretive complexity. These are biomarker associations, not clinical dementia outcomes.",
+      badge: "Biomarker + animal evidence", badgeClass: "badge-emerging"
+    },
+    vascular: {
+      title: "Cerebrovascular damage",
+      body: "Periodontal bacterial products damage endothelial cells and promote atherosclerotic plaque formation, potentially impairing cerebral blood flow. Reduced cerebrovascular perfusion is independently associated with both vascular dementia and AD. This pathway shares mechanisms with cardiovascular disease risk, and shared risk factors including diabetes, smoking, and hypertension are important confounds. The vascular contribution to AD is well-established; the specific periodontitis-cerebrovascular-AD link is supported by mechanistic and epidemiological data but has not been isolated causally.",
+      badge: "Mechanistic + observational", badgeClass: "badge-moderate"
+    },
+    tau: {
+      title: "Tau hyperphosphorylation",
+      body: "Inflammatory mediators including IL-1\u03b2 activate kinases (GSK-3\u03b2, CDK5) that promote tau hyperphosphorylation. Pg-derived phosphoglycerol dihydroceramide (PGDHC) has been shown in cell studies to induce tau hyperphosphorylation and neuronal senescence. Animal studies confirm that oral Pg inoculation promotes neurofibrillary tangle-like pathology. Treponema denticola, another periodontal pathogen, has similarly been shown to contribute to tau pathology in murine models. These are preclinical findings.",
+      badge: "Cell studies + animal evidence", badgeClass: "badge-preclinical"
+    },
+    gutbrain: {
+      title: "Oral-gut-brain axis",
+      body: "Periodontal pathogens including Pg, Fusobacterium nucleatum, and Veillonella species can translocate from the oral cavity to the gut, inducing dysbiosis and systemic inflammatory responses that may influence CNS pathology. Wu et al. (2021; npj Biofilms and Microbiomes) associated oral microbiome composition with cognitive performance and AD biomarkers in older adults. Protective commensal bacteria (Streptococcus salivarius, Neisseria species) are depleted in both AD and periodontitis. This pathway is biologically interesting and supported by microbiome association data; it is at an exploratory stage.",
+      badge: "Emerging / exploratory", badgeClass: "badge-emerging"
+    }
+  };
+
+  function showDetail(key) {
+    const d = details[key];
+    document.querySelectorAll('.mech-card').forEach(c => c.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('dp-title').textContent = d.title;
+    document.getElementById('dp-body').innerHTML = d.body + `<br><span class="dp-badge ${d.badgeClass}">${d.badge}</span>`;
+  }
+
+  function toggleRow(id) {
+    const el = document.getElementById('row-' + id);
+    const row = event.currentTarget;
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.ev-detail').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.ev-row').forEach(r => r.classList.remove('expanded'));
+    if (!isOpen) {
+      el.classList.add('open');
+      row.classList.add('expanded');
+    }
+  }
+
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
