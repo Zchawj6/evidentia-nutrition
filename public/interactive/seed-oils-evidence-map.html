@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seed Oils: Mechanistic Claims vs Human Evidence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0d7377;
+    --teal-light: #e8f4f5;
+    --amber: #c97b2a;
+    --amber-light: #fdf3e7;
+    --green: #2a7a4b;
+    --green-light: #e8f5ee;
+    --red: #b5342a;
+    --red-light: #fdf0ef;
+    --cream: #faf8f4;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-muted: #7a7a7a;
+    --border: #e2ddd6;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 24px 20px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .tab:hover { border-color: var(--teal); color: var(--teal); }
+
+  .tab.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Claim chain layout */
+  .chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+  }
+
+  .chain-step {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .chain-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32px;
+    flex-shrink: 0;
+  }
+
+  .chain-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid white;
+    outline: 2px solid var(--teal);
+    flex-shrink: 0;
+    margin-top: 18px;
+  }
+
+  .chain-line {
+    width: 2px;
+    flex: 1;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  .chain-step:last-child .chain-line { display: none; }
+
+  .chain-card {
+    flex: 1;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .chain-card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--ink-muted);
+  }
+
+  .chain-card-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .chain-card-body {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .verdict-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  .verdict-supported { background: var(--green-light); color: var(--green); }
+  .verdict-partial { background: var(--amber-light); color: var(--amber); }
+  .verdict-not-supported { background: var(--red-light); color: var(--red); }
+  .verdict-uncertain { background: #f0f0f0; color: var(--ink-soft); }
+
+  /* Evidence table */
+  .evidence-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .evidence-row {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .evidence-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .evidence-row-header:hover { background: #fafafa; }
+
+  .evidence-row-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .evidence-row-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .evidence-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .tag-red { background: var(--red-light); color: var(--red); }
+  .tag-grey { background: #f0f0f0; color: var(--ink-soft); }
+
+  .chevron {
+    font-size: 10px;
+    color: var(--ink-muted);
+    transition: transform 0.2s;
+  }
+
+  .evidence-row.open .chevron { transform: rotate(180deg); }
+
+  .evidence-row-body {
+    display: none;
+    padding: 0 16px 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  .evidence-row.open .evidence-row-body { display: block; }
+
+  /* Comparison grid */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .comparison-table th {
+    background: var(--teal);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  .comparison-table th:first-child { border-radius: 6px 0 0 0; }
+  .comparison-table th:last-child { border-radius: 0 6px 0 0; }
+
+  .comparison-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:nth-child(even) td { background: #fafaf8; }
+
+  .comparison-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* Spectrum bar */
+  .spectrum-section { margin-bottom: 20px; }
+
+  .spectrum-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+
+  .spectrum-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, var(--red), var(--amber), var(--green));
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .spectrum-marker {
+    position: absolute;
+    top: -4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--teal);
+    transform: translateX(-50%);
+    cursor: default;
+  }
+
+  .spectrum-ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--ink-muted);
+  }
+
+  .spectrum-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+  }
+
+  .spectrum-item-title {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .spectrum-item-body {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Info box */
+  .info-box {
+    border-left: 3px solid var(--teal);
+    background: var(--teal-light);
+    padding: 12px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .info-box strong { color: var(--ink); }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Seed oils: claims vs evidence</h1>
+<p class="subtitle">Navigate the four dimensions of the debate</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="showPanel('chain')">Claim chain</button>
+  <button class="tab" onclick="showPanel('trials')">Key trials</button>
+  <button class="tab" onclick="showPanel('cooking')">Cooking and oxidation</button>
+  <button class="tab" onclick="showPanel('uncertainty')">Genuine uncertainty</button>
+</div>
+
+<!-- Panel 1: Claim chain -->
+<div class="panel active" id="panel-chain">
+  <p class="section-title">The anti-seed oil argument, step by step</p>
+  <div class="info-box">
+    Each step in the argument has its own evidence status. A plausible mechanism at step one does not confirm harm at step four.
+  </div>
+
+  <div class="chain">
+    <div class="chain-step">
+      <div class="chain-connector">
+        <div class="chain-dot"></div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-card-label">Claim 1 — Metabolic pathway</div>
+        <div class="chain-card-title">Linoleic acid converts to arachidonic acid, a precursor to pro-inflammatory signalling molecules</div>
+        <div class="chain-card-body">Linoleic acid (LA) is metabolised via delta-6-desaturase to arachidonic acid (AA), which generates prostaglandins, thromboxanes, and leukotrienes with pro-inflammatory activity. This pathway is well characterised in biochemistry.</div>
+        <span class="verdict-badge verdict-supported">Supported — established pathway</span>
+      </div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-connector">
+        <div class="chain-dot"></div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-card-label">Claim 2 — Dietary conversion</div>
+        <div class="chain-card-title">Eating more linoleic acid raises tissue arachidonic acid levels</div>
+        <div class="chain-card-body">Controlled feeding studies do not consistently support this. A systematic review by Rett and Whelan (2011) found that increasing dietary LA did not reliably raise plasma or tissue AA in humans, suggesting the conversion is tightly regulated rather than substrate-driven.</div>
+        <span class="verdict-badge verdict-not-supported">Not supported in human feeding studies</span>
+      </div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-connector">
+        <div class="chain-dot"></div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-card-label">Claim 3 — Inflammatory outcome</div>
+        <div class="chain-card-title">Higher seed oil intake raises systemic inflammatory markers</div>
+        <div class="chain-card-body">Meta-analyses of randomised trials find no significant increase in CRP, IL-6, or TNF-alpha with higher LA intake. Observational data (Marklund et al., 2020, Circulation) show inverse associations between LA biomarkers and inflammatory markers — the opposite direction to the claim.</div>
+        <span class="verdict-badge verdict-not-supported">Not supported — evidence runs in the opposite direction</span>
+      </div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-connector">
+        <div class="chain-dot"></div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-card-label">Claim 4 — Clinical harm</div>
+        <div class="chain-card-title">Seed oil consumption drives chronic disease at population level</div>
+        <div class="chain-card-body">The bulk of the cardiovascular trial evidence shows modest benefit from replacing saturated fat with polyunsaturated fat. Two trials (Sydney Diet Heart, Minnesota Coronary Experiment) found unexpected harm signals, though both have methodological limitations. The clinical harm claim is not supported by the weight of evidence, but cannot be entirely dismissed given those trial findings.</div>
+        <span class="verdict-badge verdict-partial">Contested — two anomalous trials vs larger body of evidence</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel 2: Key trials -->
+<div class="panel" id="panel-trials">
+  <p class="section-title">What the major trials found</p>
+  <div class="info-box">
+    Click any trial to expand the detail. Pay attention to population, comparator, and duration — these matter considerably for interpretation.
+  </div>
+
+  <div class="evidence-grid">
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Cochrane review — Hooper et al. (2020)</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-green">Modest benefit</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        <strong>What it covered:</strong> 15 RCTs, over 56,000 participants. Reducing saturated fat and replacing with polyunsaturated fat.<br><br>
+        <strong>Findings:</strong> Approximately 17% reduction in cardiovascular events with PUFA replacement. No significant effect on total mortality.<br><br>
+        <strong>Limitations:</strong> Heterogeneity across trials; most studies from the 1960s–1980s; dietary assessment quality variable. The cardiovascular event reduction was statistically significant but moderate in absolute terms, and in low-risk populations the absolute risk difference is likely small. The presence of two discordant trials (Sydney, Minnesota) means the direction of benefit, while generally consistent, is not unequivocally established across all populations and doses.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">AHA Presidential Advisory — Sacks et al. (2017)</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-green">Estimated benefit</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        <strong>What it covered:</strong> Synthesis of RCT and observational evidence on dietary fat and cardiovascular disease.<br><br>
+        <strong>Findings:</strong> Replacing saturated fat with polyunsaturated vegetable oils estimated to reduce cardiovascular disease by approximately 30%.<br><br>
+        <strong>Limitations:</strong> Advisory rather than systematic review; produced by a body with institutional positions on the topic. The estimate synthesises heterogeneous evidence and should not be read as a precision figure.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Sydney Diet Heart Study — Ramsden et al. (2013)</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-red">Harm signal</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        <strong>What it covered:</strong> Men with recent coronary disease randomised to replace saturated fat with safflower oil (high LA). Recovered and re-analysed decades after the original trial.<br><br>
+        <strong>Findings:</strong> Increased cardiovascular and all-cause mortality in the safflower oil group despite LDL reduction.<br><br>
+        <strong>Limitations:</strong> Small sample (n=458); high-dose safflower oil not typical of normal consumption; incomplete randomisation data; participants were already in a high-risk clinical population. The harm signal is real but generalising to typical dietary use requires caution.<br><br>
+        <strong>Possible explanations (unproven):</strong> Very high-dose safflower oil may generate oxidised lipid products differently to moderate habitual use; nutrient displacement effects from replacing a large proportion of dietary fat; the post-MI population may respond differently to very high LA exposure than healthier adults.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Minnesota Coronary Experiment — Ramsden et al. (2016)</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-red">Harm signal</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        <strong>What it covered:</strong> Institutionalised patients and nursing home residents (n=9,423) randomised to corn oil margarine replacing saturated fat. Data recovered and re-analysed from a trial conducted 1968–73.<br><br>
+        <strong>Findings:</strong> LDL was reduced in the intervention group, but mortality was higher. Each 30 mg/dL reduction in cholesterol was associated with higher, not lower, mortality.<br><br>
+        <strong>Limitations:</strong> Institutionalised population not representative of general adults; high corn oil dose; margarine used contained trans fats in some periods; confounding cannot be fully excluded from recovered data. The dissociation between LDL reduction and mortality outcome is a genuine finding that highlights LDL as an insufficient surrogate for clinical benefit in all contexts.<br><br>
+        <strong>Possible explanations (unproven):</strong> Trans fats in the margarine used during some periods are now established cardiovascular risk factors and could account for part of the harm signal; the institutionalised population had high baseline morbidity; the very high-dose corn oil intervention may not be comparable to moderate habitual seed oil use in a healthier population.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Biomarker study — Marklund et al. (2020)</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-green">Favours LA</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        <strong>What it covered:</strong> Pooled analysis of 30 prospective cohort studies using blood biomarkers of linoleic acid intake as objective exposure measures.<br><br>
+        <strong>Findings:</strong> Higher LA biomarker levels associated with lower cardiovascular disease incidence and mortality. Also associated with lower inflammatory markers — the opposite of the inflammation hypothesis.<br><br>
+        <strong>Limitations:</strong> Observational design; biomarker levels reflect habitual intake but confounding with overall dietary pattern cannot be excluded.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Panel 3: Cooking and oxidation -->
+<div class="panel" id="panel-cooking">
+  <p class="section-title">Does cooking with seed oils generate harmful compounds?</p>
+  <div class="info-box">
+    The oxidation concern is distinct from the inflammation hypothesis and has a different evidence basis. The question is not whether oxidation occurs, but whether it occurs at levels clinically relevant under normal cooking conditions.
+  </div>
+
+  <div class="spectrum-section">
+    <div class="spectrum-label">Evidence strength for oxidation concern</div>
+    <div class="spectrum-bar">
+      <div class="spectrum-marker" style="left: 40%"></div>
+    </div>
+    <div class="spectrum-ends">
+      <span>No concern</span>
+      <span>Clear clinical risk</span>
+    </div>
+    <p style="font-size:11px;color:var(--ink-muted);margin-top:6px;">Position: laboratory evidence is real; clinical significance under normal domestic use is unestablished</p>
+  </div>
+
+  <div class="spectrum-item">
+    <div class="spectrum-item-title" style="color:var(--green)">What the evidence does support</div>
+    <div class="spectrum-item-body">Polyunsaturated fats are chemically less stable than saturated or monounsaturated fats and oxidise more readily at high temperatures. Laboratory studies document generation of aldehydes including 4-HNE and malondialdehyde when seed oils are heated, particularly during repeated frying. These compounds are genotoxic in cell studies. Commercial deep frying with repeatedly reused oil generates higher aldehyde concentrations than single-use domestic cooking.</div>
+  </div>
+
+  <div class="spectrum-item">
+    <div class="spectrum-item-title" style="color:var(--amber)">What remains uncertain</div>
+    <div class="spectrum-item-body">Most studies measure aldehyde generation at temperatures and durations exceeding typical home cooking. The dose absorbed intact from normally cooked food, and whether it reaches tissues at physiologically relevant concentrations, is not well characterised. There are no long-term human intervention trials testing health outcomes from cooking fat type under controlled conditions.</div>
+  </div>
+
+  <div class="spectrum-item">
+    <div class="spectrum-item-title" style="color:var(--teal)">Practical inference the evidence does support</div>
+    <div class="spectrum-item-body">High-temperature repeated frying (particularly commercial deep frying with reused oil) is a more legitimate concern than light domestic cooking or use in dressings. Extra virgin olive oil and refined coconut oil are more chemically stable at high temperatures and represent a defensible choice for high-heat cooking. However, coconut oil's high saturated fat content means it should not be treated as a broadly preferable or cardiovascular-neutral alternative — the choice involves a trade-off between oxidative stability and saturated fat load that current evidence does not cleanly resolve. Cytotoxicity from aldehydes in cell studies does not establish human toxicity at dietary exposure levels; concentrations in laboratory experiments typically exceed what is generated and absorbed from normally cooked food. For context, the contribution of cooking aldehydes is likely considerably smaller than aldehyde exposure from cigarette smoke or sustained air pollution, though direct comparative quantification specific to cooking oils has not been published.</div>
+  </div>
+
+  <table class="comparison-table" style="margin-top:16px;">
+    <thead>
+      <tr>
+        <th>Oil type</th>
+        <th>Smoke point</th>
+        <th>PUFA content</th>
+        <th>Oxidative stability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Extra virgin olive oil</td>
+        <td>~190°C</td>
+        <td>Low (11%)</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>Refined coconut oil</td>
+        <td>~230°C</td>
+        <td>Very low (2%)</td>
+        <td>Very high</td>
+      </tr>
+      <tr>
+        <td>Rapeseed / canola oil</td>
+        <td>~200°C</td>
+        <td>Moderate (32%)</td>
+        <td>Moderate</td>
+      </tr>
+      <tr>
+        <td>Sunflower oil</td>
+        <td>~225°C</td>
+        <td>High (65%)</td>
+        <td>Lower</td>
+      </tr>
+      <tr>
+        <td>Corn oil</td>
+        <td>~230°C</td>
+        <td>High (58%)</td>
+        <td>Lower</td>
+      </tr>
+      <tr>
+        <td>Safflower oil</td>
+        <td>~210°C</td>
+        <td>Very high (75%)</td>
+        <td>Lowest</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Panel 4: Genuine uncertainty -->
+<div class="panel" id="panel-uncertainty">
+  <p class="section-title">What is genuinely not yet resolved</p>
+  <div class="info-box">
+    Confident dismissal of all seed oil concerns is as epistemically poor as the extreme anti-seed oil position. These are the areas where the evidence has real gaps.
+  </div>
+
+  <div class="evidence-grid">
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Very high LA intake at the upper dietary distribution</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-grey">Gap</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        Most trials and observational studies examine populations with moderate LA intake. The long-term clinical effects of intake at the very high end of the distribution — as in ultra-processed food heavy diets — are not well characterised. Extrapolating from moderate-intake studies to very high intake is not well-supported.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Combined high LA and low omega-3 exposure</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-grey">Gap</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        The typical pattern in ultra-processed food heavy diets is high seed oil intake combined with very low oily fish or omega-3 intake. This combined exposure has not been studied with adequate power as a distinct dietary pattern. The interaction between high LA and low EPA/DHA on inflammatory pathways may behave differently to either exposure in isolation.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Cooking aldehyde dose under normal domestic conditions</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-grey">Gap</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        Laboratory studies establish that aldehydes are generated during heating of seed oils, but the absorbed dose from normally cooked food under domestic conditions has not been adequately characterised. Long-term human trials comparing health outcomes from different cooking fats under controlled conditions do not exist.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Differences between specific seed oils</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-grey">Gap</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        Sunflower, soybean, rapeseed, corn, and safflower oils differ considerably in fatty acid composition, minor lipid constituents, and refining methods. The evidence base rarely disaggregates these differences. Treating them as a single category for the purposes of evidence review is a simplification that may obscure meaningful heterogeneity.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">Ultra-processed food confounding</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-amber">Under-studied</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        High seed oil intake at the upper end of the distribution is strongly correlated with ultra-processed food consumption. People eating the most seed oils are largely consuming them via processed snacks, fast food, and ready meals rather than as cooking oils added to whole foods. Health associations in these populations may partly reflect the broader dietary pattern rather than the oils themselves. This confounding is rarely disaggregated in the literature and means observational findings at high intake levels should be interpreted with particular caution.
+      </div>
+    </div>
+
+    <div class="evidence-row" onclick="toggleRow(this)">
+      <div class="evidence-row-header">
+        <div class="evidence-row-title">The two anomalous cardiovascular trials</div>
+        <div class="evidence-row-meta">
+          <span class="evidence-tag tag-amber">Unresolved</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="evidence-row-body">
+        The Sydney Diet Heart Study and Minnesota Coronary Experiment found unexpected harm signals that have not been adequately explained by the mainstream consensus. Their methodological limitations reduce their weight but do not eliminate it. The Minnesota result in particular highlights that LDL reduction is not a sufficient surrogate for clinical benefit in all contexts. Plausible explanations include trans fat contamination, very high-dose exposure, and population-specific effects — but none has been proven.
+      </div>
+    </div>
+
+    <div style="border-left:3px solid var(--teal);background:var(--teal-light);padding:12px 14px;border-radius:0 6px 6px 0;margin-top:16px;font-size:12px;color:var(--ink-soft);line-height:1.6;">
+      <strong style="color:var(--ink);">Evidence strength by domain</strong><br>
+      <strong>LDL effects:</strong> Strong — one of the most replicated findings in nutritional biochemistry.<br>
+      <strong>Cardiovascular outcomes:</strong> Moderate — consistent direction, modest effect sizes, two anomalous trials.<br>
+      <strong>Systemic inflammation:</strong> Weak — evidence runs contrary to the hypothesis.<br>
+      <strong>Oxidation harm (normal cooking):</strong> Uncertain — laboratory data established, clinical significance unquantified.
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleRow(row) {
+    row.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
