@@ -131,7 +131,7 @@ export default function ContributePage() {
             <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 28, color: '#1A1A2E', marginBottom: 20, lineHeight: 1.25 }}>Who we are looking for</h2>
             <p style={{ color: '#3d3d3a', marginBottom: 14, fontSize: 16 }}>We are particularly interested in contributions from clinicians, registered dietitians, pharmacists, and researchers with direct experience of the clinical question they are writing about. Academic or clinical affiliation is not a requirement, but you should be able to demonstrate familiarity with the evidence base.</p>
             <p style={{ color: '#3d3d3a', marginBottom: 14, fontSize: 16 }}>If you are unsure whether your background or topic is a fit, send us a brief note. We would rather have the conversation than have you spend time on a draft that is not right for the platform.</p>
-            <p style={{ color: '#3d3d3a', fontSize: 16 }}>For full details on evidence rating thresholds, downgrade rules, effect-size requirements, and the contributor checklist, see the <a href="/articles/editorial-standards-for-contributors" style={{ color: '#1A6B72', textDecoration: 'underline', textUnderlineOffset: 3 }}>editorial standards document</a>. We recommend reading it before drafting.</p>
+            <p style={{ color: '#3d3d3a', fontSize: 16 }}>For full details on evidence rating thresholds, downgrade rules, effect-size requirements, and the contributor checklist, see the <a href="/contribute/editorial-standards" style={{ color: '#1A6B72', textDecoration: 'underline', textUnderlineOffset: 3 }}>editorial standards document</a>. We recommend reading it before drafting.</p>
           </section>
 
         </div>
