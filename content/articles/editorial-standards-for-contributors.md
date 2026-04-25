@@ -1,4 +1,14 @@
-# Evidentia Nutrition — Editorial Standards for Contributors
+---
+title: "Editorial Standards for Contributors"
+slug: "editorial-standards-for-contributors"
+date: '2026-04-25'
+category: "Evidence Review"
+author: "Evidentia Nutrition"
+authorCredentials: ""
+excerpt: "The full editorial requirements for external contributors, covering evidence standards, evidence rating thresholds, the downgrade framework, effect-size reporting, writing style, format, and the contributor checklist."
+tags: ["editorial", "contributors", "evidence standards"]
+featured: false
+---
 
 This document sets out the editorial requirements that apply to all external contributions. It covers evidence standards, writing style, format requirements, and the review process. Reading it before drafting will save significant revision time.
 
