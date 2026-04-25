@@ -13,7 +13,7 @@ export default function Footer() {
         <div style={{ display: 'flex', gap: 48 }}>
           <div>
             <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#888', marginBottom: 12 }}>Site</div>
-            {[['Evidence library', '/library'], ['Articles', '/articles'], ['Methodology', '/methodology'], ['About', '/about'], ['Contact', '/contact']].map(([l, h]) => (
+            {[['Evidence library', '/library'], ['Articles', '/articles'], ['Methodology', '/methodology'], ['About', '/about'], ['Contact', '/contact'], ['Contribute', '/contribute']].map(([l, h]) => (
               <div key={h} style={{ marginBottom: 8 }}>
                 <Link href={h} style={{ fontSize: 13, color: '#4A4A6A', textDecoration: 'none' }}>{l}</Link>
               </div>
