@@ -7,7 +7,7 @@ author: "Professor Jatin Joshi"
 authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Many supplements interact with prescription and over-the-counter medications in ways that are clinically meaningful. This article explains how those interactions happen, which combinations carry real risk, and what to do if you are taking both."
 tags: ["drug interactions", "safety", "medications", "supplements", "St John's Wort", "warfarin", "omega-3", "magnesium"]
-featured: false
+featured: true
 ---
 
 Most people who take supplements also take at least one medication. In surveys of adults in the UK and US, somewhere between a third and a half of people who use prescription drugs report taking dietary supplements at the same time. The two are rarely discussed together, by patients, by prescribers, or by the supplement industry. That gap is a problem, because some of these combinations are clinically meaningful in ways that are not immediately obvious.

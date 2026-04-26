@@ -7,7 +7,7 @@ author: "Evidentia Nutrition"
 authorCredentials: ""
 excerpt: "Creatine has one of the strongest evidence bases in sports nutrition, but most of that research was done in men. The evidence in women is growing, biologically coherent, and more nuanced than the marketing on either side suggests."
 tags: ["creatine", "women", "menopause", "perimenopause", "muscle", "strength", "cognitive", "personalisation"]
-featured: false
+featured: true
 ---
 
 Creatine has accumulated one of the most robust evidence bases of any supplement, particularly for exercise performance and resistance training outcomes. It is also one of the most commercially noisy spaces in sports nutrition, where marketing claims consistently run ahead of what the trials actually show. For women specifically, there is now a growing body of evidence that is both encouraging and frequently misrepresented - either by the supplement industry overstating what is known, or by older clinical assumptions underselling it.

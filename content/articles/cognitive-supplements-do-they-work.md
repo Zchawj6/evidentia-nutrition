@@ -7,7 +7,7 @@ author: Professor Jatin Joshi
 authorCredentials: "Professor Jatin Joshi, BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Five ingredients, five different evidence stories. Citicoline, phosphatidylserine, lion's mane, bacopa, and ginkgo are among the most marketed cognitive supplements. The evidence behind them is more uneven than the marketing suggests."
 tags: ["cognitive function", "nootropics", "citicoline", "phosphatidylserine", "lion's mane", "bacopa", "ginkgo", "brain health", "memory", "focus"]
-featured: false
+featured: true
 ---
 
 The term "nootropic" has become one of the most commercially elastic words in the supplement industry. It covers everything from well-characterised phospholipid compounds with decades of clinical trial data to mushroom extracts studied almost exclusively in animal models. Grouping them together, as most supplement brands do, creates the impression of a unified category with a consistent evidence base. That impression is misleading.

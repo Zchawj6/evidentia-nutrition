@@ -7,7 +7,7 @@ author: "Professor Jatin Joshi"
 authorCredentials: "BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Berberine and metformin show comparable effects on blood glucose markers in head-to-head trials. But comparable biomarker effects are not the same as comparable evidence bases. This article examines what the trials actually show, where the comparison holds, and where it does not."
 tags: ["berberine", "metformin", "type 2 diabetes", "PCOS", "blood glucose", "evidence review"]
-featured: false
+featured: true
 ---
 
 Berberine has attracted considerable attention as a "natural alternative" to metformin, the most widely prescribed glucose-lowering drug in the world. The comparison is not entirely without basis. Both compounds activate AMP-activated protein kinase (AMPK), both reduce fasting glucose and HbA1c in clinical trials, and several head-to-head studies have reported broadly similar effects on glycaemic markers over periods of three months. From that observation, a popular narrative has developed: berberine works as well as metformin, without the pharmaceutical label.

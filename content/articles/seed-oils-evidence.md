@@ -7,7 +7,7 @@ author: Professor Jatin Joshi
 authorCredentials: "Professor Jatin Joshi, BDS MBBS MSc(Oxon) MFDS FRCS(Plast), Hon. Professor of Surgery (Translational Research), University College London"
 excerpt: "Seed oils are among the most contested foods in nutrition right now. The social media narrative and the scientific consensus are in sharp conflict. The honest evidence picture is more complicated than either side acknowledges."
 tags: ["seed oils", "linoleic acid", "vegetable oils", "inflammation", "cardiovascular disease", "omega-6", "oxidation", "dietary fat"]
-featured: false
+featured: true
 ---
 
 Few dietary topics have generated more heat and less light in recent years than seed oils. On one side, a vocal online movement argues that industrially processed vegetable oils are a primary driver of chronic disease, toxic at cooking temperatures, and responsible for everything from obesity to cancer. On the other, mainstream nutrition bodies and many clinicians dismiss these concerns entirely, pointing to decades of evidence linking polyunsaturated fat intake to improved cardiovascular outcomes. Both positions overstate their case.
